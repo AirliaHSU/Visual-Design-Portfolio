@@ -7,151 +7,176 @@
 
 <style>
     body {
-        background: #000;
-        color: #e8e8e8;
-        font-family: 'Noto Sans TC', sans-serif;
         margin: 0;
-        padding: 40px;
+        padding: 0;
+        font-family: "Noto Sans TC", sans-serif;
+        background: #000;
+        color: #f0f0e6;
+        line-height: 1.7;
+    }
+
+    /* 頁面容器 */
+    .container {
+        width: 92%;
+        max-width: 1400px;
+        margin: 40px auto;
     }
 
     h1 {
         font-size: 28px;
-        font-weight: 600;
+        letter-spacing: 2px;
         margin-bottom: 10px;
-        color: #f0f0f0;
     }
 
     h2 {
-        margin-top: 60px;
+        margin-top: 40px;
         font-size: 22px;
-        font-weight: 600;
-        border-left: 6px solid #6fa380;
-        padding-left: 12px;
-        color: #d7f8d0;
+        padding-left: 6px;
+        border-left: 4px solid #9bbf74; /* 暗金綠 */
     }
 
-    .desc {
-        font-size: 15px;
-        line-height: 1.7;
-        color: #cfcfcf;
-        margin-bottom: 30px;
-    }
-
-    /* 展開項目 */
+    /* 展開式區塊 */
     details {
-        background: #0f1a17;
-        border: 1px solid #1f2d29;
+        background: #0d1b14;
+        border: 1px solid #1f2b22;
+        padding: 14px 18px;
+        margin-bottom: 10px;
         border-radius: 6px;
-        padding: 12px 16px;
-        margin-bottom: 12px;
         cursor: pointer;
     }
     summary {
         font-size: 16px;
-        color: #cfead5;
         font-weight: 600;
+        color: #dce7c8;
+    }
+    details p {
+        margin-top: 10px;
+        font-size: 15px;
+        color: #e6e6e6;
+        line-height: 1.7;
     }
 
-    /* 圖片網格 */
-    .img-grid {
+    /* 卡片區塊標題 */
+    .section-title {
+        margin-top: 40px;
+        margin-bottom: 15px;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    /* 卡片容器（正方形） */
+    .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 22px;
-        margin-top: 25px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 25px;
+        margin-top: 20px;
     }
 
-    .img-grid img {
-        width: 100%;
+    /* 單張圖片卡片 */
+    .card {
+        background: #0c1612;
+        border: 1px solid #1f2b22;
         border-radius: 10px;
-        background: #101010;
-        object-fit: cover;
-        height: 280px;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        overflow: hidden;
+        padding: 15px;
+        transition: transform 0.25s ease;
     }
 
-    .img-grid img:hover {
+    .card:hover {
         transform: scale(1.03);
-        box-shadow: 0px 0px 12px rgba(120,255,170,0.25);
     }
+
+    /* 圖片保持方形，但不裁切 */
+    .card img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: contain; /* 不裁切 */
+        border-radius: 6px;
+        background: #000;
+    }
+
 </style>
 </head>
 
 <body>
+<div class="container">
 
-<h1>Airlia / 放空｜視覺設計示範作品集</h1>
+    <h1>Airlia / 放空｜視覺設計示範作品集</h1>
 
-<div class="desc">
-本頁展示不同複雜度的社群視覺設計作品，用於協助客戶理解可達成的風格層級，並作為後續估價與需求討論之參考依據。<br>
-下方提供製作須知／修改政策／文字設計內容，所有資訊皆透明化，避免溝通落差。
+    <p>此頁展示不同複雜度的社群視覺設計作品，供作參考可達成的風格層級，並作為後續估價與需求討論之參考依據。<br>
+    下方提供《製作須知》《修改規範》《文字設計說明》。所有方案皆以實際內容複雜度為準。</p>
+
+    <!-- 展開 1：製作須知 -->
+    <details>
+        <summary>《做圖須知 Required Materials》</summary>
+        <p>
+            ■ 請提供：圖片尺寸（如 1080x1080）、主視覺方向、品牌 Logo、必要商品素材、文案、參考圖示意。<br>
+            ■ 若無方向，可提供多張參考圖供比對後確認。<br>
+            ■ 需注意：<br>
+            ‧ 不接受成圖後才改尺寸（視為 Resize，加收原圖 80% 費用）。<br>
+            ‧ 若需求尚不確定，可先提供參考圖，我將附上報價單說明項目差異。
+        </p>
+    </details>
+
+    <!-- 展開 2：修改規範 -->
+    <details>
+        <summary>《修改須知 Revision Policy》</summary>
+        <p>
+            ■ 每張作品含 2 次免費修改。<br>
+            ■ 修改不得超過原圖完成度之 50%（若超過視為重新製作，需再收一次該方案費用）。<br>
+            ■ 若需額外版本、不同構圖方向、重大風格變更，皆屬於另計項目。
+        </p>
+    </details>
+
+    <!-- 展開 3：文字說明 -->
+    <details>
+        <summary>《文字設計 Title Design 說明》</summary>
+        <p>
+            ■ 基礎文字包含：排版、行距調整、可讀性優化、必要之描邊／陰影。<br>
+            ■ 若需特殊字體、立體字、金屬字、火焰字、水波字等特效文字，將額外計費。<br>
+        </p>
+    </details>
+
+    <!-- ＝＝＝＝＝＝＝ 基礎款 ＝＝＝＝＝＝＝ -->
+    <h2 class="section-title">基礎款 BASIC</h2>
+    <div class="grid">
+        <div class="card"><img src="images/基礎款01.jpg"></div>
+        <div class="card"><img src="images/基礎款02.jpg"></div>
+        <div class="card"><img src="images/基礎款03.jpg"></div>
+    </div>
+
+    <!-- ＝＝＝＝＝＝＝ 中階款 ＝＝＝＝＝＝＝ -->
+    <h2 class="section-title">中階款 ENHANCED</h2>
+    <div class="grid">
+        <div class="card"><img src="images/中階款01.jpg"></div>
+        <div class="card"><img src="images/中階款02.png"></div>
+        <div class="card"><img src="images/中階款03.png"></div>
+    </div>
+
+    <!-- ＝＝＝＝＝＝＝ 高階款 ＝＝＝＝＝＝＝ -->
+    <h2 class="section-title">高階款 PREMIUM</h2>
+    <div class="grid">
+        <div class="card"><img src="images/高階款01.jpg"></div>
+        <div class="card"><img src="images/高階款02.jpg"></div>
+        <div class="card"><img src="images/高階款03.jpg"></div>
+    </div>
+
+    <!-- ＝＝＝＝＝＝＝ 多商品 DM 類 ＝＝＝＝＝＝＝ -->
+    <h2 class="section-title">多商品 DM 組合 Multiple Items DM</h2>
+    <div class="grid">
+        <div class="card"><img src="images/多商品DM01.jpg"></div>
+        <div class="card"><img src="images/多商品DM02.jpg"></div>
+        <div class="card"><img src="images/多商品DM03.jpg"></div>
+    </div>
+
+    <!-- ＝＝＝＝＝＝＝ 手繪類 ＝＝＝＝＝＝＝ -->
+    <h2 class="section-title">手繪款 Hand-drawn</h2>
+    <div class="grid">
+        <div class="card"><img src="images/手繪01.png"></div>
+        <div class="card"><img src="images/手繪02.png"></div>
+        <div class="card"><img src="images/手繪03.png"></div>
+    </div>
+
 </div>
-
-<!-- ============================== -->
-<!-- 展開：做圖須知 -->
-<!-- ============================== -->
-
-<details>
-  <summary>《做圖須知 Required Materials》</summary>
-  <ul>
-    <li>需提供：商品照片、Logo、主要文案、欲呈現之排版方向與參考圖（如有）。</li>
-    <li>若需放置產品，請務必提供「可用於商業用途」之高解析圖片。</li>
-    <li>請提供社群平台尺寸：1:1 / 4:5 / 16:9（未先告知尺寸，完稿後修改將視為 Resize）。</li>
-    <li>如無確定參考風格，可提供多張圖片方向協助判斷，報價單會清楚標注是否含特殊效果。</li>
-  </ul>
-</details>
-
-<details>
-  <summary>《修改須知 Revision Policy》</summary>
-  <ul>
-    <li>每張圖片包含 2 次修改。</li>
-    <li>超過 50% 版面調整（大改動）視為重新製作，將收取同款項目費用。</li>
-    <li>完稿後要求「變更尺寸」視為 Resize，將加收原圖 80% 之費用。</li>
-    <li>如需多版本輸出（多文字、多商品、多語系），將依數量另計費。</li>
-  </ul>
-</details>
-
-<details>
-  <summary>《文字設計 Title Design 說明》</summary>
-  <ul>
-    <li>基本文字包含：字級調整、間距、行距、陰影、外框、可讀性優化。</li>
-    <li>特殊文字設計（如金屬質感、3D 立體、火焰／霧氣效果）需另報價。</li>
-  </ul>
-</details>
-
-<!-- ============================== -->
-<!--        基礎款 BASIC           -->
-<!-- ============================== -->
-
-<h2>基礎款 BASIC</h2>
-
-<div class="img-grid">
-  <img src="images/基礎款01.jpg">
-  <img src="images/基礎款02.jpg">
-  <img src="images/基礎款03.jpg">
-</div>
-
-<!-- ============================== -->
-<!--       中階款 ENHANCED         -->
-<!-- ============================== -->
-
-<h2>中階款 ENHANCED</h2>
-
-<div class="img-grid">
-  <img src="images/中階款01.jpg">
-  <img src="images/中階款02.png">
-  <img src="images/中階款03.png">
-</div>
-
-<!-- ============================== -->
-<!--       高階款 PREMIUM          -->
-<!-- ============================== -->
-
-<h2>高階款 PREMIUM</h2>
-
-<div class="img-grid">
-  <img src="images/高階款01.jpg">
-  <img src="images/高階款02.jpg">
-  <img src="images/高階款03.jpg">
-</div>
-
 </body>
 </html>
