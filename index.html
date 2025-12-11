@@ -1,201 +1,157 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Airlia / 放空｜視覺設計與社群圖示範作品集</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airlia / 放空｜視覺設計示範作品集</title>
 
-  <style>
+<style>
     body {
-      margin: 0;
-      background: #000;
-      color: #f5f5f5;
-      font-family: "Noto Sans TC", sans-serif;
-      line-height: 1.6;
+        background: #000;
+        color: #e8e8e8;
+        font-family: 'Noto Sans TC', sans-serif;
+        margin: 0;
+        padding: 40px;
     }
 
-    h1, h2, h3 {
-      color: #d7c89e;
-      font-weight: 600;
-      letter-spacing: 1px;
+    h1 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #f0f0f0;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
+    h2 {
+        margin-top: 60px;
+        font-size: 22px;
+        font-weight: 600;
+        border-left: 6px solid #6fa380;
+        padding-left: 12px;
+        color: #d7f8d0;
     }
 
-    /* 卡片區 */
-    .section-card {
-      background: #0f1b17;
-      padding: 22px 28px;
-      border-radius: 14px;
-      margin-bottom: 30px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.45);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .section-card:hover {
-      transform: scale(1.015);
-      box-shadow: 0 0 18px rgba(0,0,0,0.7);
+    .desc {
+        font-size: 15px;
+        line-height: 1.7;
+        color: #cfcfcf;
+        margin-bottom: 30px;
     }
 
-    /* Accordion */
+    /* 展開項目 */
     details {
-      background: #0f1b17;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      cursor: pointer;
-      border: 1px solid #1c2b25;
+        background: #0f1a17;
+        border: 1px solid #1f2d29;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin-bottom: 12px;
+        cursor: pointer;
     }
-    details summary {
-      font-size: 20px;
-      color: #d7c89e;
-      outline: none;
-      user-select: none;
-    }
-    details summary:hover {
-      color: #e5d7a8;
+    summary {
+        font-size: 16px;
+        color: #cfead5;
+        font-weight: 600;
     }
 
-    /* 作品圖片 */
+    /* 圖片網格 */
     .img-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 18px;
-      margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 22px;
+        margin-top: 25px;
     }
 
     .img-grid img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.5);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .img-grid img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 16px rgba(0,0,0,0.9);
+        width: 100%;
+        border-radius: 10px;
+        background: #101010;
+        object-fit: cover;
+        height: 280px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    footer { 
-      text-align: center;
-      padding: 40px 0;
-      color: #777;
-      font-size: 14px;
+    .img-grid img:hover {
+        transform: scale(1.03);
+        box-shadow: 0px 0px 12px rgba(120,255,170,0.25);
     }
-  </style>
+</style>
 </head>
 
 <body>
-  <div class="container">
 
-    <!-- 主標 -->
-    <h1>Airlia / 放空｜視覺設計示範作品集</h1>
-    <p style="max-width: 800px; color:#ccc; margin-bottom: 20px;">
-      本頁展示不同複雜度的社群視覺設計作品，供客戶參考可達成的風格與級別。
-      下方提供製作須知、修改規範與字體處理說明，如有需求歡迎參考。
-    </p>
+<h1>Airlia / 放空｜視覺設計示範作品集</h1>
 
-    <!-- 摺疊提示 -->
-    <p style="color:#d7c89e; margin-bottom: 10px;">
-      ▼ 點擊展開可查看完整製作須知與條款
-    </p>
+<div class="desc">
+本頁展示不同複雜度的社群視覺設計作品，用於協助客戶理解可達成的風格層級，並作為後續估價與需求討論之參考依據。<br>
+下方提供製作須知／修改政策／文字設計內容，所有資訊皆透明化，避免溝通落差。
+</div>
 
-    <!-- Accordion：做圖須知 -->
-    <details>
-      <summary>《做圖須知 Required Materials》</summary>
-      <br>
-      <h3>1. 圖片規格</h3>
-      <p>請提供成品所需尺寸（像素或長寬比）。未提供則以常用社群規格製作。</p>
+<!-- ============================== -->
+<!-- 展開：做圖須知 -->
+<!-- ============================== -->
 
-      <h3>2. 必要素材</h3>
-      <ul>
-        <li>產品圖、主視覺（如需要）</li>
-        <li>品牌 Logo（AI / PNG）</li>
-        <li>標題與文案內容</li>
-        <li>品牌色票（如有）</li>
-      </ul>
+<details>
+  <summary>《做圖須知 Required Materials》</summary>
+  <ul>
+    <li>需提供：商品照片、Logo、主要文案、欲呈現之排版方向與參考圖（如有）。</li>
+    <li>若需放置產品，請務必提供「可用於商業用途」之高解析圖片。</li>
+    <li>請提供社群平台尺寸：1:1 / 4:5 / 16:9（未先告知尺寸，完稿後修改將視為 Resize）。</li>
+    <li>如無確定參考風格，可提供多張圖片方向協助判斷，報價單會清楚標注是否含特殊效果。</li>
+  </ul>
+</details>
 
-      <h3>3. 參考方向</h3>
-      <p>可提供喜歡的風格或參考圖，以便確認方向。</p>
+<details>
+  <summary>《修改須知 Revision Policy》</summary>
+  <ul>
+    <li>每張圖片包含 2 次修改。</li>
+    <li>超過 50% 版面調整（大改動）視為重新製作，將收取同款項目費用。</li>
+    <li>完稿後要求「變更尺寸」視為 Resize，將加收原圖 80% 之費用。</li>
+    <li>如需多版本輸出（多文字、多商品、多語系），將依數量另計費。</li>
+  </ul>
+</details>
 
-      <h3>4. 套版選擇</h3>
-      <p>請於專案開始前選擇：基礎款、中階款、高階款，製作層次將依方案不同。</p>
+<details>
+  <summary>《文字設計 Title Design 說明》</summary>
+  <ul>
+    <li>基本文字包含：字級調整、間距、行距、陰影、外框、可讀性優化。</li>
+    <li>特殊文字設計（如金屬質感、3D 立體、火焰／霧氣效果）需另報價。</li>
+  </ul>
+</details>
 
-      <h3>5. 若不確定風格方向</h3>
-      <p>可一併提供參考圖，我會整理成明確項目＋報價單，確認後才開始製作。</p>
+<!-- ============================== -->
+<!--        基礎款 BASIC           -->
+<!-- ============================== -->
 
-      <h3>6. 尺寸更改（Resize）</h3>
-      <p>若作品完成後才要求更改尺寸，視為重新排版（Resize），費用為原方案 80%。</p>
-    </details>
+<h2>基礎款 BASIC</h2>
 
-    <!-- Accordion：修改須知 -->
-    <details>
-      <summary>《修改須知 Revision Policy》</summary>
-      <br>
-      <h3>1. 免費修改 2 次</h3>
-      <p>包含文字位置、顏色微調、光影細修，不更動主要結構。</p>
+<div class="img-grid">
+  <img src="images/基礎款01.jpg">
+  <img src="images/基礎款02.jpg">
+  <img src="images/基礎款03.jpg">
+</div>
 
-      <h3>2. 重大調整（超過 50%）</h3>
-      <p>重新排版、換背景、換商品、換風格 → 視為重做，需依方案重計費。</p>
+<!-- ============================== -->
+<!--       中階款 ENHANCED         -->
+<!-- ============================== -->
 
-      <h3>3. 修改方式</h3>
-      <p>請一次彙整修改項目，避免因分批提供造成額外工時。</p>
-    </details>
+<h2>中階款 ENHANCED</h2>
 
-    <!-- Accordion：文字設計 -->
-    <details>
-      <summary>《文字設計 Title Design 說明》</summary>
-      <br>
-      <h3>1. 基本文字排版（不加價）</h3>
-      <ul>
-        <li>基本字體排版（大小 / 字距 / 行距）</li>
-        <li>基本陰影</li>
-        <li>基本描邊</li>
-        <li>可讀性光暈（非特效用途）</li>
-      </ul>
+<div class="img-grid">
+  <img src="images/中階款01.jpg">
+  <img src="images/中階款02.png">
+  <img src="images/中階款03.png">
+</div>
 
-      <h3>2. 文字設計（需加價）</h3>
-      <ul>
-        <li>金屬字、玻璃字、亮粉字</li>
-        <li>霧光、特殊筆刷、手繪字</li>
-        <li>電影海報風格效果</li>
-        <li>多層合成的字體視覺特效</li>
-      </ul>
+<!-- ============================== -->
+<!--       高階款 PREMIUM          -->
+<!-- ============================== -->
 
-      <h3>3. 判定方式</h3>
-      <p>若參考圖包含特殊字效 → 自動視為文字設計。</p>
-    </details>
+<h2>高階款 PREMIUM</h2>
 
+<div class="img-grid">
+  <img src="images/高階款01.jpg">
+  <img src="images/高階款02.jpg">
+  <img src="images/高階款03.jpg">
+</div>
 
-    <!-- 方案分類區 -->
-    <h2>基礎款 BASIC</h2>
-    <div class="img-grid">
-      <img src="img/basic01.jpg">
-      <img src="img/basic02.jpg">
-      <img src="img/basic03.jpg">
-    </div>
-
-    <h2 style="margin-top:50px;">中階款 ENHANCED</h2>
-    <div class="img-grid">
-      <img src="img/mid01.jpg">
-      <img src="img/mid02.jpg">
-      <img src="img/mid03.jpg">
-    </div>
-
-    <h2 style="margin-top:50px;">高階款 PREMIUM</h2>
-    <div class="img-grid">
-      <img src="img/high01.jpg">
-      <img src="img/high02.jpg">
-      <img src="img/high03.jpg">
-    </div>
-
-    <footer>
-      © 2024 Airlia 放空｜Visual Design Portfolio
-    </footer>
-  </div>
 </body>
 </html>
