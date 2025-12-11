@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Airlia / 放空｜商業視覺作品集</title>
-
+  <meta charset="UTF-8">
+  <title>圖文設計作品集 | Visual Design Portfolio｜Airlia / 放空</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Airlia / 放空｜社群圖像設計、Banner、活動KV、行銷視覺圖文整合作品集。">
   <style>
     :root {
-      --bg: #050816;
-      --bg-elevated: rgba(10, 18, 32, 0.9);
-      --accent: #3fd0ff;
-      --accent-soft: rgba(63, 208, 255, 0.16);
-      --text-main: #f5f5f5;
-      --text-sub: #c7c9d3;
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --card-radius: 18px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
+      --bg: #020806;
+      --bg-alt: #061310;
+      --bg-elevated: rgba(8, 30, 24, 0.96);
+      --bg-chip: rgba(16, 55, 45, 0.85);
+      --border-soft: rgba(166, 205, 175, 0.35);
+      --accent: #c7a96b;
+      --accent-soft: rgba(199, 169, 107, 0.35);
+      --accent-strong: #f5e4b0;
+      --text-main: #f4f4f0;
+      --text-muted: #a9b7ab;
+      --pill-bg: rgba(10, 70, 60, 0.9);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+      --radius-xl: 22px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --gap-lg: 20px;
+      --gap-xl: 28px;
+      --transition-fast: 180ms ease-out;
     }
 
     * {
@@ -24,345 +33,710 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        "Noto Sans TC", sans-serif;
-      background: radial-gradient(circle at top left, #101935 0, #050816 45%, #02030a 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Segoe UI", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top left, #193628 0, transparent 55%),
+        radial-gradient(circle at bottom right, #08231a 0, transparent 55%),
+        var(--bg);
       color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+      min-height: 100vh;
+      padding: 32px 18px 48px;
     }
 
     .page {
-      max-width: 1200px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 32px 16px 64px;
     }
 
-    header {
-      padding: 20px 20px 28px;
-      margin-bottom: 16px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(63, 208, 255, 0.25), rgba(128, 90, 213, 0.2));
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      position: relative;
-      overflow: hidden;
-    }
+    /* --- top breadcrumb bar --- */
 
-    header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 10% -10%, rgba(255, 255, 255, 0.22) 0, transparent 55%),
-        radial-gradient(circle at 80% 130%, rgba(63, 208, 255, 0.32) 0, transparent 65%);
-      opacity: 0.7;
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
-    header .inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .badge-row {
+    .crumb-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 12px;
+      align-items: center;
+      margin-bottom: 14px;
+      color: var(--text-muted);
       font-size: 13px;
-      color: rgba(8, 10, 30, 0.9);
     }
 
-    .badge {
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(245, 245, 245, 0.88);
+    .crumb-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      white-space: nowrap;
+      padding: 4px 11px;
+      border-radius: var(--radius-pill);
+      background: rgba(4, 33, 25, 0.9);
+      border: 1px solid rgba(117, 161, 138, 0.55);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.58);
     }
 
-    .badge-dot {
-      width: 6px;
-      height: 6px;
+    .crumb-dot {
+      width: 9px;
+      height: 9px;
       border-radius: 999px;
-      background: #22c55e;
+      background: radial-gradient(circle at 30% 20%, #fdf7d3, #f4ce7a 40%, #a9843a 100%);
+      box-shadow: 0 0 10px rgba(245, 223, 158, 0.85);
     }
 
-    h1 {
-      margin: 0 0 6px;
-      font-size: clamp(26px, 4vw, 32px);
-      letter-spacing: 0.03em;
+    /* --- hero header --- */
+
+    .hero {
+      background: radial-gradient(circle at top left, rgba(47, 94, 74, 0.9), rgba(4, 17, 13, 0.98));
+      border-radius: 26px;
+      padding: 22px 24px 24px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+      gap: 22px;
+      margin-bottom: 26px;
     }
 
-    .subtitle {
+    .hero-main h1 {
       margin: 0 0 10px;
-      font-size: 14px;
-      color: rgba(10, 12, 28, 0.92);
-      max-width: 560px;
+      font-size: 26px;
+      letter-spacing: 0.08em;
+      color: var(--accent-strong);
     }
 
-    .tagline {
+    .hero-main h1 span.en {
+      font-size: 20px;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    .hero-main p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .hero-note {
+      margin-top: 14px;
+      padding: 8px 12px;
+      border-radius: 14px;
+      background: rgba(3, 20, 15, 0.7);
+      border: 1px dashed rgba(171, 203, 186, 0.55);
       font-size: 13px;
-      color: rgba(8, 10, 30, 0.85);
-      display: inline-flex;
+      color: var(--text-muted);
+    }
+
+    /* profile card */
+
+    .profile-card {
+      background: rgba(2, 14, 11, 0.86);
+      border-radius: 20px;
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(146, 186, 166, 0.65);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
       align-items: center;
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 20%, #fefaf2, #f3cf8b),
+        url("https://avatars.githubusercontent.com/u/0?v=4") center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px rgba(243, 220, 163, 0.7), 0 10px 25px rgba(0, 0, 0, 0.8);
+    }
+
+    .avatar::after {
+      content: "放空";
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 2px 8px 4px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.72);
+      color: var(--accent-strong);
+    }
+
+    .profile-main h2 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      color: var(--accent-strong);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .profile-main h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    .profile-main p {
+      margin: 0 0 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
       gap: 6px;
       margin-top: 4px;
     }
 
-    .tagline span {
-      font-size: 18px;
+    .profile-tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(6, 50, 40, 0.92);
+      border: 1px solid rgba(164, 203, 180, 0.65);
+      color: var(--accent-strong);
     }
 
-    main {
-      margin-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+    /* ----- section layout ----- */
 
-    section {
+    .section {
+      margin-top: 26px;
+      padding: 22px 22px 20px;
+      border-radius: 26px;
       background: var(--bg-elevated);
-      border-radius: 22px;
-      padding: 18px 18px 20px;
+      border: 1px solid rgba(113, 158, 137, 0.55);
       box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-subtle);
-      position: relative;
-      overflow: hidden;
-    }
-
-    section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(63, 208, 255, 0.12) 0, transparent 55%);
-      opacity: 0.85;
-      pointer-events: none;
-    }
-
-    section .section-inner {
-      position: relative;
-      z-index: 1;
     }
 
     .section-header {
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 10px;
+      gap: 10px 14px;
+      align-items: baseline;
+      margin-bottom: 12px;
     }
 
     .section-title {
       font-size: 18px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      color: var(--accent-strong);
     }
 
-    .section-pill {
-      font-size: 12px;
-      padding: 3px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: var(--text-sub);
+    .section-title span.jp {
+      font-size: 17px;
+      letter-spacing: 0.1em;
+    }
+
+    .section-badge {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      background: var(--bg-chip);
+      border: 1px solid rgba(166, 205, 175, 0.7);
+      color: var(--accent-strong);
+      white-space: nowrap;
     }
 
     .section-desc {
       font-size: 13px;
-      color: var(--text-sub);
-      line-height: 1.6;
-      max-width: 700px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      max-width: 840px;
+      line-height: 1.7;
     }
 
-    .gallery {
-      margin-top: 14px;
+    .works-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .card {
-      background: rgba(6, 12, 26, 0.9);
-      border-radius: var(--card-radius);
-      padding: 10px 10px 12px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+    .work-card {
+      background: radial-gradient(circle at top left, rgba(18, 63, 49, 0.92), rgba(3, 15, 12, 0.95));
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(151, 188, 165, 0.65);
+      overflow: hidden;
+      padding: 8px 8px 10px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+      cursor: default;
     }
 
-    .card img {
-      width: 100%;
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+      border-color: rgba(232, 205, 142, 0.9);
+      background: radial-gradient(circle at top left, rgba(32, 92, 70, 0.95), rgba(4, 17, 13, 0.98));
+    }
+
+    .thumb {
       border-radius: 14px;
-      display: block;
-      border: 1px solid rgba(148, 163, 184, 0.45);
+      overflow: hidden;
+      border: 1px solid rgba(164, 203, 180, 0.65);
+      background: #000;
+      max-height: 220px;
     }
 
-    .card-caption {
-      font-size: 12px;
-      color: var(--text-sub);
+    .thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 260ms ease-out;
+    }
+
+    .work-card:hover .thumb img {
+      transform: scale(1.03);
+    }
+
+    .work-meta {
+      padding: 0 2px;
+    }
+
+    .work-tag-row {
       display: flex;
       justify-content: space-between;
-      gap: 8px;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
     }
 
-    .card-caption span:last-child {
-      opacity: 0.8;
-      font-style: italic;
+    .work-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(5, 36, 30, 0.9);
+      border: 1px solid rgba(195, 224, 206, 0.7);
+      color: var(--accent-strong);
     }
 
-    footer {
-      margin-top: 26px;
+    .work-type {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .work-title {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .work-note {
+      margin: 3px 0 0;
       font-size: 12px;
-      color: var(--text-sub);
-      text-align: center;
-      opacity: 0.8;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
-    @media (min-width: 900px) {
-      .page {
-        padding-inline: 20px;
-      }
+    /* footer note */
+    .foot-note {
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: right;
+    }
 
-      header {
-        padding-inline: 28px;
-      }
+    /* responsive */
 
-      section {
-        padding-inline: 22px;
+    @media (max-width: 980px) {
+      body {
+        padding: 24px 14px 40px;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .works-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding: 18px 16px 18px;
+      }
+      .section {
+        padding: 18px 14px 16px;
+      }
+      .hero-main h1 {
+        font-size: 22px;
+      }
+      .works-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="inner">
-        <div class="badge-row">
-          <div class="badge">
-            <span class="badge-dot"></span> Airlia / 放空・2D 動畫 & 視覺設計
-          </div>
-          <div class="badge">社群圖像設計・Banner・行銷視覺</div>
-        </div>
+<div class="page">
 
-        <h1>圖文設計作品集｜Visual Design Portfolio</h1>
-        <p class="subtitle">
-          以品牌氛圍、產品重點與閱讀動線為核心，將素材整合成可直接上線使用的社群 / 行銷視覺。
-          以下範例依照「製作複雜度」區分層級，方便溝通需求與預估預算。
+  <!-- breadcrumb -->
+  <div class="crumb-bar">
+    <div class="crumb-pill">
+      <span class="crumb-dot"></span>
+      <span>Airlia / 放空 · 2D 動畫 &amp; 視覺設計</span>
+    </div>
+    <div class="crumb-pill">
+      社群圖像設計 · Banner · 行銷視覺
+    </div>
+  </div>
+
+  <!-- hero with intro + profile -->
+  <section class="hero">
+    <div class="hero-main">
+      <h1>圖文設計作品集｜<span class="en">Visual Design Portfolio</span></h1>
+      <p>
+        以品牌氛圍、產品重點與動線為核心，將素材包或文字轉化為可直接上線使用的社群貼文、
+        活動視覺與行銷圖像。以下範例依照「製作難度 × 合成層次 × 分工模式」區分為不同方案，方便溝通需求與預估報價。
+      </p>
+      <p>
+        目前以單張 KV / 社群圖為主，不含文案撰寫與長篇排版。若有固定長期合作或大量圖組需求，可再依專案討論。
+      </p>
+      <div class="hero-note">
+        ✦ 所有作品皆為實際客戶案之視覺方向示例，純作業流程與風格展示。
+      </div>
+    </div>
+
+    <aside class="profile-card">
+      <div class="avatar"></div>
+      <div class="profile-main">
+        <h2>AIRLIA</h2>
+        <h3>2D 動畫師・社群視覺設計</h3>
+        <p>
+          擅長把「很雜的素材」整理成好閱讀、好記憶的畫面。從產品照片、AI 生圖到情境合成，
+          依照預算彈性調整細節層級，協助品牌穩定維持版面質感。
         </p>
-        <div class="tagline">
-          <span>✦</span>
-          <span>所有作品皆為實際案件之視覺方向示例，純作業流程與風格展示。</span>
+        <div class="profile-tags">
+          <span class="profile-tag">社群主圖 / KV</span>
+          <span class="profile-tag">多商品優惠 DM</span>
+          <span class="profile-tag">手繪插畫延伸</span>
         </div>
       </div>
-    </header>
+    </aside>
+  </section>
 
-    <main>
-      <!-- 基礎款 -->
-      <section id="basic">
-        <div class="section-inner">
-          <div class="section-header">
-            <div class="section-title">
-              基礎款｜Basic Plan
-              <span class="section-pill">版面編排．單一場景為主</span>
-            </div>
-          </div>
-          <p class="section-desc">
-            以既有產品 / 情境照片為主，著重在清楚的標題設計與資訊階層排版。
-            適合活動主視覺、品牌形象貼文、店家公告等：視覺乾淨、資訊明確、不額外增加複雜合成。
-          </p>
+  <!-- basic plan -->
+  <section class="section" id="basic">
+    <div class="section-header">
+      <div class="section-title"><span class="jp">基礎款</span> ｜ BASIC PLAN</div>
+      <div class="section-badge">版面編排・單一場景為主</div>
+    </div>
+    <p class="section-desc">
+      已具備合適 / 情境照片素材，著重在清楚的標題設計與資訊階層排版。適合活動主視覺、
+      品牌形象貼文、店家公告等：視覺乾淨、資訊明確、不額外增加複雜合成。
+    </p>
 
-          <div class="gallery">
-            <div class="card">
-              <img src="基礎款01.jpg" alt="基礎款範例 01">
-              <div class="card-caption">
-                <span>基礎款 01</span>
-                <span>浴室空間視覺＋標題排版</span>
-              </div>
-            </div>
-
-            <div class="card">
-              <img src="基礎款02.jpg" alt="基礎款範例 02">
-              <div class="card-caption">
-                <span>基礎款 02</span>
-                <span>科技品牌活動 KV 版面</span>
-              </div>
-            </div>
-
-            <div class="card">
-              <img src="基礎款03.jpg" alt="基礎款範例 03">
-              <div class="card-caption">
-                <span>基礎款 03</span>
-                <span>湯品商品照＋品牌框線</span>
-              </div>
-            </div>
-          </div>
+    <div class="works-grid">
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/基礎款01.jpg" alt="基礎款範例 01">
         </div>
-      </section>
-
-      <!-- 中階款 -->
-      <section id="plus">
-        <div class="section-inner">
-          <div class="section-header">
-            <div class="section-title">
-              中階款｜Enhanced Visual Plan
-              <span class="section-pill">氛圍背景設計．商品光影整合</span>
-            </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">基礎款 01</span>
+            <span class="work-type">租屋空間介紹 KV</span>
           </div>
-          <p class="section-desc">
-            會針對商品特性設計整體氛圍，例如水感、能量感、發光效果，
-            並處理商品與背景的光影融合。適合保養品、食品、機油等需要「質感 + 主題」的品牌視覺。
+          <h3 class="work-title">小空間也能泡澡趣｜浴室空間廣告版</h3>
+          <p class="work-note">
+            以實景照片為主，搭配幾何框線與排版，整理出租房優勢與視覺焦點。
           </p>
-
-          <div class="gallery">
-            <div class="card">
-              <img src="中階款01.jpg" alt="中階款範例 01">
-              <div class="card-caption">
-                <span>中階款 01</span>
-                <span>水底場景＋氣泡合成</span>
-              </div>
-            </div>
-
-            <div class="card">
-              <img src="中階款02.png" alt="中階款範例 02">
-              <div class="card-caption">
-                <span>中階款 02</span>
-                <span>清爽水花＋文字設計</span>
-              </div>
-            </div>
-
-            <div class="card">
-              <img src="中階款03.png" alt="中階款範例 03">
-              <div class="card-caption">
-                <span>中階款 03</span>
-                <span>聖誕卡車場景＋多層次光暈</span>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
+      </article>
 
-      <!-- 高階款 -->
-      <section id="premium">
-        <div class="section-inner">
-          <div class="section-header">
-            <div class="section-title">
-              高階款｜Premium Composite Plan
-              <span class="section-pill">重度合成．多素材整合．主題式視覺</span>
-            </div>
-          </div
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/基礎款02.jpg" alt="基礎款範例 02">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">基礎款 02</span>
+            <span class="work-type">科技品牌活動 KV</span>
+          </div>
+          <h3 class="work-title">Apacer 年中慶活動主視覺</h3>
+          <p class="work-note">
+            以品牌色與線條框架包裝照片，強調活動標語與重點折扣資訊。
+          </p>
+        </div>
+      </article>
 
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/基礎款03.jpg" alt="基礎款範例 03">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">基礎款 03</span>
+            <span class="work-type">商品主圖 + 品牌框線</span>
+          </div>
+          <h3 class="work-title">湯品商品 KV｜養生湯品主視覺</h3>
+          <p class="work-note">
+            單一商品俯視照片，結合簡潔的中式邊框與文字設計，呈現溫暖又有質感的品牌感。
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- enhanced / mid plan -->
+  <section class="section" id="enhanced">
+    <div class="section-header">
+      <div class="section-title"><span class="jp">中階款</span> ｜ ENHANCED VISUAL PLAN</div>
+      <div class="section-badge">氛圍背景設計・商品光影整合</div>
+    </div>
+    <p class="section-desc">
+      會針對商品特性設計整體氛圍，例如水感、能量感、炫光效果，並處理商品與背景的光影融合。
+      適合保養品、食品、機油等需要「感受 + 主題」的品牌視覺。
+    </p>
+
+    <div class="works-grid">
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/中階款01.png" alt="中階款範例 01">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">中階款 01</span>
+            <span class="work-type">氛圍背景 + 機車合成</span>
+          </div>
+          <h3 class="work-title">全台 TOP5 賞楓騎乘指南</h3>
+          <p class="work-note">
+            利用原始道路照片，加上色調統一與光束效果，突顯主標與騎乘氛圍。
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/中階款02.png" alt="中階款範例 02">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">中階款 02</span>
+            <span class="work-type">清爽水花 + 文字設計</span>
+          </div>
+          <h3 class="work-title">SIELE 5D 水感彈力霜</h3>
+          <p class="work-note">
+            自行打造水下光線與氣泡感，讓單一商品在畫面中更立體、帶有「爆水感」印象。
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/中階款03.png" alt="中階款範例 03">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">中階款 03</span>
+            <span class="work-type">水花元素 + 清爽版面</span>
+          </div>
+          <h3 class="work-title">一瓶搞定的潔顏凝露主圖</h3>
+          <p class="work-note">
+            利用噴濺水花素材與透明感字型，呈現洗淨、清爽的品牌氣質。
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- premium plan -->
+  <section class="section" id="premium">
+    <div class="section-header">
+      <div class="section-title"><span class="jp">高階款</span> ｜ PREMIUM COMPOSITE PLAN</div>
+      <div class="section-badge">重度合成・多素材整合・主題式視覺</div>
+    </div>
+    <p class="section-desc">
+      以「故事場景」為核心，結合多張照片 / AI 生成圖進行合成與重製，會花較多時間處理光影整合、
+      透視與色調一致。適合需要高辨識度主視覺、活動形象 KV 的專案。
+    </p>
+
+    <div class="works-grid">
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/高階款01.jpg" alt="高階款範例 01">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">高階款 01</span>
+            <span class="work-type">聖誕老人 × 城市夜景</span>
+          </div>
+          <h3 class="work-title">城市穿梭・油刀有餘</h3>
+          <p class="work-note">
+            以城市鳥瞰夜景、聖誕老人與產品瓶身多素材合成，重新調整光源與動線，營造節慶故事感。
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/高階款02.jpg" alt="高階款範例 02">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">高階款 02</span>
+            <span class="work-type">熔岩場景完全重製</span>
+          </div>
+          <h3 class="work-title">能量之源・灼熱熔岩中的機油守護</h3>
+          <p class="work-note">
+            使用 AI 場景搭配後製調整，強化火花、岩石與瓶身光暈，打造高對比的動態主視覺。
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/高階款03.jpg" alt="高階款範例 03">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">高階款 03</span>
+            <span class="work-type">聖誕卡車專案 + 多層次光暈</span>
+          </div>
+          <h3 class="work-title">滿載動力・準時送達｜聖誕卡車活動 KV</h3>
+          <p class="work-note">
+            聖誕卡車、禮物山與極光背景皆為 AI 生成重合成，追加燈泡發光與小圖產品群組，整體細節度高。
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- multi product DM -->
+  <section class="section" id="dm">
+    <div class="section-header">
+      <div class="section-title"><span class="jp">多商品優惠 DM</span> ｜ MULTI-PRODUCT PROMO</div>
+      <div class="section-badge">多商品排版・價格資訊統整</div>
+    </div>
+    <p class="section-desc">
+      一張圖中放入多款商品與價格，重點在於「資訊清楚、好比價」，同時維持品牌視覺一致。
+      會協助整理優惠組合標示、價格階層與視線動線。
+    </p>
+
+    <div class="works-grid">
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/多商品DM01.jpg" alt="多商品DM 01">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">DM 01</span>
+            <span class="work-type">會員日促銷上半版</span>
+          </div>
+          <h3 class="work-title">會員日最好 Buy｜堅果組合優惠</h3>
+          <p class="work-note">
+            以手繪角色做視覺開頭，集中呈現組合價、原價與省下金額，方便消費者快速掃過。
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/多商品DM02.jpg" alt="多商品DM 02">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">DM 02</span>
+            <span class="work-type">食品 / 日用品綜合優惠</span>
+          </div>
+          <h3 class="work-title">多品項搭配折扣資訊整理</h3>
+          <p class="work-note">
+            將不同品類以區塊區分，搭配對話框式價格標籤，降低文字量又保留必要資訊。
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/多商品DM03.jpg" alt="多商品DM 03">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">DM 03</span>
+            <span class="work-type">活動滿額贈說明區</span>
+          </div>
+          <h3 class="work-title">滿額贈與冷凍品優惠說明</h3>
+          <p class="work-note">
+            下方橫條補充滿額贈條件，與主商品區分開來，讓資訊閱讀順序更清楚。
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- hand-drawn / illustration -->
+  <section class="section" id="handdrawn">
+    <div class="section-header">
+      <div class="section-title"><span class="jp">手繪插畫款</span> ｜ ILLUSTRATED PLAN</div>
+      <div class="section-badge">原創插畫角色・產品情境圖</div>
+    </div>
+    <p class="section-desc">
+      針對品牌或活動主題繪製插畫角色與情境畫面，再搭配產品照片或標題排版。
+      適合需要更可愛、趣味或故事感的社群貼文。
+    </p>
+
+    <div class="works-grid">
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/手繪01.png" alt="手繪範例 01">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">手繪 01</span>
+            <span class="work-type">飲品品牌插畫貼文</span>
+          </div>
+          <h3 class="work-title">用力吸多 C 多健康｜柚子角色創作</h3>
+          <p class="work-note">
+            以擬人化水果角色搭配口罩梗，搭配產品照片與口號，增加社群分享度。
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/手繪02.jpg" alt="手繪範例 02">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">手繪 02</span>
+            <span class="work-type">搬家品牌漫畫式說明圖</span>
+          </div>
+          <h3 class="work-title">搬家前必看｜整理型人格崩潰 checklist</h3>
+          <p class="work-note">
+            以線條插畫搭配圓形標籤，將搬家痛點畫成小漫畫，讓品牌溝通更親切。
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="thumb">
+          <img src="/Visual-Design-Portfolio/images/手繪03.png" alt="手繪範例 03">
+        </div>
+        <div class="work-meta">
+          <div class="work-tag-row">
+            <span class="work-tag">手繪 03</span>
+            <span class="work-type">家電產品情境插畫</span>
+          </div>
+          <h3 class="work-title">擊退濕氣・有效乾衣｜除濕機主題圖</h3>
+          <p class="work-note">
+            產品以線稿重繪結合情境人物，讓原本冰冷的家電多了日常故事感。
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <div class="foot-note">
+      ＊若需全程原創插畫、多張漫畫或角色企劃，會依實際工時額外估價。
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
