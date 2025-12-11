@@ -2,536 +2,200 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <title>視覺設計作品集｜Visual Design Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Airlia / 放空｜商業視覺設計與社群圖像作品集，區分基礎款、中階款與高階款，展示不同合成與設計複雜度。" />
+  <title>Airlia / 放空｜視覺設計與社群圖示範作品集</title>
+
   <style>
-    :root {
-      --bg-main: #000000;
-      --bg-card: #0b1512;
-      --bg-card-soft: #0f1c18;
-      --text-main: #f5f5f5;
-      --text-muted: #a9b5ad;
-      --accent: #d6c48b;
-      --accent-soft: #6aa89a;
-      --border-subtle: #1d2b25;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.45);
-      --transition-fast: 0.18s ease-out;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(circle at top left, #0c1f1a 0, #000000 45%, #000000 100%);
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
-    }
-
     body {
-      min-height: 100vh;
-    }
-
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 32px 20px 64px;
-    }
-
-    @media (min-width: 1024px) {
-      .page {
-        padding: 40px 12px 80px;
-      }
-    }
-
-    /* Header */
-    .hero {
-      background: linear-gradient(135deg, rgba(15, 34, 28, 0.95), rgba(3, 6, 6, 0.98));
-      border-radius: var(--radius-lg);
-      padding: 28px 22px 26px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 28px;
-    }
-
-    @media (min-width: 768px) {
-      .hero {
-        padding: 30px 32px 28px;
-        margin-bottom: 32px;
-      }
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-      background: rgba(5, 13, 11, 0.9);
-      border: 1px solid rgba(94, 174, 153, 0.5);
-      margin-bottom: 10px;
-    }
-
-    .hero-badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #66ffcc;
-      box-shadow: 0 0 10px rgba(102, 255, 204, 0.8);
-    }
-
-    .hero-title {
-      font-size: 26px;
-      line-height: 1.3;
-      margin: 4px 0 10px;
-      letter-spacing: 0.08em;
-    }
-
-    @media (min-width: 768px) {
-      .hero-title {
-        font-size: 30px;
-      }
-    }
-
-    .hero-sub {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin: 0 0 14px;
-    }
-
-    .spec-list {
-      list-style: none;
-      padding: 0;
-      margin: 6px 0 6px;
-      display: grid;
-      gap: 4px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    @media (min-width: 768px) {
-      .spec-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    .spec-list li::before {
-      content: "•";
-      color: var(--accent-soft);
-      margin-right: 6px;
-    }
-
-    .hero-note {
-      margin-top: 6px;
-      font-size: 12px;
-      color: #7f8c84;
-    }
-
-    /* Section / plan */
-    .plan-section {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      padding: 20px 18px 18px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 20px;
-    }
-
-    @media (min-width: 768px) {
-      .plan-section {
-        padding: 22px 22px 20px;
-        margin-bottom: 24px;
-      }
-    }
-
-    .plan-header {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-bottom: 14px;
-    }
-
-    @media (min-width: 640px) {
-      .plan-header {
-        flex-direction: row;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 10px;
-      }
-    }
-
-    .plan-title-main {
-      font-size: 18px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .plan-title-main span {
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .plan-title-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .plan-desc {
-      font-size: 13px;
-      color: var(--text-muted);
       margin: 0;
+      background: #000;
+      color: #f5f5f5;
+      font-family: "Noto Sans TC", sans-serif;
+      line-height: 1.6;
     }
 
-    /* Grid of thumbs */
-    .image-grid {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
+    h1, h2, h3 {
+      color: #d7c89e;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
 
-    @media (min-width: 1024px) {
-      .image-grid {
-        gap: 18px;
-      }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
     }
 
-    .thumb-card {
-      background: radial-gradient(circle at top left, var(--bg-card-soft), var(--bg-card));
-      border-radius: var(--radius-md);
-      padding: 12px;
-      border: 1px solid var(--border-subtle);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      text-decoration: none;
-      color: inherit;
-      transform: translateY(0) scale(1);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    /* 卡片區 */
+    .section-card {
+      background: #0f1b17;
+      padding: 22px 28px;
+      border-radius: 14px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.45);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .section-card:hover {
+      transform: scale(1.015);
+      box-shadow: 0 0 18px rgba(0,0,0,0.7);
     }
 
-    .thumb-image-wrap {
-      width: 100%;
+    /* Accordion */
+    details {
+      background: #0f1b17;
+      padding: 20px;
       border-radius: 12px;
-      overflow: hidden;
-      background: #050807;
+      margin-bottom: 20px;
+      cursor: pointer;
+      border: 1px solid #1c2b25;
+    }
+    details summary {
+      font-size: 20px;
+      color: #d7c89e;
+      outline: none;
+      user-select: none;
+    }
+    details summary:hover {
+      color: #e5d7a8;
     }
 
-    .thumb-image {
+    /* 作品圖片 */
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .img-grid img {
       width: 100%;
-      display: block;
       aspect-ratio: 1 / 1;
-      object-fit: contain;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .img-grid img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 16px rgba(0,0,0,0.9);
     }
 
-    .thumb-label {
-      font-size: 12px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-    }
-
-    .thumb-label-left {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pill {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(214, 196, 139, 0.55);
-      color: var(--accent);
-      background: rgba(6, 13, 11, 0.9);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .thumb-card:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
-      border-color: rgba(120, 188, 163, 0.7);
-      background: radial-gradient(circle at top left, #152821, var(--bg-card));
-    }
-
-    /* Section separators */
-    .section-tag {
-      font-size: 11px;
-      color: #7b9187;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    /* Footer */
-    .footer-note {
-      margin-top: 26px;
-      font-size: 12px;
-      color: #6f8077;
-      text-align: right;
+    footer { 
+      text-align: center;
+      padding: 40px 0;
+      color: #777;
+      font-size: 14px;
     }
   </style>
 </head>
-<body>
-  <div class="page">
-    <!-- Hero -->
-    <header class="hero">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        <span>Airlia / 放空 · Visual Design</span>
-      </div>
-      <h1 class="hero-title">視覺設計作品集｜Visual Design Portfolio</h1>
-      <p class="hero-sub">
-        這一頁收錄商業社群圖像與產品視覺範例，主要呈現不同複雜度下的風格層級，方便評估未來合作時的做圖需求與預算。
-      </p>
 
-      <ul class="spec-list">
-        <li>作品示意尺寸為 1080 × 1080，適合 IG / FB 帖文與輪播貼文使用。</li>
-        <li>區分基礎款、中階款與高階款，依照合成難度與設計工時做分級。</li>
-        <li>圖片皆為實際商業案的視覺結果，內容已去除敏感資訊與文案細節。</li>
-        <li>若需針對特定活動、品牌主視覺或長期規劃，可再另外客製化規格。</li>
+<body>
+  <div class="container">
+
+    <!-- 主標 -->
+    <h1>Airlia / 放空｜視覺設計示範作品集</h1>
+    <p style="max-width: 800px; color:#ccc; margin-bottom: 20px;">
+      本頁展示不同複雜度的社群視覺設計作品，供客戶參考可達成的風格與級別。
+      下方提供製作須知、修改規範與字體處理說明，如有需求歡迎參考。
+    </p>
+
+    <!-- 摺疊提示 -->
+    <p style="color:#d7c89e; margin-bottom: 10px;">
+      ▼ 點擊展開可查看完整製作須知與條款
+    </p>
+
+    <!-- Accordion：做圖須知 -->
+    <details>
+      <summary>《做圖須知 Required Materials》</summary>
+      <br>
+      <h3>1. 圖片規格</h3>
+      <p>請提供成品所需尺寸（像素或長寬比）。未提供則以常用社群規格製作。</p>
+
+      <h3>2. 必要素材</h3>
+      <ul>
+        <li>產品圖、主視覺（如需要）</li>
+        <li>品牌 Logo（AI / PNG）</li>
+        <li>標題與文案內容</li>
+        <li>品牌色票（如有）</li>
       </ul>
 
-      <p class="hero-note">＊下列範例僅示意「畫面複雜度與風格方向」，實際合作會依專案目標、檔期與預算調整。</p>
-    </header>
+      <h3>3. 參考方向</h3>
+      <p>可提供喜歡的風格或參考圖，以便確認方向。</p>
 
-    <!-- 基礎款 -->
-    <section class="plan-section">
-      <div class="plan-header">
-        <div class="plan-title-main">
-          <span>基礎款｜BASIC PLAN</span>
-        </div>
-        <div class="plan-title-sub">版面編排・單一場景為主</div>
-      </div>
-      <p class="plan-desc">
-        以既有產品 / 情境照片為主，著重在清楚的資訊層級與畫面排版。適合活動主視覺、品牌形象貼文、店家公告等。
-      </p>
+      <h3>4. 套版選擇</h3>
+      <p>請於專案開始前選擇：基礎款、中階款、高階款，製作層次將依方案不同。</p>
 
-      <div class="image-grid">
-        <a class="thumb-card" href="#" aria-label="基礎款範例 01">
-          <div class="thumb-image-wrap">
-            <img src="基礎款01.jpg" alt="基礎款範例 01" class="thumb-image" />
-          </div>
-          <div class="thumb-label">
-            <div class="thumb-label-left">
-              <span class="pill">BASIC</span>
-              <span>浴室空間場景・單場景編排</span>
-            </div>
-          </div>
-        </a>
+      <h3>5. 若不確定風格方向</h3>
+      <p>可一併提供參考圖，我會整理成明確項目＋報價單，確認後才開始製作。</p>
 
-        <a class="thumb-card" href="#" aria-label="基礎款範例 02">
-          <div class="thumb-image-wrap">
-            <img src="基礎款02.jpg" alt="基礎款範例 02" class="thumb-image" />
-          </div>
-          <div class="thumb-label">
-            <div class="thumb-label-left">
-              <span class="pill">BASIC</span>
-              <span>科技感活動 KV 排版</span>
-            </div>
-          </div>
-        </a>
+      <h3>6. 尺寸更改（Resize）</h3>
+      <p>若作品完成後才要求更改尺寸，視為重新排版（Resize），費用為原方案 80%。</p>
+    </details>
 
-        <a class="thumb-card" href="#" aria-label="基礎款範例 03">
-          <div class="thumb-image-wrap">
-            <img src="基礎款03.jpg" alt="基礎款範例 03" class="thumb-image" />
-          </div>
-          <div class="thumb-label">
-            <div class="thumb-label-left">
-              <span class="pill">BASIC</span>
-              <span>商品主圖＋品牌框線構成</span>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
+    <!-- Accordion：修改須知 -->
+    <details>
+      <summary>《修改須知 Revision Policy》</summary>
+      <br>
+      <h3>1. 免費修改 2 次</h3>
+      <p>包含文字位置、顏色微調、光影細修，不更動主要結構。</p>
 
-    <!-- 中階款 -->
-    <section class="plan-section">
-      <div class="plan-header">
-        <div class="plan-title-main">
-          <span>中階款｜ENHANCED VISUAL PLAN</span>
-        </div>
-        <div class="plan-title-sub">氛圍背景設計・商品光影整合</div>
-      </div>
-      <p class="plan-desc">
-        會針對產品特性設計整體氛圍，例如水感、能量感、或節慶效果，並處理商品與背景的光影融合。適合保養品、食品、機油等需要「質感＋主題」的品牌視覺。
-      </p>
+      <h3>2. 重大調整（超過 50%）</h3>
+      <p>重新排版、換背景、換商品、換風格 → 視為重做，需依方案重計費。</p>
 
-      <div class="image-grid">
-        <a class="thumb-card" href="#" aria-label="中階款範例 01">
-          <div class="thumb-image-wrap">
-            <img src="中階款01.png" alt="中階款範例 01" class="thumb-image" />
-          </div>
-          <div class="thumb-label">
-            <div class="thumb-label-left">
-              <span class="pill">ENHANCED</span>
-              <span>水感爆水氛圍・產品聚焦</span>
-            </div>
-          </div>
-        </a>
+      <h3>3. 修改方式</h3>
+      <p>請一次彙整修改項目，避免因分批提供造成額外工時。</p>
+    </details>
 
-        <a class="thumb-card" href="#" aria-label="中階款範例 02">
-          <div class="thumb-image-wrap">
-            <img src="中階款02.png" alt="中階款範例 02" class="thumb-image" />
-          </div>
-          <div class="thumb-label">
-            <div class="thumb-label-left">
-              <span class="pill">ENHANCED</span>
-              <span>清爽水花＋文字設計</span>
-            </div>
-          </div>
-        </a>
+    <!-- Accordion：文字設計 -->
+    <details>
+      <summary>《文字設計 Title Design 說明》</summary>
+      <br>
+      <h3>1. 基本文字排版（不加價）</h3>
+      <ul>
+        <li>基本字體排版（大小 / 字距 / 行距）</li>
+        <li>基本陰影</li>
+        <li>基本描邊</li>
+        <li>可讀性光暈（非特效用途）</li>
+      </ul>
 
-        <a class="thumb-card" href="#" aria-label="中階款範例 03">
-          <div class="thumb-image-wrap">
-            <img src="中階款03.png" alt="中階款範例 03" class="thumb-image" />
-          </div>
-          <div class="thumb-label">
-            <div class="thumb-label-left">
-              <span class="pill">ENHANCED</span>
-              <span>電競／聖誕主題氛圍合成</span>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
+      <h3>2. 文字設計（需加價）</h3>
+      <ul>
+        <li>金屬字、玻璃字、亮粉字</li>
+        <li>霧光、特殊筆刷、手繪字</li>
+        <li>電影海報風格效果</li>
+        <li>多層合成的字體視覺特效</li>
+      </ul>
 
-    <!-- 高階款 -->
-    <section class="plan-section">
-      <div class="plan-header">
-        <div class="plan-title-main">
-          <span>高階款｜PREMIUM COMPOSITE PLAN</span>
-        </div>
-        <div class="plan-title-sub">重度合成・多素材整合・主題式視覺</div>
-      </div>
-      <p class="plan-desc">
-        以完整主題發想為核心，結合 AI 生成背景、多張素材合成、特效與細節光影處理。適合品牌活動主視覺、重點檔期宣傳圖、或需要強烈故事感的社群視覺。
-      </p>
+      <h3>3. 判定方式</h3>
+      <p>若參考圖包含特殊字效 → 自動視為文字設計。</p>
+    </details>
 
-      <div class="image-grid">
-        <a class="thumb-card" href="#" aria-label="高階款範例 01">
-          <div class="thumb-image-wrap">
-            <img src="高階款01.jpg" alt="高階款範例 01" class="thumb-image" />
-          </div>
-          <div class="thumb-label">
-            <div class="thumb-label-left">
-              <span class="pill">PREMIUM</span>
-              <span>機車動感場景＋光暈與煙霧</span>
-            </div>
-          </div>
-        </a>
 
-        <a class="thumb-card" href="#" aria-label="高階款範例 02">
-          <div class="thumb-image-wrap">
-            <img src="高階款02.jpg" alt="高階款範例 02" class="thumb-image" />
-          </div>
-          <div class="thumb-label">
-            <div class="thumb-label-left">
-              <span class="pill">PREMIUM</span>
-              <span>熔岩場景＋能量主題字體</span>
-            </div>
-          </div>
-        </a>
-
-        <a class="thumb-card" href="#" aria-label="高階款範例 03">
-          <div class="thumb-image-wrap">
-            <img src="高階款03.jpg" alt="高階款範例 03" class="thumb-image" />
-          </div>
-          <div class="thumb-label">
-            <div class="thumb-label-left">
-              <span class="pill">PREMIUM</span>
-              <span>極端環境背景＋能量特效</span>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- 多商品 DM 類 -->
-    <section class="plan-section">
-      <div class="section-tag">EXTRA CATEGORY</div>
-      <div class="plan-header">
-        <div class="plan-title-main">
-          <span>多商品 DM｜MULTI-PRODUCT DM</span>
-        </div>
-        <div class="plan-title-sub">多品項資訊編排・促銷版面設計</div>
-      </div>
-      <p class="plan-desc">
-        針對通路活動或電商檔期，將多項商品、價格與優惠資訊整合在同一版面，強調可讀性與視覺秩序。
-      </p>
-
-      <div class="image-grid">
-        <a class="thumb-card" href="#" aria-label="多商品 DM 範例 01">
-          <div class="thumb-image-wrap">
-            <img src="多商品DM01.jpg" alt="多商品 DM 範例 01" class="thumb-image" />
-          </div>
-        </a>
-
-        <a class="thumb-card" href="#" aria-label="多商品 DM 範例 02">
-          <div class="thumb-image-wrap">
-            <img src="多商品DM02.jpg" alt="多商品 DM 範例 02" class="thumb-image" />
-          </div>
-        </a>
-
-        <a class="thumb-card" href="#" aria-label="多商品 DM 範例 03">
-          <div class="thumb-image-wrap">
-            <img src="多商品DM03.jpg" alt="多商品 DM 範例 03" class="thumb-image" />
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- 手繪款 -->
-    <section class="plan-section">
-      <div class="section-tag">EXTRA CATEGORY</div>
-      <div class="plan-header">
-        <div class="plan-title-main">
-          <span>手繪款｜ILLUSTRATED VISUALS</span>
-        </div>
-        <div class="plan-title-sub">客製插畫元素・品牌情境故事</div>
-      </div>
-      <p class="plan-desc">
-        以手繪角色或插畫物件為主體，搭配產品與文案，營造親切或趣味感。適合品牌故事貼文、形象主題月或活動宣傳。
-      </p>
-
-      <div class="image-grid">
-        <a class="thumb-card" href="#" aria-label="手繪款範例 01">
-          <div class="thumb-image-wrap">
-            <img src="手繪01.png" alt="手繪款範例 01" class="thumb-image" />
-          </div>
-        </a>
-
-        <a class="thumb-card" href="#" aria-label="手繪款範例 02">
-          <div class="thumb-image-wrap">
-            <img src="手繪02.jpg" alt="手繪款範例 02" class="thumb-image" />
-          </div>
-        </a>
-
-        <a class="thumb-card" href="#" aria-label="手繪款範例 03">
-          <div class="thumb-image-wrap">
-            <img src="手繪03.png" alt="手繪款範例 03" class="thumb-image" />
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <div class="footer-note">
-      本頁為社群圖像與商業視覺作品示意。若需更完整專案介紹，可再依個別需求提供說明。
+    <!-- 方案分類區 -->
+    <h2>基礎款 BASIC</h2>
+    <div class="img-grid">
+      <img src="img/basic01.jpg">
+      <img src="img/basic02.jpg">
+      <img src="img/basic03.jpg">
     </div>
+
+    <h2 style="margin-top:50px;">中階款 ENHANCED</h2>
+    <div class="img-grid">
+      <img src="img/mid01.jpg">
+      <img src="img/mid02.jpg">
+      <img src="img/mid03.jpg">
+    </div>
+
+    <h2 style="margin-top:50px;">高階款 PREMIUM</h2>
+    <div class="img-grid">
+      <img src="img/high01.jpg">
+      <img src="img/high02.jpg">
+      <img src="img/high03.jpg">
+    </div>
+
+    <footer>
+      © 2024 Airlia 放空｜Visual Design Portfolio
+    </footer>
   </div>
 </body>
 </html>
