@@ -4,159 +4,117 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Airlia / 放空｜視覺設計示範作品集</title>
-  <meta name="description" content="Airlia / 放空｜視覺設計示範作品集：基礎 / 中階 / 高階方案，含做圖須知與修改政策。" />
+  <meta name="description" content="Airlia / 放空｜視覺設計示範作品集。提供方案分級範例、做圖須知與修改政策。" />
+
   <style>
     :root{
-      --bg:#070b09;
+      --bg:#070908;
       --panel:#0c1411;
-      --panel2:#0a110e;
-      --border:rgba(180,150,85,.22);
-      --border2:rgba(255,255,255,.07);
-      --text:#e9eceb;
-      --muted:rgba(233,236,235,.72);
-      --gold:#b79a5a;     /* 暗金 */
-      --gold2:#d9c08a;
-      --green:#0b1b14;    /* 深墨綠 */
-      --green2:#08140f;
+      --panel2:#0b1a14;
+      --border: rgba(255, 255, 255, .08);
+
+      --text:#f2f4f3;
+      --muted: rgba(242,244,243,.72);
+
+      --gold:#c9b07a;       /* 暗金 */
+      --gold2:#9d8657;
+      --green:#183226;      /* 墨綠 */
+      --green2:#0f241a;
+
       --radius:22px;
-      --radius2:16px;
-      --shadow: 0 18px 50px rgba(0,0,0,.55);
-      --max:1120px;
+      --radius2:18px;
+      --shadow: 0 18px 45px rgba(0,0,0,.55);
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
-      background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(16,60,44,.25), transparent 60%),
-        radial-gradient(1000px 700px at 90% 15%, rgba(180,150,85,.14), transparent 62%),
-        radial-gradient(900px 800px at 50% 100%, rgba(16,60,44,.18), transparent 55%),
-        var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+        "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
       color:var(--text);
-      line-height:1.65;
+      background:
+        radial-gradient(900px 700px at 20% -10%, rgba(24,50,38,.55), transparent 60%),
+        radial-gradient(900px 700px at 90% 10%, rgba(201,176,122,.14), transparent 55%),
+        radial-gradient(900px 700px at 70% 90%, rgba(24,50,38,.28), transparent 60%),
+        var(--bg);
     }
 
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:44px 18px 80px;}
-    .top{
-      display:flex; gap:18px; align-items:center; justify-content:center;
-      flex-direction:column;
-      text-align:center;
-      margin-bottom:18px;
+    .wrap{
+      width:min(1100px, calc(100% - 40px));
+      margin: 42px auto 90px;
     }
 
-    .avatar{
-      width:84px; height:84px; border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), rgba(255,255,255,.04));
+    /* ====== HERO ====== */
+    .hero{
       border:1px solid var(--border);
-      box-shadow: 0 12px 40px rgba(0,0,0,.5);
-      display:grid; place-items:center;
+      background: linear-gradient(180deg, rgba(12,20,17,.92), rgba(10,14,12,.86));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .avatar img{width:100%; height:100%; object-fit:cover}
-
+    .heroTop{
+      padding: 26px 28px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
     .kicker{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:6px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(11,27,20,.75), rgba(7,11,9,.55));
-      color:rgba(233,236,235,.9);
-      font-size:13px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .dot{width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 3px rgba(183,154,90,.15)}
-
-    h1{
-      margin:10px 0 6px;
-      font-size: clamp(28px, 3.4vw, 40px);
-      letter-spacing:.02em;
-    }
-    .subtitle{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-    }
-
-    .grid2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-      margin-top:22px;
-    }
-
-    .card{
-      background: linear-gradient(180deg, rgba(12,20,17,.92), rgba(7,11,9,.72));
-      border:1px solid var(--border2);
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
-      padding:18px 18px 16px;
-    }
-    .card h2{
-      margin:0 0 10px;
-      font-size:14px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:rgba(233,236,235,.88);
-      display:flex; gap:10px; align-items:center;
-    }
-    .card h2::before{
-      content:"";
-      width:8px; height:8px; border-radius:50%;
-      background:rgba(183,154,90,.9);
-      box-shadow: 0 0 0 3px rgba(183,154,90,.14);
-      flex:0 0 auto;
-    }
-
-    .p{margin:0 0 10px; color:rgba(233,236,235,.78); font-size:14px}
-    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-    .chip{
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(183,154,90,.18);
-      background: rgba(8,20,15,.55);
-      color:rgba(233,236,235,.85);
-      font-size:12px;
-    }
-
-    /* Banner */
-    .banner{
-      margin-top:16px;
-      border-radius:var(--radius);
-      overflow:hidden;
-      border:1px solid var(--border2);
-      background: rgba(8,20,15,.45);
-      box-shadow: var(--shadow);
-    }
-    .bannerHead{
-      padding:14px 16px 10px;
-      display:flex; align-items:baseline; justify-content:space-between;
+      display:inline-flex;
+      align-items:center;
       gap:10px;
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    .bannerTitle{
-      margin:0;
-      font-size:14px;
+      padding: 7px 12px;
+      border-radius:999px;
+      border:1px solid rgba(201,176,122,.28);
+      background: rgba(24,50,38,.25);
+      color: rgba(201,176,122,.92);
+      font-weight:700;
       letter-spacing:.08em;
-      color:rgba(233,236,235,.9);
+      font-size: 12px;
+      text-transform: uppercase;
+      width: fit-content;
     }
-    .bannerHint{margin:0; font-size:12px; color:rgba(233,236,235,.62)}
-    .bannerStage{
+    .kdot{
+      width:8px;height:8px;border-radius:99px;
+      background: rgba(201,176,122,.9);
+      box-shadow: 0 0 0 4px rgba(201,176,122,.12);
+    }
+    .heroTitle{
+      margin: 12px 0 8px;
+      font-size: clamp(26px, 3.2vw, 36px);
+      letter-spacing:.02em;
+      font-weight: 850;
+      line-height: 1.15;
+    }
+    .heroSub{
+      margin: 0;
+      color: var(--muted);
+      line-height:1.7;
+      font-size: 14px;
+      max-width: 70ch;
+    }
+
+    /* Banner slider */
+    .banner{
+      padding: 18px 18px 22px;
+    }
+    .slider{
       position:relative;
-      height: 320px;
-      background: linear-gradient(180deg, rgba(11,27,20,.35), rgba(0,0,0,.25));
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.25);
+      aspect-ratio: 21 / 7; /* 3:1 */
+      min-height: 220px;
     }
     .slide{
       position:absolute; inset:0;
       opacity:0;
       transform: scale(1.01);
-      transition: opacity .6s ease, transform .9s ease;
-      display:grid;
-      place-items:center;
-      padding:14px;
+      transition: opacity .6s ease, transform .8s ease;
     }
     .slide.is-on{
       opacity:1;
@@ -165,195 +123,233 @@
     .slide img{
       width:100%;
       height:100%;
-      object-fit:contain;
-      border-radius: 14px;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.02) contrast(1.02);
     }
-    .dots{
-      display:flex; gap:8px; justify-content:center; align-items:center;
-      padding:10px 12px 14px;
-      background: rgba(0,0,0,.15);
+    .sliderHud{
+      position:absolute;
+      right: 14px; bottom: 12px;
+      display:flex; gap:8px;
+      padding: 8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(8,12,10,.55);
+      backdrop-filter: blur(8px);
     }
-    .d{
-      width:9px; height:9px; border-radius:50%;
-      border:1px solid rgba(183,154,90,.35);
-      background: rgba(255,255,255,.08);
-      cursor:pointer;
+    .dot{
+      width:7px;height:7px;border-radius:999px;
+      background: rgba(201,176,122,.30);
     }
-    .d.on{ background: rgba(183,154,90,.85); border-color: rgba(183,154,90,.85); }
+    .dot.is-on{ background: rgba(201,176,122,.95); }
 
-    /* Collapsible policies (3 columns like you want) */
-    .policies{
-      margin-top:18px;
-      display:grid;
-      gap:14px;
-    }
-    details.policy{
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.07);
-      background: linear-gradient(180deg, rgba(12,20,17,.88), rgba(7,11,9,.62));
+    /* ====== ACCORDIONS ====== */
+    .section{
+      margin-top: 22px;
+      padding: 22px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      background: rgba(12,20,17,.78);
       box-shadow: var(--shadow);
+    }
+    .acc{
+      display:grid;
+      gap: 12px;
+    }
+    details{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      background: rgba(10,16,13,.72);
       overflow:hidden;
     }
     summary{
-      list-style:none;
       cursor:pointer;
-      padding:16px 18px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px;
-      user-select:none;
+      list-style:none;
+      padding: 14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      font-weight: 850;
+      letter-spacing:.02em;
+      color: rgba(201,176,122,.92);
     }
     summary::-webkit-details-marker{display:none}
-    .sumL{
-      display:flex; gap:10px; align-items:center;
-      font-weight:700;
-      color:rgba(233,236,235,.92);
-      letter-spacing:.02em;
+    .sumLeft{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
     }
     .chev{
-      width:30px; height:30px; border-radius:10px;
-      display:grid; place-items:center;
-      border:1px solid rgba(183,154,90,.18);
-      background: rgba(8,20,15,.55);
-      color:rgba(233,236,235,.8);
-      transition: transform .2s ease;
-      flex:0 0 auto;
+      width: 28px; height: 28px;
+      border-radius: 10px;
+      display:grid;
+      place-items:center;
+      background: rgba(24,50,38,.35);
+      border:1px solid rgba(201,176,122,.18);
+      flex: 0 0 auto;
     }
-    details[open] .chev{ transform: rotate(180deg); }
+    details[open] .chev{ background: rgba(24,50,38,.55); }
+    .chev span{
+      display:block;
+      transform: rotate(0deg);
+      transition: transform .25s ease;
+      color: rgba(242,244,243,.8);
+      font-size: 14px;
+      line-height: 1;
+    }
+    details[open] .chev span{ transform: rotate(180deg); }
 
-    .policyBody{
-      padding:0 18px 18px;
-      border-top:1px solid rgba(255,255,255,.06);
+    .accBody{
+      padding: 14px 16px 18px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 14px;
     }
     .cols3{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-      padding-top:14px;
+      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
-    .col{
-      border:1px solid rgba(255,255,255,.06);
-      background: rgba(8,20,15,.45);
-      border-radius: 16px;
-      padding:12px 12px 10px;
+    @media (max-width: 900px){
+      .cols3{ grid-template-columns: 1fr; }
     }
-    .colTitle{
-      margin:0 0 8px;
-      color:rgba(217,192,138,.95);
-      font-weight:700;
-      font-size:13px;
-      letter-spacing:.04em;
+    .miniCard{
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(8,12,10,.35);
+      border-radius: 14px;
+      padding: 12px 12px 10px;
+    }
+    .miniTitle{
+      color: rgba(242,244,243,.92);
+      font-weight: 850;
+      margin: 0 0 8px;
+      font-size: 13px;
+      letter-spacing: .02em;
     }
     ul.bullets{
-      margin:0;
-      padding-left:18px;
-      color:rgba(233,236,235,.78);
-      font-size:13px;
+      margin: 0;
+      padding-left: 18px;
     }
-    ul.bullets li{ margin:6px 0; text-align:justify; }
+    ul.bullets li{
+      margin: 6px 0;
+      color: rgba(242,244,243,.75);
+    }
+    ul.bullets li::marker{
+      color: rgba(201,176,122,.85);
+    }
 
-    /* Section blocks */
-    .section{
-      margin-top:26px;
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.07);
-      background: linear-gradient(180deg, rgba(12,20,17,.86), rgba(7,11,9,.58));
+    /* ====== PLAN SECTIONS ====== */
+    .plan{
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(12,20,17,.68);
       box-shadow: var(--shadow);
-      overflow:hidden;
     }
-    .secHead{
-      padding:16px 18px 14px;
-      border-bottom:1px solid rgba(255,255,255,.06);
+    .planHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap:wrap;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .planTitle{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing:.02em;
+      font-weight: 900;
       display:flex;
       align-items:baseline;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
+      gap: 10px;
     }
-    .secTitle{
-      margin:0;
-      font-size:18px;
-      letter-spacing:.06em;
-      display:flex; gap:10px; align-items:center;
+    .planTitle b{
+      color: rgba(201,176,122,.95);
     }
-    .secTitle span{
-      color:var(--gold2);
-      font-weight:800;
-      letter-spacing:.12em;
+    .planTag{
+      font-size: 12px;
+      color: rgba(242,244,243,.72);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(8,12,10,.35);
+      padding: 6px 10px;
+      border-radius: 999px;
+      width: fit-content;
     }
-    .secDesc{
-      margin:0;
-      color:rgba(233,236,235,.68);
-      font-size:13px;
-      max-width: 700px;
+    .planDesc{
+      margin: 12px 0 0;
+      color: rgba(242,244,243,.70);
+      line-height: 1.7;
+      font-size: 14px;
+      max-width: 90ch;
     }
-    .secBody{ padding:16px 18px 18px; }
 
-    .gallery{
+    .grid3{
+      margin-top: 14px;
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
     }
-    .work{
+    @media (max-width: 920px){
+      .grid3{ grid-template-columns: 1fr; }
+    }
+
+    .workCard{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(8,12,10,.35);
       border-radius: 18px;
-      border:1px solid rgba(255,255,255,.07);
-      background: rgba(8,20,15,.45);
       overflow:hidden;
-      transform: translateZ(0);
-      transition: transform .18s ease, border-color .18s ease;
+      position:relative;
+      transition: transform .2s ease, border-color .2s ease;
     }
-    .work:hover{
+    .workCard:hover{
       transform: scale(1.02);
-      border-color: rgba(183,154,90,.25);
+      border-color: rgba(201,176,122,.22);
     }
-    .work .img{
-      aspect-ratio: 1 / 1; /* 1080x1080 就完美 */
-      width:100%;
-      background: rgba(0,0,0,.25);
+
+    /* 外框感（你說的外面框） */
+    .frame{
+      padding: 12px;
+      background: radial-gradient(600px 300px at 30% 0%, rgba(24,50,38,.45), transparent 55%),
+                  rgba(0,0,0,.18);
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .work img{
-      width:100%;
-      height:100%;
-      object-fit: contain; /* 不裁切 */
+
+    /* 不裁切：用 contain + 固定 1:1 */
+    .thumb{
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 14px;
+      overflow:hidden;
+      background: rgba(0,0,0,.30);
+      border: 1px solid rgba(255,255,255,.10);
+      display:grid;
+      place-items:center;
+    }
+    .thumb img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* ✅不裁切 */
       display:block;
-      background: rgba(0,0,0,.12);
     }
 
-    .tagRow{
-      padding:10px 12px 12px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-    }
-    .tag{
-      font-size:11px;
-      letter-spacing:.14em;
-      padding:4px 9px;
-      border-radius:999px;
-      border:1px solid rgba(183,154,90,.22);
-      color:rgba(233,236,235,.86);
-      background: rgba(7,11,9,.35);
-      text-transform:uppercase;
-      flex:0 0 auto;
-    }
-    .note{
-      font-size:12px;
-      color:rgba(233,236,235,.66);
-      text-align:justify;
-      flex:1 1 auto;
-    }
-
-    .footer{
-      margin-top:26px;
-      color:rgba(233,236,235,.55);
-      font-size:12px;
+    .missing{
+      color: rgba(242,244,243,.55);
+      font-size: 12px;
+      padding: 10px;
       text-align:center;
     }
 
-    @media (max-width: 960px){
-      .grid2{grid-template-columns:1fr}
-      .cols3{grid-template-columns:1fr}
-      .gallery{grid-template-columns:1fr}
-      .bannerStage{height:260px}
-      .wrap{padding-top:30px}
+    .footerNote{
+      margin-top: 18px;
+      color: rgba(242,244,243,.55);
+      font-size: 12px;
+      line-height: 1.75;
+      text-align:center;
     }
   </style>
 </head>
@@ -361,362 +357,405 @@
 <body>
   <main class="wrap">
 
-    <!-- Header / intro (對齊動畫頁風格) -->
-    <section class="top">
-      <div class="avatar" aria-label="Airlia avatar">
-        <!-- 你可以換成自己的頭像圖：例如 images/avatar.png -->
-        <img src="images/avatar.png" alt="Airlia avatar" onerror="this.style.display='none';" />
-      </div>
-
-      <div class="kicker"><span class="dot"></span> AIRLIA / 放空 · VISUAL DESIGN</div>
-      <h1>視覺設計示範作品集</h1>
-      <p class="subtitle">依合成難度與風格層級分級：基礎 / 中階 / 高階。先看圖、再談需求與報價。</p>
-    </section>
-
-    <!-- About + Skills (跟動畫頁的兩欄對齊) -->
-    <section class="grid2">
-      <div class="card">
-        <h2>ABOUT</h2>
-        <p class="p">
-          我是 Airlia（放空），自由接案的視覺設計與 2D 動態設計師。此頁為「商業合作用」示範作品，
-          讓客戶快速理解不同方案可達成的層級，並作為後續估價與需求確認的依據。
-        </p>
-        <div class="chips">
-          <span class="chip">社群圖像 / Banner</span>
-          <span class="chip">商品合成 / 主視覺</span>
-          <span class="chip">資訊層級與可讀性</span>
-          <span class="chip">品牌氛圍整合</span>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroTop">
+        <div>
+          <div class="kicker"><span class="kdot"></span> AIRLIA / 放空 · VISUAL DESIGN</div>
+          <h1 class="heroTitle">視覺設計示範作品集</h1>
+          <p class="heroSub">
+            本頁展示不同方案的視覺設計範例，方便快速對齊風格層級與預算範圍。上方為 Banner 作品輪播；下方提供做圖須知、修改政策與文字設計說明。
+          </p>
         </div>
       </div>
 
-      <div class="card">
-        <h2>SKILLS</h2>
-        <p class="p">可依需求包含：排版、行距調整、可讀性優化、必要的描邊/陰影等基礎文字處理。</p>
-        <div class="chips">
-          <span class="chip">Photoshop</span>
-          <span class="chip">Illustrator</span>
-          <span class="chip">After Effects</span>
-          <span class="chip">Premiere</span>
-          <span class="chip">CSP</span>
+      <!-- Banner Slider -->
+      <div class="banner">
+        <div class="slider" id="bannerSlider" aria-label="Banner slideshow">
+          <!-- 不寫副檔名，JS 會自動找 jpg/png -->
+          <div class="slide is-on" data-banner="banner01"></div>
+          <div class="slide" data-banner="banner02"></div>
+          <div class="slide" data-banner="banner03"></div>
+          <div class="slide" data-banner="banner04"></div>
+
+          <div class="sliderHud" id="bannerDots" aria-hidden="true">
+            <span class="dot is-on"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Banner slider -->
-    <section class="banner" aria-label="Banner works">
-      <div class="bannerHead">
-        <p class="bannerTitle">BANNER 作品（自動輪播）</p>
-        <p class="bannerHint">每 6 秒切換 · 可依活動改版型與節奏</p>
-      </div>
+    <!-- ACCORDIONS (每塊 3 欄式) -->
+    <section class="section">
+      <div class="acc">
 
-      <div class="bannerStage" id="bannerStage">
-        <div class="slide is-on"><img src="images/banners/banner01.jpg" alt="banner 01"></div>
-        <div class="slide"><img src="images/banners/banner02.jpg" alt="banner 02"></div>
-        <div class="slide"><img src="images/banners/banner03.jpg" alt="banner 03"></div>
-        <div class="slide"><img src="images/banners/banner04.jpg" alt="banner 04"></div>
-      </div>
-
-      <div class="dots" id="dots" aria-label="banner dots">
-        <button class="d on" aria-label="go banner 1"></button>
-        <button class="d" aria-label="go banner 2"></button>
-        <button class="d" aria-label="go banner 3"></button>
-        <button class="d" aria-label="go banner 4"></button>
-      </div>
-    </section>
-
-    <!-- Policies (收起/展開；展開後三欄，圓點項目符號、左右對齊) -->
-    <section class="policies" aria-label="Policies">
-      <details class="policy">
-        <summary>
-          <div class="sumL">《做圖須知 Required Materials》</div>
-          <div class="chev">⌄</div>
-        </summary>
-        <div class="policyBody">
-          <div class="cols3">
-            <div class="col">
-              <p class="colTitle">須提供</p>
-              <ul class="bullets">
-                <li>圖片尺寸（例：1080×1080）</li>
-                <li>主視覺方向（有的話）/ 品牌 Logo</li>
-                <li>商品素材（若需置入）</li>
-              </ul>
-            </div>
-            <div class="col">
-              <p class="colTitle">內容素材</p>
-              <ul class="bullets">
-                <li>文案（標題/副標/重點文字）</li>
-                <li>參考圖示意（不確定可一併提供）</li>
-                <li>若需求尚未確定，可先給參考圖對焦</li>
-              </ul>
-            </div>
-            <div class="col">
-              <p class="colTitle">注意事項</p>
-              <ul class="bullets">
-                <li>不接受成圖後才改尺寸（視為 Resize，加收原圖 80%）</li>
-                <li>若需求尚不確定，我將附上報價單說明項目差異</li>
-              </ul>
+        <details open>
+          <summary>
+            <span class="sumLeft">
+              <span class="chev"><span>˄</span></span>
+              《做圖須知 Required Materials》
+            </span>
+          </summary>
+          <div class="accBody">
+            <div class="cols3">
+              <div class="miniCard">
+                <p class="miniTitle">須提供</p>
+                <ul class="bullets">
+                  <li>圖片尺寸（例：1080×1080）</li>
+                  <li>主視覺方向（有的話）／品牌 Logo</li>
+                  <li>商品素材（若需置入）</li>
+                </ul>
+              </div>
+              <div class="miniCard">
+                <p class="miniTitle">內容素材</p>
+                <ul class="bullets">
+                  <li>文案（標題／副標／重點文字）</li>
+                  <li>參考圖示意（不確定可一併提供）</li>
+                  <li>若需求尚不確定，可先給參考圖對焦</li>
+                </ul>
+              </div>
+              <div class="miniCard">
+                <p class="miniTitle">注意事項</p>
+                <ul class="bullets">
+                  <li>不接受成圖後才改尺寸（視為 Resize，加收原圖 80%）</li>
+                  <li>若需求尚不確定，我將附上報價單說明項目差異</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </details>
+        </details>
 
-      <details class="policy">
-        <summary>
-          <div class="sumL">《修改須知 Revision Policy》</div>
-          <div class="chev">⌄</div>
-        </summary>
-        <div class="policyBody">
-          <div class="cols3">
-            <div class="col">
-              <p class="colTitle">免費修改</p>
-              <ul class="bullets">
-                <li>每張作品含 2 次免費修改</li>
-                <li>建議集中提出修改點，以縮短來回</li>
-              </ul>
-            </div>
-            <div class="col">
-              <p class="colTitle">重做判定</p>
-              <ul class="bullets">
-                <li>修改不得超過原圖完成度 50%</li>
-                <li>若超過 50% 視為重新製作，將再收一次該方案費用</li>
-              </ul>
-            </div>
-            <div class="col">
-              <p class="colTitle">另計項目</p>
-              <ul class="bullets">
-                <li>新增額外版本</li>
-                <li>不同構圖方向（例：方圖改直式）</li>
-                <li>重大風格變更</li>
-              </ul>
+        <details>
+          <summary>
+            <span class="sumLeft">
+              <span class="chev"><span>˄</span></span>
+              《修改須知 Revision Policy》
+            </span>
+          </summary>
+          <div class="accBody">
+            <div class="cols3">
+              <div class="miniCard">
+                <p class="miniTitle">免費修改</p>
+                <ul class="bullets">
+                  <li>每張作品含 2 次免費修改</li>
+                  <li>建議集中提出修改點，以縮短來回</li>
+                </ul>
+              </div>
+              <div class="miniCard">
+                <p class="miniTitle">重做判定</p>
+                <ul class="bullets">
+                  <li>修改不得超過原圖完成度 50%</li>
+                  <li>超過 50% 視為重新製作，將再收一次該方案費用</li>
+                </ul>
+              </div>
+              <div class="miniCard">
+                <p class="miniTitle">另計項目</p>
+                <ul class="bullets">
+                  <li>新增額外版本</li>
+                  <li>不同構圖方向（例：方圖改直式）</li>
+                  <li>重大風格變更</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </details>
+        </details>
 
-      <details class="policy">
-        <summary>
-          <div class="sumL">《文字設計 Title Design 說明》</div>
-          <div class="chev">⌄</div>
-        </summary>
-        <div class="policyBody">
-          <div class="cols3">
-            <div class="col">
-              <p class="colTitle">基本文字包含</p>
-              <ul class="bullets">
-                <li>排版、行距調整、可讀性優化</li>
-                <li>必要的描邊 / 陰影（避免文字看不清）</li>
-              </ul>
-            </div>
-            <div class="col">
-              <p class="colTitle">可能加值</p>
-              <ul class="bullets">
-                <li>金屬字、火焰字、水波字等特殊字效</li>
-                <li>更複雜的標題視覺設計（依需求另報）</li>
-              </ul>
-            </div>
-            <div class="col">
-              <p class="colTitle">報價方式</p>
-              <ul class="bullets">
-                <li>若你不確定要哪種效果，可先給參考圖</li>
-                <li>我會附報價單說明「項目差異」與是否需加價</li>
-              </ul>
+        <details>
+          <summary>
+            <span class="sumLeft">
+              <span class="chev"><span>˄</span></span>
+              《文字設計 Title Design 說明》
+            </span>
+          </summary>
+          <div class="accBody">
+            <div class="cols3">
+              <div class="miniCard">
+                <p class="miniTitle">基本文字包含</p>
+                <ul class="bullets">
+                  <li>排版、行距調整、可讀性優化</li>
+                  <li>必要的描邊／陰影（避免文字看不清）</li>
+                </ul>
+              </div>
+              <div class="miniCard">
+                <p class="miniTitle">可能加值</p>
+                <ul class="bullets">
+                  <li>金屬字、火焰字、水波字等特殊字效</li>
+                  <li>更複雜的標題視覺設計（依需求另報）</li>
+                </ul>
+              </div>
+              <div class="miniCard">
+                <p class="miniTitle">報價方式</p>
+                <ul class="bullets">
+                  <li>不確定效果可先給參考圖</li>
+                  <li>我會附報價單說明「項目差異」與是否需加值</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </details>
+        </details>
+
+      </div>
     </section>
 
     <!-- BASIC -->
-    <section class="section" id="basic">
-      <div class="secHead">
-        <h3 class="secTitle"><span>基礎款</span> BASIC</h3>
-        <p class="secDesc">以「清楚資訊層級＋乾淨排版」為主。適合活動主視覺、品牌貼文、店家公告等（不強調重度合成）。</p>
-      </div>
-      <div class="secBody">
-        <div class="gallery">
-          <article class="work">
-            <div class="img"><img src="images/basic/基礎款01.jpg" alt="基礎款 01"></div>
-            <div class="tagRow">
-              <span class="tag">BASIC</span>
-              <span class="note">單一場景 / 清楚標題層級</span>
-            </div>
-          </article>
-
-          <article class="work">
-            <div class="img"><img src="images/basic/基礎款02.jpg" alt="基礎款 02"></div>
-            <div class="tagRow">
-              <span class="tag">BASIC</span>
-              <span class="note">活動 KV 版面 / 資訊規劃</span>
-            </div>
-          </article>
-
-          <article class="work">
-            <div class="img"><img src="images/basic/基礎款03.jpg" alt="基礎款 03"></div>
-            <div class="tagRow">
-              <span class="tag">BASIC</span>
-              <span class="note">商品主圖 / 品牌框線構成</span>
-            </div>
-          </article>
+    <section class="plan" id="basic">
+      <div class="planHead">
+        <div>
+          <h2 class="planTitle"><b>基礎款</b> BASIC</h2>
+          <p class="planDesc">以既有素材／情境照片為主，著重在清楚的資訊層級與版面編排；適合活動主視覺、品牌形象貼文、店家公告等。</p>
         </div>
+        <div class="planTag">版面編排 · 單一場景為主</div>
+      </div>
+
+      <div class="grid3">
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/基礎款01">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/基礎款02">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/基礎款03">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ENHANCED -->
-    <section class="section" id="enhanced">
-      <div class="secHead">
-        <h3 class="secTitle"><span>中階款</span> ENHANCED</h3>
-        <p class="secDesc">加入氛圍背景、商品光影融合、素材整合。適合保養品、食品、機油等需要「質感＋主題」的品牌視覺。</p>
-      </div>
-      <div class="secBody">
-        <div class="gallery">
-          <article class="work">
-            <div class="img"><img src="images/enhanced/中階款01.jpg" alt="中階款 01"></div>
-            <div class="tagRow">
-              <span class="tag">ENH</span>
-              <span class="note">情境氛圍 / 光影融合</span>
-            </div>
-          </article>
-
-          <article class="work">
-            <div class="img"><img src="images/enhanced/中階款02.png" alt="中階款 02"></div>
-            <div class="tagRow">
-              <span class="tag">ENH</span>
-              <span class="note">水花主題 / 文字設計</span>
-            </div>
-          </article>
-
-          <article class="work">
-            <div class="img"><img src="images/enhanced/中階款03.png" alt="中階款 03"></div>
-            <div class="tagRow">
-              <span class="tag">ENH</span>
-              <span class="note">水感氛圍 / 商品主視覺</span>
-            </div>
-          </article>
+    <section class="plan" id="enhanced">
+      <div class="planHead">
+        <div>
+          <h2 class="planTitle"><b>中階款</b> ENHANCED</h2>
+          <p class="planDesc">加入氛圍／背景設計、光影融合或素材整合，讓畫面更完整一致；適合需要質感與主題氛圍的品牌視覺。</p>
         </div>
+        <div class="planTag">氛圍整合 · 光影融合</div>
+      </div>
+
+      <div class="grid3">
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/中階款01">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/中階款02">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/中階款03">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- PREMIUM -->
-    <section class="section" id="premium">
-      <div class="secHead">
-        <h3 class="secTitle"><span>高階款</span> PREMIUM</h3>
-        <p class="secDesc">重度合成、多素材整合、主題式視覺。適合「節慶大檔 / 活動主視覺 / 商業海報等級」需求。</p>
-      </div>
-      <div class="secBody">
-        <div class="gallery">
-          <article class="work">
-            <div class="img"><img src="images/premium/高階款01.jpg" alt="高階款 01"></div>
-            <div class="tagRow">
-              <span class="tag">PREM</span>
-              <span class="note">主題合成 / 細節整合</span>
-            </div>
-          </article>
-
-          <article class="work">
-            <div class="img"><img src="images/premium/高階款02.jpg" alt="高階款 02"></div>
-            <div class="tagRow">
-              <span class="tag">PREM</span>
-              <span class="note">活動視覺 / 多元素構圖</span>
-            </div>
-          </article>
-
-          <article class="work">
-            <div class="img"><img src="images/premium/高階款03.jpg" alt="高階款 03"></div>
-            <div class="tagRow">
-              <span class="tag">PREM</span>
-              <span class="note">海報等級 / 風格完整</span>
-            </div>
-          </article>
+    <section class="plan" id="premium">
+      <div class="planHead">
+        <div>
+          <h2 class="planTitle"><b>高階款</b> PREMIUM</h2>
+          <p class="planDesc">多素材整合、重度合成與更完整的主視覺處理，適合需要強烈視覺主題、整體一致性高的行銷圖或系列視覺。</p>
         </div>
+        <div class="planTag">重度合成 · 主題視覺</div>
+      </div>
+
+      <div class="grid3">
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/高階款01">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/高階款02">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/高階款03">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- 多商品 DM -->
-    <section class="section" id="dm">
-      <div class="secHead">
-        <h3 class="secTitle"><span>多商品</span> DM</h3>
-        <p class="secDesc">適合組合商品、活動促銷、型錄式呈現（資訊密度較高，需更嚴謹的層級規劃）。</p>
-      </div>
-      <div class="secBody">
-        <div class="gallery">
-          <article class="work">
-            <div class="img"><img src="images/dm/多商品DM01.jpg" alt="多商品 DM 01"></div>
-            <div class="tagRow"><span class="tag">DM</span><span class="note">多品項排版 / 層級</span></div>
-          </article>
-          <article class="work">
-            <div class="img"><img src="images/dm/多商品DM02.jpg" alt="多商品 DM 02"></div>
-            <div class="tagRow"><span class="tag">DM</span><span class="note">促銷資訊 / 視覺重點</span></div>
-          </article>
-          <article class="work">
-            <div class="img"><img src="images/dm/多商品DM03.jpg" alt="多商品 DM 03"></div>
-            <div class="tagRow"><span class="tag">DM</span><span class="note">組合呈現 / 整理</span></div>
-          </article>
+    <!-- MULTI PRODUCT DM -->
+    <section class="plan" id="dm">
+      <div class="planHead">
+        <div>
+          <h2 class="planTitle"><b>多商品 DM</b> MULTI-PRODUCT</h2>
+          <p class="planDesc">多商品資訊整合（多品項、價格、主打重點），著重閱讀動線與資訊層級。</p>
         </div>
+        <div class="planTag">資訊密度 · 層級清晰</div>
+      </div>
+
+      <div class="grid3">
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/多商品DM01">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/多商品DM02">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/多商品DM03">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- 手繪 -->
-    <section class="section" id="handdraw">
-      <div class="secHead">
-        <h3 class="secTitle"><span>手繪</span> ILLUSTRATION</h3>
-        <p class="secDesc">若專案需要插畫／手繪元素，可依用途、風格與授權範圍另行報價。</p>
-      </div>
-      <div class="secBody">
-        <div class="gallery">
-          <article class="work">
-            <div class="img"><img src="images/handdraw/手繪01.png" alt="手繪 01"></div>
-            <div class="tagRow"><span class="tag">DRAW</span><span class="note">手繪示例</span></div>
-          </article>
-          <article class="work">
-            <div class="img"><img src="images/handdraw/手繪02.jpg" alt="手繪 02"></div>
-            <div class="tagRow"><span class="tag">DRAW</span><span class="note">手繪示例</span></div>
-          </article>
-          <article class="work">
-            <div class="img"><img src="images/handdraw/手繪03.png" alt="手繪 03"></div>
-            <div class="tagRow"><span class="tag">DRAW</span><span class="note">手繪示例</span></div>
-          </article>
+    <!-- HAND DRAWN -->
+    <section class="plan" id="hand">
+      <div class="planHead">
+        <div>
+          <h2 class="planTitle"><b>手繪</b> HAND-DRAWN</h2>
+          <p class="planDesc">手繪元素示範（以個人風格呈現為主）。</p>
         </div>
+        <div class="planTag">插畫元素 · 風格示範</div>
+      </div>
+
+      <div class="grid3">
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/手繪01">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/手繪02">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="workCard">
+          <div class="frame">
+            <div class="thumb" data-src-base="images/手繪03">
+              <div class="missing">Loading…</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="footerNote">
+        © Airlia / 放空 · Visual Design Samples
       </div>
     </section>
 
-    <div class="footer">© Airlia / 放空 · Visual Design Portfolio</div>
   </main>
 
   <script>
-    // Banner slider (6s)
-    (function(){
-      const stage = document.getElementById('bannerStage');
-      if(!stage) return;
-      const slides = Array.from(stage.querySelectorAll('.slide'));
-      const dotsWrap = document.getElementById('dots');
-      const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.d')) : [];
-      let i = 0;
-      let timer = null;
+    // ====== 1) 圖片副檔名自動偵測（jpg/png/jpeg/webp） ======
+    const exts = ["jpg","png","jpeg","webp"];
 
-      function show(idx){
-        i = (idx + slides.length) % slides.length;
-        slides.forEach((s, k)=> s.classList.toggle('is-on', k === i));
-        dots.forEach((d, k)=> d.classList.toggle('on', k === i));
+    function loadImageInto(el, basePath){
+      // basePath 例如：images/中階款02 （不含副檔名）
+      let done = false;
+
+      for (const ext of exts){
+        const img = new Image();
+        img.src = `${basePath}.${ext}`;
+        img.onload = () => {
+          if (done) return;
+          done = true;
+          el.innerHTML = "";
+          el.appendChild(img);
+        };
       }
 
-      function play(){
-        stop();
-        timer = setInterval(()=> show(i+1), 6000);
+      // 若全部都找不到，顯示提示
+      setTimeout(() => {
+        if (!done){
+          el.innerHTML = `<div class="missing">找不到圖片：<br>${basePath}.(jpg/png)</div>`;
+        }
+      }, 900);
+    }
+
+    // 套用到作品方塊
+    document.querySelectorAll(".thumb[data-src-base]").forEach(el => {
+      const base = el.getAttribute("data-src-base");
+      loadImageInto(el, base);
+    });
+
+    // 套用到 banner（資料夾 images/banners/）
+    document.querySelectorAll(".slide[data-banner]").forEach(slide => {
+      const name = slide.dataset.banner;
+      // 注意：banner 檔案放在 images/banners/
+      let done = false;
+
+      for (const ext of exts){
+        const img = new Image();
+        img.src = `images/banners/${name}.${ext}`;
+        img.onload = () => {
+          if (done) return;
+          done = true;
+          slide.innerHTML = "";
+          slide.appendChild(img);
+        };
       }
-      function stop(){
-        if(timer) clearInterval(timer);
-        timer = null;
-      }
+    });
 
-      dots.forEach((d, k)=>{
-        d.addEventListener('click', ()=> { show(k); play(); });
-      });
+    // ====== 2) Banner 輪播（預設 7 秒，可改 5000~10000） ======
+    const slides = Array.from(document.querySelectorAll("#bannerSlider .slide"));
+    const dots = Array.from(document.querySelectorAll("#bannerDots .dot"));
+    let idx = 0;
 
-      stage.addEventListener('mouseenter', stop);
-      stage.addEventListener('mouseleave', play);
+    function show(i){
+      slides.forEach((s, k) => s.classList.toggle("is-on", k === i));
+      dots.forEach((d, k) => d.classList.toggle("is-on", k === i));
+    }
 
-      play();
-    })();
+    setInterval(() => {
+      idx = (idx + 1) % slides.length;
+      show(idx);
+    }, 7000);
   </script>
 </body>
 </html>
