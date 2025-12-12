@@ -1,182 +1,722 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Airlia / 放空｜視覺設計示範作品集</title>
-
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: "Noto Sans TC", sans-serif;
-        background: #000;
-        color: #f0f0e6;
-        line-height: 1.7;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Airlia / 放空｜視覺設計示範作品集</title>
+  <meta name="description" content="Airlia / 放空｜視覺設計示範作品集：基礎 / 中階 / 高階方案，含做圖須知與修改政策。" />
+  <style>
+    :root{
+      --bg:#070b09;
+      --panel:#0c1411;
+      --panel2:#0a110e;
+      --border:rgba(180,150,85,.22);
+      --border2:rgba(255,255,255,.07);
+      --text:#e9eceb;
+      --muted:rgba(233,236,235,.72);
+      --gold:#b79a5a;     /* 暗金 */
+      --gold2:#d9c08a;
+      --green:#0b1b14;    /* 深墨綠 */
+      --green2:#08140f;
+      --radius:22px;
+      --radius2:16px;
+      --shadow: 0 18px 50px rgba(0,0,0,.55);
+      --max:1120px;
     }
 
-    /* 頁面容器 */
-    .container {
-        width: 92%;
-        max-width: 1400px;
-        margin: 40px auto;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(16,60,44,.25), transparent 60%),
+        radial-gradient(1000px 700px at 90% 15%, rgba(180,150,85,.14), transparent 62%),
+        radial-gradient(900px 800px at 50% 100%, rgba(16,60,44,.18), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.65;
     }
 
-    h1 {
-        font-size: 28px;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:44px 18px 80px;}
+    .top{
+      display:flex; gap:18px; align-items:center; justify-content:center;
+      flex-direction:column;
+      text-align:center;
+      margin-bottom:18px;
     }
 
-    h2 {
-        margin-top: 40px;
-        font-size: 22px;
-        padding-left: 6px;
-        border-left: 4px solid #9bbf74; /* 暗金綠 */
+    .avatar{
+      width:84px; height:84px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), rgba(255,255,255,.04));
+      border:1px solid var(--border);
+      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+      display:grid; place-items:center;
+      overflow:hidden;
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover}
+
+    .kicker{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(11,27,20,.75), rgba(7,11,9,.55));
+      color:rgba(233,236,235,.9);
+      font-size:13px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .dot{width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 3px rgba(183,154,90,.15)}
+
+    h1{
+      margin:10px 0 6px;
+      font-size: clamp(28px, 3.4vw, 40px);
+      letter-spacing:.02em;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
     }
 
-    /* 展開式區塊 */
-    details {
-        background: #0d1b14;
-        border: 1px solid #1f2b22;
-        padding: 14px 18px;
-        margin-bottom: 10px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    summary {
-        font-size: 16px;
-        font-weight: 600;
-        color: #dce7c8;
-    }
-    details p {
-        margin-top: 10px;
-        font-size: 15px;
-        color: #e6e6e6;
-        line-height: 1.7;
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      margin-top:22px;
     }
 
-    /* 卡片區塊標題 */
-    .section-title {
-        margin-top: 40px;
-        margin-bottom: 15px;
-        font-size: 20px;
-        font-weight: 700;
+    .card{
+      background: linear-gradient(180deg, rgba(12,20,17,.92), rgba(7,11,9,.72));
+      border:1px solid var(--border2);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px 18px 16px;
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size:14px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(233,236,235,.88);
+      display:flex; gap:10px; align-items:center;
+    }
+    .card h2::before{
+      content:"";
+      width:8px; height:8px; border-radius:50%;
+      background:rgba(183,154,90,.9);
+      box-shadow: 0 0 0 3px rgba(183,154,90,.14);
+      flex:0 0 auto;
     }
 
-    /* 卡片容器（正方形） */
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-gap: 25px;
-        margin-top: 20px;
+    .p{margin:0 0 10px; color:rgba(233,236,235,.78); font-size:14px}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .chip{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(183,154,90,.18);
+      background: rgba(8,20,15,.55);
+      color:rgba(233,236,235,.85);
+      font-size:12px;
     }
 
-    /* 單張圖片卡片 */
-    .card {
-        background: #0c1612;
-        border: 1px solid #1f2b22;
-        border-radius: 10px;
-        overflow: hidden;
-        padding: 15px;
-        transition: transform 0.25s ease;
+    /* Banner */
+    .banner{
+      margin-top:16px;
+      border-radius:var(--radius);
+      overflow:hidden;
+      border:1px solid var(--border2);
+      background: rgba(8,20,15,.45);
+      box-shadow: var(--shadow);
+    }
+    .bannerHead{
+      padding:14px 16px 10px;
+      display:flex; align-items:baseline; justify-content:space-between;
+      gap:10px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .bannerTitle{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.08em;
+      color:rgba(233,236,235,.9);
+    }
+    .bannerHint{margin:0; font-size:12px; color:rgba(233,236,235,.62)}
+    .bannerStage{
+      position:relative;
+      height: 320px;
+      background: linear-gradient(180deg, rgba(11,27,20,.35), rgba(0,0,0,.25));
+    }
+    .slide{
+      position:absolute; inset:0;
+      opacity:0;
+      transform: scale(1.01);
+      transition: opacity .6s ease, transform .9s ease;
+      display:grid;
+      place-items:center;
+      padding:14px;
+    }
+    .slide.is-on{
+      opacity:1;
+      transform: scale(1);
+    }
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      border-radius: 14px;
+    }
+    .dots{
+      display:flex; gap:8px; justify-content:center; align-items:center;
+      padding:10px 12px 14px;
+      background: rgba(0,0,0,.15);
+    }
+    .d{
+      width:9px; height:9px; border-radius:50%;
+      border:1px solid rgba(183,154,90,.35);
+      background: rgba(255,255,255,.08);
+      cursor:pointer;
+    }
+    .d.on{ background: rgba(183,154,90,.85); border-color: rgba(183,154,90,.85); }
+
+    /* Collapsible policies (3 columns like you want) */
+    .policies{
+      margin-top:18px;
+      display:grid;
+      gap:14px;
+    }
+    details.policy{
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.07);
+      background: linear-gradient(180deg, rgba(12,20,17,.88), rgba(7,11,9,.62));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding:16px 18px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      user-select:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    .sumL{
+      display:flex; gap:10px; align-items:center;
+      font-weight:700;
+      color:rgba(233,236,235,.92);
+      letter-spacing:.02em;
+    }
+    .chev{
+      width:30px; height:30px; border-radius:10px;
+      display:grid; place-items:center;
+      border:1px solid rgba(183,154,90,.18);
+      background: rgba(8,20,15,.55);
+      color:rgba(233,236,235,.8);
+      transition: transform .2s ease;
+      flex:0 0 auto;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+
+    .policyBody{
+      padding:0 18px 18px;
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+    .cols3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      padding-top:14px;
+    }
+    .col{
+      border:1px solid rgba(255,255,255,.06);
+      background: rgba(8,20,15,.45);
+      border-radius: 16px;
+      padding:12px 12px 10px;
+    }
+    .colTitle{
+      margin:0 0 8px;
+      color:rgba(217,192,138,.95);
+      font-weight:700;
+      font-size:13px;
+      letter-spacing:.04em;
+    }
+    ul.bullets{
+      margin:0;
+      padding-left:18px;
+      color:rgba(233,236,235,.78);
+      font-size:13px;
+    }
+    ul.bullets li{ margin:6px 0; text-align:justify; }
+
+    /* Section blocks */
+    .section{
+      margin-top:26px;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.07);
+      background: linear-gradient(180deg, rgba(12,20,17,.86), rgba(7,11,9,.58));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .secHead{
+      padding:16px 18px 14px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .secTitle{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.06em;
+      display:flex; gap:10px; align-items:center;
+    }
+    .secTitle span{
+      color:var(--gold2);
+      font-weight:800;
+      letter-spacing:.12em;
+    }
+    .secDesc{
+      margin:0;
+      color:rgba(233,236,235,.68);
+      font-size:13px;
+      max-width: 700px;
+    }
+    .secBody{ padding:16px 18px 18px; }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .work{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.07);
+      background: rgba(8,20,15,.45);
+      overflow:hidden;
+      transform: translateZ(0);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .work:hover{
+      transform: scale(1.02);
+      border-color: rgba(183,154,90,.25);
+    }
+    .work .img{
+      aspect-ratio: 1 / 1; /* 1080x1080 就完美 */
+      width:100%;
+      background: rgba(0,0,0,.25);
+    }
+    .work img{
+      width:100%;
+      height:100%;
+      object-fit: contain; /* 不裁切 */
+      display:block;
+      background: rgba(0,0,0,.12);
     }
 
-    .card:hover {
-        transform: scale(1.03);
+    .tagRow{
+      padding:10px 12px 12px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+    }
+    .tag{
+      font-size:11px;
+      letter-spacing:.14em;
+      padding:4px 9px;
+      border-radius:999px;
+      border:1px solid rgba(183,154,90,.22);
+      color:rgba(233,236,235,.86);
+      background: rgba(7,11,9,.35);
+      text-transform:uppercase;
+      flex:0 0 auto;
+    }
+    .note{
+      font-size:12px;
+      color:rgba(233,236,235,.66);
+      text-align:justify;
+      flex:1 1 auto;
     }
 
-    /* 圖片保持方形，但不裁切 */
-    .card img {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        object-fit: contain; /* 不裁切 */
-        border-radius: 6px;
-        background: #000;
+    .footer{
+      margin-top:26px;
+      color:rgba(233,236,235,.55);
+      font-size:12px;
+      text-align:center;
     }
 
-</style>
+    @media (max-width: 960px){
+      .grid2{grid-template-columns:1fr}
+      .cols3{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .bannerStage{height:260px}
+      .wrap{padding-top:30px}
+    }
+  </style>
 </head>
 
 <body>
-<div class="container">
+  <main class="wrap">
 
-    <h1>Airlia / 放空｜視覺設計示範作品集</h1>
+    <!-- Header / intro (對齊動畫頁風格) -->
+    <section class="top">
+      <div class="avatar" aria-label="Airlia avatar">
+        <!-- 你可以換成自己的頭像圖：例如 images/avatar.png -->
+        <img src="images/avatar.png" alt="Airlia avatar" onerror="this.style.display='none';" />
+      </div>
 
-    <p>此頁展示不同複雜度的社群視覺設計作品，供作參考可達成的風格層級，並作為後續估價與需求討論之參考依據。<br>
-    下方提供《製作須知》《修改規範》《文字設計說明》。所有方案皆以實際內容複雜度為準。</p>
+      <div class="kicker"><span class="dot"></span> AIRLIA / 放空 · VISUAL DESIGN</div>
+      <h1>視覺設計示範作品集</h1>
+      <p class="subtitle">依合成難度與風格層級分級：基礎 / 中階 / 高階。先看圖、再談需求與報價。</p>
+    </section>
 
-    <!-- 展開 1：製作須知 -->
-    <details>
-        <summary>《做圖須知 Required Materials》</summary>
-        <p>
-            ■ 請提供：圖片尺寸（如 1080x1080）、主視覺方向、品牌 Logo、必要商品素材、文案、參考圖示意。<br>
-            ■ 若無方向，可提供多張參考圖供比對後確認。<br>
-            ■ 需注意：<br>
-            ‧ 不接受成圖後才改尺寸（視為 Resize，加收原圖 80% 費用）。<br>
-            ‧ 若需求尚不確定，可先提供參考圖，我將附上報價單說明項目差異。
+    <!-- About + Skills (跟動畫頁的兩欄對齊) -->
+    <section class="grid2">
+      <div class="card">
+        <h2>ABOUT</h2>
+        <p class="p">
+          我是 Airlia（放空），自由接案的視覺設計與 2D 動態設計師。此頁為「商業合作用」示範作品，
+          讓客戶快速理解不同方案可達成的層級，並作為後續估價與需求確認的依據。
         </p>
-    </details>
+        <div class="chips">
+          <span class="chip">社群圖像 / Banner</span>
+          <span class="chip">商品合成 / 主視覺</span>
+          <span class="chip">資訊層級與可讀性</span>
+          <span class="chip">品牌氛圍整合</span>
+        </div>
+      </div>
 
-    <!-- 展開 2：修改規範 -->
-    <details>
-        <summary>《修改須知 Revision Policy》</summary>
-        <p>
-            ■ 每張作品含 2 次免費修改。<br>
-            ■ 修改不得超過原圖完成度之 50%（若超過視為重新製作，需再收一次該方案費用）。<br>
-            ■ 若需額外版本、不同構圖方向、重大風格變更，皆屬於另計項目。
-        </p>
-    </details>
+      <div class="card">
+        <h2>SKILLS</h2>
+        <p class="p">可依需求包含：排版、行距調整、可讀性優化、必要的描邊/陰影等基礎文字處理。</p>
+        <div class="chips">
+          <span class="chip">Photoshop</span>
+          <span class="chip">Illustrator</span>
+          <span class="chip">After Effects</span>
+          <span class="chip">Premiere</span>
+          <span class="chip">CSP</span>
+        </div>
+      </div>
+    </section>
 
-    <!-- 展開 3：文字說明 -->
-    <details>
-        <summary>《文字設計 Title Design 說明》</summary>
-        <p>
-            ■ 基礎文字包含：排版、行距調整、可讀性優化、必要之描邊／陰影。<br>
-            ■ 若需特殊字體、立體字、金屬字、火焰字、水波字等特效文字，將額外計費。<br>
-        </p>
-    </details>
+    <!-- Banner slider -->
+    <section class="banner" aria-label="Banner works">
+      <div class="bannerHead">
+        <p class="bannerTitle">BANNER 作品（自動輪播）</p>
+        <p class="bannerHint">每 6 秒切換 · 可依活動改版型與節奏</p>
+      </div>
 
-    <!-- ＝＝＝＝＝＝＝ 基礎款 ＝＝＝＝＝＝＝ -->
-    <h2 class="section-title">基礎款 BASIC</h2>
-    <div class="grid">
-        <div class="card"><img src="images/基礎款01.jpg"></div>
-        <div class="card"><img src="images/基礎款02.jpg"></div>
-        <div class="card"><img src="images/基礎款03.jpg"></div>
-    </div>
+      <div class="bannerStage" id="bannerStage">
+        <div class="slide is-on"><img src="images/banners/banner01.jpg" alt="banner 01"></div>
+        <div class="slide"><img src="images/banners/banner02.jpg" alt="banner 02"></div>
+        <div class="slide"><img src="images/banners/banner03.jpg" alt="banner 03"></div>
+        <div class="slide"><img src="images/banners/banner04.jpg" alt="banner 04"></div>
+      </div>
 
-    <!-- ＝＝＝＝＝＝＝ 中階款 ＝＝＝＝＝＝＝ -->
-    <h2 class="section-title">中階款 ENHANCED</h2>
-    <div class="grid">
-        <div class="card"><img src="images/中階款01.jpg"></div>
-        <div class="card"><img src="images/中階款02.png"></div>
-        <div class="card"><img src="images/中階款03.png"></div>
-    </div>
+      <div class="dots" id="dots" aria-label="banner dots">
+        <button class="d on" aria-label="go banner 1"></button>
+        <button class="d" aria-label="go banner 2"></button>
+        <button class="d" aria-label="go banner 3"></button>
+        <button class="d" aria-label="go banner 4"></button>
+      </div>
+    </section>
 
-    <!-- ＝＝＝＝＝＝＝ 高階款 ＝＝＝＝＝＝＝ -->
-    <h2 class="section-title">高階款 PREMIUM</h2>
-    <div class="grid">
-        <div class="card"><img src="images/高階款01.jpg"></div>
-        <div class="card"><img src="images/高階款02.jpg"></div>
-        <div class="card"><img src="images/高階款03.jpg"></div>
-    </div>
+    <!-- Policies (收起/展開；展開後三欄，圓點項目符號、左右對齊) -->
+    <section class="policies" aria-label="Policies">
+      <details class="policy">
+        <summary>
+          <div class="sumL">《做圖須知 Required Materials》</div>
+          <div class="chev">⌄</div>
+        </summary>
+        <div class="policyBody">
+          <div class="cols3">
+            <div class="col">
+              <p class="colTitle">須提供</p>
+              <ul class="bullets">
+                <li>圖片尺寸（例：1080×1080）</li>
+                <li>主視覺方向（有的話）/ 品牌 Logo</li>
+                <li>商品素材（若需置入）</li>
+              </ul>
+            </div>
+            <div class="col">
+              <p class="colTitle">內容素材</p>
+              <ul class="bullets">
+                <li>文案（標題/副標/重點文字）</li>
+                <li>參考圖示意（不確定可一併提供）</li>
+                <li>若需求尚未確定，可先給參考圖對焦</li>
+              </ul>
+            </div>
+            <div class="col">
+              <p class="colTitle">注意事項</p>
+              <ul class="bullets">
+                <li>不接受成圖後才改尺寸（視為 Resize，加收原圖 80%）</li>
+                <li>若需求尚不確定，我將附上報價單說明項目差異</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
 
-    <!-- ＝＝＝＝＝＝＝ 多商品 DM 類 ＝＝＝＝＝＝＝ -->
-    <h2 class="section-title">多商品 DM 組合 Multiple Items DM</h2>
-    <div class="grid">
-        <div class="card"><img src="images/多商品DM01.jpg"></div>
-        <div class="card"><img src="images/多商品DM02.jpg"></div>
-        <div class="card"><img src="images/多商品DM03.jpg"></div>
-    </div>
+      <details class="policy">
+        <summary>
+          <div class="sumL">《修改須知 Revision Policy》</div>
+          <div class="chev">⌄</div>
+        </summary>
+        <div class="policyBody">
+          <div class="cols3">
+            <div class="col">
+              <p class="colTitle">免費修改</p>
+              <ul class="bullets">
+                <li>每張作品含 2 次免費修改</li>
+                <li>建議集中提出修改點，以縮短來回</li>
+              </ul>
+            </div>
+            <div class="col">
+              <p class="colTitle">重做判定</p>
+              <ul class="bullets">
+                <li>修改不得超過原圖完成度 50%</li>
+                <li>若超過 50% 視為重新製作，將再收一次該方案費用</li>
+              </ul>
+            </div>
+            <div class="col">
+              <p class="colTitle">另計項目</p>
+              <ul class="bullets">
+                <li>新增額外版本</li>
+                <li>不同構圖方向（例：方圖改直式）</li>
+                <li>重大風格變更</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
 
-    <!-- ＝＝＝＝＝＝＝ 手繪類 ＝＝＝＝＝＝＝ -->
-    <h2 class="section-title">手繪款 Hand-drawn</h2>
-    <div class="grid">
-        <div class="card"><img src="images/手繪01.png"></div>
-        <div class="card"><img src="images/手繪02.png"></div>
-        <div class="card"><img src="images/手繪03.png"></div>
-    </div>
+      <details class="policy">
+        <summary>
+          <div class="sumL">《文字設計 Title Design 說明》</div>
+          <div class="chev">⌄</div>
+        </summary>
+        <div class="policyBody">
+          <div class="cols3">
+            <div class="col">
+              <p class="colTitle">基本文字包含</p>
+              <ul class="bullets">
+                <li>排版、行距調整、可讀性優化</li>
+                <li>必要的描邊 / 陰影（避免文字看不清）</li>
+              </ul>
+            </div>
+            <div class="col">
+              <p class="colTitle">可能加值</p>
+              <ul class="bullets">
+                <li>金屬字、火焰字、水波字等特殊字效</li>
+                <li>更複雜的標題視覺設計（依需求另報）</li>
+              </ul>
+            </div>
+            <div class="col">
+              <p class="colTitle">報價方式</p>
+              <ul class="bullets">
+                <li>若你不確定要哪種效果，可先給參考圖</li>
+                <li>我會附報價單說明「項目差異」與是否需加價</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
 
-</div>
+    <!-- BASIC -->
+    <section class="section" id="basic">
+      <div class="secHead">
+        <h3 class="secTitle"><span>基礎款</span> BASIC</h3>
+        <p class="secDesc">以「清楚資訊層級＋乾淨排版」為主。適合活動主視覺、品牌貼文、店家公告等（不強調重度合成）。</p>
+      </div>
+      <div class="secBody">
+        <div class="gallery">
+          <article class="work">
+            <div class="img"><img src="images/basic/基礎款01.jpg" alt="基礎款 01"></div>
+            <div class="tagRow">
+              <span class="tag">BASIC</span>
+              <span class="note">單一場景 / 清楚標題層級</span>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="img"><img src="images/basic/基礎款02.jpg" alt="基礎款 02"></div>
+            <div class="tagRow">
+              <span class="tag">BASIC</span>
+              <span class="note">活動 KV 版面 / 資訊規劃</span>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="img"><img src="images/basic/基礎款03.jpg" alt="基礎款 03"></div>
+            <div class="tagRow">
+              <span class="tag">BASIC</span>
+              <span class="note">商品主圖 / 品牌框線構成</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENHANCED -->
+    <section class="section" id="enhanced">
+      <div class="secHead">
+        <h3 class="secTitle"><span>中階款</span> ENHANCED</h3>
+        <p class="secDesc">加入氛圍背景、商品光影融合、素材整合。適合保養品、食品、機油等需要「質感＋主題」的品牌視覺。</p>
+      </div>
+      <div class="secBody">
+        <div class="gallery">
+          <article class="work">
+            <div class="img"><img src="images/enhanced/中階款01.jpg" alt="中階款 01"></div>
+            <div class="tagRow">
+              <span class="tag">ENH</span>
+              <span class="note">情境氛圍 / 光影融合</span>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="img"><img src="images/enhanced/中階款02.png" alt="中階款 02"></div>
+            <div class="tagRow">
+              <span class="tag">ENH</span>
+              <span class="note">水花主題 / 文字設計</span>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="img"><img src="images/enhanced/中階款03.png" alt="中階款 03"></div>
+            <div class="tagRow">
+              <span class="tag">ENH</span>
+              <span class="note">水感氛圍 / 商品主視覺</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIUM -->
+    <section class="section" id="premium">
+      <div class="secHead">
+        <h3 class="secTitle"><span>高階款</span> PREMIUM</h3>
+        <p class="secDesc">重度合成、多素材整合、主題式視覺。適合「節慶大檔 / 活動主視覺 / 商業海報等級」需求。</p>
+      </div>
+      <div class="secBody">
+        <div class="gallery">
+          <article class="work">
+            <div class="img"><img src="images/premium/高階款01.jpg" alt="高階款 01"></div>
+            <div class="tagRow">
+              <span class="tag">PREM</span>
+              <span class="note">主題合成 / 細節整合</span>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="img"><img src="images/premium/高階款02.jpg" alt="高階款 02"></div>
+            <div class="tagRow">
+              <span class="tag">PREM</span>
+              <span class="note">活動視覺 / 多元素構圖</span>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="img"><img src="images/premium/高階款03.jpg" alt="高階款 03"></div>
+            <div class="tagRow">
+              <span class="tag">PREM</span>
+              <span class="note">海報等級 / 風格完整</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 多商品 DM -->
+    <section class="section" id="dm">
+      <div class="secHead">
+        <h3 class="secTitle"><span>多商品</span> DM</h3>
+        <p class="secDesc">適合組合商品、活動促銷、型錄式呈現（資訊密度較高，需更嚴謹的層級規劃）。</p>
+      </div>
+      <div class="secBody">
+        <div class="gallery">
+          <article class="work">
+            <div class="img"><img src="images/dm/多商品DM01.jpg" alt="多商品 DM 01"></div>
+            <div class="tagRow"><span class="tag">DM</span><span class="note">多品項排版 / 層級</span></div>
+          </article>
+          <article class="work">
+            <div class="img"><img src="images/dm/多商品DM02.jpg" alt="多商品 DM 02"></div>
+            <div class="tagRow"><span class="tag">DM</span><span class="note">促銷資訊 / 視覺重點</span></div>
+          </article>
+          <article class="work">
+            <div class="img"><img src="images/dm/多商品DM03.jpg" alt="多商品 DM 03"></div>
+            <div class="tagRow"><span class="tag">DM</span><span class="note">組合呈現 / 整理</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 手繪 -->
+    <section class="section" id="handdraw">
+      <div class="secHead">
+        <h3 class="secTitle"><span>手繪</span> ILLUSTRATION</h3>
+        <p class="secDesc">若專案需要插畫／手繪元素，可依用途、風格與授權範圍另行報價。</p>
+      </div>
+      <div class="secBody">
+        <div class="gallery">
+          <article class="work">
+            <div class="img"><img src="images/handdraw/手繪01.png" alt="手繪 01"></div>
+            <div class="tagRow"><span class="tag">DRAW</span><span class="note">手繪示例</span></div>
+          </article>
+          <article class="work">
+            <div class="img"><img src="images/handdraw/手繪02.jpg" alt="手繪 02"></div>
+            <div class="tagRow"><span class="tag">DRAW</span><span class="note">手繪示例</span></div>
+          </article>
+          <article class="work">
+            <div class="img"><img src="images/handdraw/手繪03.png" alt="手繪 03"></div>
+            <div class="tagRow"><span class="tag">DRAW</span><span class="note">手繪示例</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© Airlia / 放空 · Visual Design Portfolio</div>
+  </main>
+
+  <script>
+    // Banner slider (6s)
+    (function(){
+      const stage = document.getElementById('bannerStage');
+      if(!stage) return;
+      const slides = Array.from(stage.querySelectorAll('.slide'));
+      const dotsWrap = document.getElementById('dots');
+      const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.d')) : [];
+      let i = 0;
+      let timer = null;
+
+      function show(idx){
+        i = (idx + slides.length) % slides.length;
+        slides.forEach((s, k)=> s.classList.toggle('is-on', k === i));
+        dots.forEach((d, k)=> d.classList.toggle('on', k === i));
+      }
+
+      function play(){
+        stop();
+        timer = setInterval(()=> show(i+1), 6000);
+      }
+      function stop(){
+        if(timer) clearInterval(timer);
+        timer = null;
+      }
+
+      dots.forEach((d, k)=>{
+        d.addEventListener('click', ()=> { show(k); play(); });
+      });
+
+      stage.addEventListener('mouseenter', stop);
+      stage.addEventListener('mouseleave', play);
+
+      play();
+    })();
+  </script>
 </body>
 </html>
