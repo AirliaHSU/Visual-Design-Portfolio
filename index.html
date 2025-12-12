@@ -10,27 +10,16 @@
     :root{
       --bg:#050706;
       --bg2:#070b09;
-      --card:#0b1410;
-      --card2:#0a120f;
-
       --ink:#dfe7e3;
       --muted:#a8b6ad;
 
-      --gold:#c9b37a;      /* 暗金 */
-      --gold2:#a48b55;     /* 更深暗金 */
-      --green:#0f221a;     /* 深墨綠 */
-      --green2:#0b1712;    /* 更深墨綠 */
-
+      --gold:#c9b37a;
       --line:rgba(201,179,122,.28);
-      --line2:rgba(201,179,122,.16);
 
       --shadow: 0 16px 42px rgba(0,0,0,.55);
       --shadow2: 0 8px 22px rgba(0,0,0,.45);
 
       --radius-xl: 28px;
-      --radius-lg: 18px;
-      --radius-md: 14px;
-
       --max: 1180px;
     }
 
@@ -48,11 +37,8 @@
         linear-gradient(180deg, var(--bg), var(--bg2));
     }
 
-    a{ color:inherit; text-decoration:none; }
-
     .wrap{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; padding: 26px 0 60px; }
 
-    /* ===== Top Hero (avatar + name + title like animation page) ===== */
     .hero{
       border-radius: var(--radius-xl);
       background:
@@ -61,7 +47,6 @@
       border: 1px solid rgba(255,255,255,.06);
       box-shadow: var(--shadow);
       padding: 34px 28px 26px;
-      position: relative;
       overflow: hidden;
     }
 
@@ -82,19 +67,9 @@
       box-shadow: 0 14px 30px rgba(0,0,0,.55);
       background: rgba(0,0,0,.25);
     }
-    .avatar img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
+    .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
 
-    .name{
-      font-size: 28px;
-      letter-spacing: .08em;
-      font-weight: 750;
-      margin:0;
-    }
+    .name{ font-size: 28px; letter-spacing: .08em; font-weight: 750; margin:0; }
 
     .headline{
       margin:0;
@@ -110,9 +85,11 @@
       color: var(--muted);
       line-height: 1.75;
       font-size: 15px;
+      text-align: justify;
+      text-justify: inter-ideograph;
     }
 
-    /* ===== Center text divider line (like your 圖1) ===== */
+    /* ===== Center line with text ===== */
     .centerLine{
       display:flex;
       align-items:center;
@@ -151,30 +128,34 @@
       padding: 18px;
     }
 
+    /* ✅ 改這裡：固定寬幅比例，避免看起來像被切 */
     .bannerStage{
       border-radius: 22px;
       overflow:hidden;
       position:relative;
-      background: linear-gradient(180deg, rgba(13,24,18,.75), rgba(6,10,8,.85));
+      background:
+        radial-gradient(900px 520px at 50% 0px, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, rgba(13,24,18,.75), rgba(6,10,8,.85));
       border: 1px solid rgba(201,179,122,.16);
+      aspect-ratio: 16 / 4.5;     /* 約 3.55：接近你 banner 寬圖比例 */
       min-height: 240px;
     }
 
+    /* ✅ 改這裡：用 contain 完整顯示，不裁切 */
     .bannerImg{
       position:absolute;
       inset:0;
       width:100%;
       height:100%;
-      object-fit: cover;
+      object-fit: contain;     /* << 以前 cover 會裁切 */
+      object-position: center;
       opacity:0;
       transform: scale(1.01);
       transition: opacity 600ms ease, transform 1000ms ease;
       filter: saturate(1.02) contrast(1.03);
+      background: rgba(0,0,0,.35); /* 補空白邊 */
     }
-    .bannerImg.is-active{
-      opacity:1;
-      transform: scale(1);
-    }
+    .bannerImg.is-active{ opacity:1; transform: scale(1); }
 
     .bannerDots{
       position:absolute;
@@ -198,7 +179,7 @@
     }
     .dot.is-active{ background: rgba(201,179,122,.85); transform: scale(1.2); }
 
-    /* ===== “線 + 文字” (for 作圖與修改說明) ===== */
+    /* ===== section title line ===== */
     .sectionTitleLine{
       margin: 28px auto 12px;
       width: min(980px, 100%);
@@ -223,7 +204,7 @@
       background: rgba(8,14,11,.55);
     }
 
-    /* ===== Policy: 3 columns left-to-right (你要的) ===== */
+    /* ===== policies 3-cols ===== */
     .policiesFrame{
       border-radius: var(--radius-xl);
       background:
@@ -233,29 +214,20 @@
       box-shadow: var(--shadow);
       padding: 18px;
     }
-
     .policiesGrid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
-
-    @media (max-width: 980px){
-      .policiesGrid{ grid-template-columns: 1fr; }
-    }
+    @media (max-width: 980px){ .policiesGrid{ grid-template-columns: 1fr; } }
 
     details.policy{
       border-radius: 18px;
       background: linear-gradient(180deg, rgba(10,18,14,.82), rgba(8,12,10,.82));
       border: 1px solid rgba(201,179,122,.14);
       overflow:hidden;
-      transition: transform .18s ease, border-color .18s ease;
+      box-shadow: 0 10px 18px rgba(0,0,0,.35);
     }
-    details.policy:hover{
-      transform: translateY(-2px);
-      border-color: rgba(201,179,122,.28);
-    }
-
     details.policy summary{
       list-style:none;
       cursor:pointer;
@@ -268,64 +240,46 @@
     }
     details.policy summary::-webkit-details-marker{ display:none; }
 
-    .sumLeft{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      min-width: 0;
-    }
+    .sumLeft{ display:flex; align-items:center; gap:10px; min-width:0; }
     .chip{
-      width: 34px; height: 34px;
-      border-radius: 12px;
-      display:grid;
-      place-items:center;
+      width: 34px; height: 34px; border-radius: 12px;
+      display:grid; place-items:center;
       background: rgba(15,34,26,.9);
       border: 1px solid rgba(201,179,122,.18);
       color: var(--gold);
       font-weight: 900;
-      box-shadow: 0 10px 18px rgba(0,0,0,.35);
-      flex: 0 0 auto;
+      flex:0 0 auto;
     }
     .sumTitle{
       font-weight: 860;
       letter-spacing: .08em;
-      color: rgba(223,231,227,.92);
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
     .caret{
-      width: 34px; height: 34px;
-      border-radius: 12px;
-      display:grid;
-      place-items:center;
+      width: 34px; height: 34px; border-radius: 12px;
+      display:grid; place-items:center;
       border: 1px solid rgba(201,179,122,.18);
       background: rgba(0,0,0,.18);
       color: rgba(201,179,122,.9);
-      flex: 0 0 auto;
       transition: transform .2s ease;
+      flex:0 0 auto;
     }
     details[open] .caret{ transform: rotate(180deg); }
 
     .policyBody{
       padding: 0 16px 16px;
-      color: rgba(223,231,227,.88);
       line-height: 1.75;
       font-size: 14px;
-    }
-
-    .bullet{
-      margin: 0;
-      padding-left: 18px;
-      list-style: disc;
-    }
-    .bullet li{ margin: 8px 0; }
-    .justify{
+      color: rgba(223,231,227,.88);
       text-align: justify;
       text-justify: inter-ideograph;
     }
+    .bullet{ margin:0; padding-left: 18px; list-style: disc; }
+    .bullet li{ margin: 8px 0; }
 
-    /* ===== Plan section big frame ===== */
+    /* ===== plan frames ===== */
     .planFrame{
       margin-top: 18px;
       border-radius: var(--radius-xl);
@@ -336,8 +290,6 @@
       box-shadow: var(--shadow);
       padding: 22px 18px 18px;
     }
-
-    /* centered “pills” title like your 圖2 */
     .planHeader{
       display:flex;
       flex-direction:column;
@@ -346,7 +298,6 @@
       margin-bottom: 14px;
       text-align:center;
     }
-
     .planTitleRow{
       display:flex;
       align-items:center;
@@ -366,36 +317,24 @@
       font-weight: 860;
       letter-spacing: .14em;
     }
-    .pill .tag{
-      color: var(--gold);
-      font-weight: 900;
-      letter-spacing: .16em;
-    }
-    .pill .sep{
-      width: 1px; height: 16px;
-      background: rgba(201,179,122,.28);
-    }
-    .pill .en{
-      opacity:.9;
-    }
-
+    .pill .tag{ color: var(--gold); font-weight: 900; letter-spacing: .16em; }
+    .pill .sep{ width: 1px; height: 16px; background: rgba(201,179,122,.28); }
     .planDesc{
       margin:0;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.8;
       max-width: 980px;
+      text-align: justify;
+      text-justify: inter-ideograph;
     }
 
-    /* cards grid */
     .grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
-    @media (max-width: 980px){
-      .grid{ grid-template-columns: 1fr; }
-    }
+    @media (max-width: 980px){ .grid{ grid-template-columns: 1fr; } }
 
     .workCard{
       border-radius: 18px;
@@ -403,7 +342,6 @@
       border: 1px solid rgba(201,179,122,.14);
       overflow:hidden;
       box-shadow: 0 10px 18px rgba(0,0,0,.35);
-      transform: translateY(0) scale(1);
       transition: transform .18s ease, border-color .18s ease;
       cursor: zoom-in;
     }
@@ -411,29 +349,13 @@
       transform: translateY(-3px) scale(1.01);
       border-color: rgba(201,179,122,.28);
     }
+    .thumb{ width:100%; aspect-ratio: 1 / 1; background: rgba(0,0,0,.35); }
+    .thumb img{ width:100%; height:100%; object-fit: contain; display:block; background: rgba(0,0,0,.35); }
 
-    /* Keep 1080x1080 without cropping */
-    .thumb{
-      width:100%;
-      aspect-ratio: 1 / 1;
-      background: rgba(0,0,0,.35);
-      display:block;
-      position:relative;
-    }
-    .thumb img{
-      width:100%;
-      height:100%;
-      object-fit: contain; /* << 不裁切 */
-      display:block;
-      background: rgba(0,0,0,.35);
-    }
-
-    /* ===== Lightbox ===== */
+    /* lightbox */
     .lightbox{
-      position:fixed;
-      inset:0;
-      display:none;
-      place-items:center;
+      position:fixed; inset:0;
+      display:none; place-items:center;
       background: rgba(0,0,0,.78);
       backdrop-filter: blur(6px);
       z-index: 9999;
@@ -449,70 +371,44 @@
       box-shadow: var(--shadow);
       position:relative;
     }
-    .lightboxInner img{
-      width:100%;
-      height:auto;
-      display:block;
-      background:#000;
-    }
+    .lightboxInner img{ width:100%; height:auto; display:block; background:#000; }
     .closeBtn{
-      position:absolute;
-      top: 12px;
-      right: 12px;
-      width: 42px;
-      height: 42px;
+      position:absolute; top: 12px; right: 12px;
+      width: 42px; height: 42px;
       border-radius: 14px;
       border: 1px solid rgba(201,179,122,.22);
       background: rgba(0,0,0,.45);
       color: rgba(223,231,227,.92);
       cursor:pointer;
-      display:grid;
-      place-items:center;
+      display:grid; place-items:center;
       font-size: 20px;
     }
-
-    /* small footer spacing */
-    .spacer{ height: 10px; }
   </style>
 </head>
 
 <body>
   <main class="wrap">
 
-    <!-- ===== HERO (avatar + name + visual design + divider line, then Banner) ===== -->
     <section class="hero">
       <div class="heroHeader">
-        <div class="avatar">
-          <img src="./airlia-avatar.png" alt="Airlia avatar">
-        </div>
-
+        <div class="avatar"><img src="./airlia-avatar.png" alt="Airlia avatar"></div>
         <p class="name">Airlia / 放空</p>
-
-        <h1 class="headline">
-          <span class="gold">VISUAL DESIGN</span> ｜ 視覺設計示範作品集
-        </h1>
-
-        <p class="subline justify">
+        <h1 class="headline"><span class="gold">VISUAL DESIGN</span> ｜ 視覺設計示範作品集</h1>
+        <p class="subline">
           本頁展示不同方案的視覺設計範例，方便快速對齊風格層級與預算範圍。上方為 Banner 作品輪播；下方提供做圖須知、修改政策與文字設計說明。
         </p>
       </div>
 
-      <!-- divider like 圖1 -->
-      <div class="centerLine" aria-hidden="true"><span>Banner</span></div>
+      <div class="centerLine" aria-hidden="true"><span>BANNER</span></div>
 
       <div class="bannerBox">
         <div class="bannerStage" id="bannerStage" aria-label="Banner 輪播">
-          <!-- images injected by JS -->
           <div class="bannerDots" id="bannerDots" aria-label="Banner dots"></div>
         </div>
       </div>
 
-      <div class="spacer"></div>
-
-      <!-- “作圖與修改說明” line+text -->
       <div class="sectionTitleLine"><b>作圖與修改說明</b></div>
 
-      <!-- 3 columns left-to-right -->
       <div class="policiesFrame">
         <div class="policiesGrid">
 
@@ -525,7 +421,7 @@
               <div class="caret">⌃</div>
             </summary>
             <div class="policyBody">
-              <ul class="bullet justify">
+              <ul class="bullet">
                 <li>圖片尺寸（例：1080×1080）。</li>
                 <li>主視覺方向（有的話）／品牌 Logo。</li>
                 <li>商品素材（若需置入）。</li>
@@ -546,7 +442,7 @@
               <div class="caret">⌃</div>
             </summary>
             <div class="policyBody">
-              <ul class="bullet justify">
+              <ul class="bullet">
                 <li>每張作品含 2 次免費修改（建議集中提出修改點，以縮短來回）。</li>
                 <li>修改不得超過原圖完成度 50%：若超過視為重新製作，將再收一次該方案費用。</li>
                 <li>新增額外版本、不同構圖方向（例：方圖改直式）、重大風格變更，皆屬另計項目。</li>
@@ -563,7 +459,7 @@
               <div class="caret">⌃</div>
             </summary>
             <div class="policyBody">
-              <ul class="bullet justify">
+              <ul class="bullet">
                 <li>基本文字包含：排版、行距調整、可讀性優化。</li>
                 <li>必要的描邊／陰影（避免文字看不清）。</li>
                 <li>若需特殊字體／立體字／金屬字／火焰字／水波字等特效文字，將額外計費。</li>
@@ -575,76 +471,50 @@
       </div>
     </section>
 
-    <!-- ===== Plans ===== -->
+    <!-- ✅ 順序：基礎 > 中階 > 高階 > DM > 手繪 -->
 
-    <!-- BASIC -->
     <section class="planFrame" id="basic">
       <div class="planHeader">
-        <div class="planTitleRow">
-          <span class="pill"><span class="tag">BASIC</span><span class="sep"></span><span class="en">基礎款</span></span>
-        </div>
-        <p class="planDesc justify">
-          以既有產品／情境照片為主，著重清楚的資訊層級與基礎編排；適合活動主視覺、品牌形象貼文、店家公告等。
-        </p>
+        <div class="planTitleRow"><span class="pill"><span class="tag">BASIC</span><span class="sep"></span><span>基礎款</span></span></div>
+        <p class="planDesc">以既有產品／情境照片為主，著重清楚的資訊層級與基礎編排；適合活動主視覺、品牌形象貼文、店家公告等。</p>
       </div>
       <div class="grid" id="grid-basic"></div>
     </section>
 
-    <!-- ENHANCED -->
     <section class="planFrame" id="enhanced">
       <div class="planHeader">
-        <div class="planTitleRow">
-          <span class="pill"><span class="tag">ENHANCED</span><span class="sep"></span><span class="en">中階款</span></span>
-        </div>
-        <p class="planDesc justify">
-          會針對商品特性設計整體氛圍（如水感、能量感、發光效果），並處理商品與背景的光影融合；適合保養品、食品、機油等需要「質感＋主題」的視覺。
-        </p>
+        <div class="planTitleRow"><span class="pill"><span class="tag">ENHANCED</span><span class="sep"></span><span>中階款</span></span></div>
+        <p class="planDesc">會針對商品特性設計整體氛圍並處理光影融合；適合需要「質感＋主題」的視覺。</p>
       </div>
       <div class="grid" id="grid-enhanced"></div>
     </section>
 
-    <!-- MULTI-PRODUCT DM -->
-    <section class="planFrame" id="multi">
-      <div class="planHeader">
-        <div class="planTitleRow">
-          <span class="pill"><span class="tag">MULTI</span><span class="sep"></span><span class="en">多商品 DM</span></span>
-        </div>
-        <p class="planDesc justify">
-          同畫面多品項整合，重點是資訊分層與閱讀動線（版面更接近海報／DM 類型）；適合組合促銷、規格比較、活動檔期等。
-        </p>
-      </div>
-      <div class="grid" id="grid-multi"></div>
-    </section>
-
-    <!-- HAND DRAWN -->
-    <section class="planFrame" id="handdrawn">
-      <div class="planHeader">
-        <div class="planTitleRow">
-          <span class="pill"><span class="tag">HANDDRAWN</span><span class="sep"></span><span class="en">手繪</span></span>
-        </div>
-        <p class="planDesc justify">
-          手繪插圖向的視覺示例（依需求可搭配文字編排）。若為商業用途或需風格指定，會於報價單中明確拆分項目與工時。
-        </p>
-      </div>
-      <div class="grid" id="grid-hand"></div>
-    </section>
-
-    <!-- PREMIUM -->
     <section class="planFrame" id="premium">
       <div class="planHeader">
-        <div class="planTitleRow">
-          <span class="pill"><span class="tag">PREMIUM</span><span class="sep"></span><span class="en">高階款</span></span>
-        </div>
-        <p class="planDesc justify">
-          重度合成、多素材整合、主題式視覺，會處理更完整的光影、材質、氛圍與視覺焦點；適合品牌主 KV、檔期主圖、重點宣傳視覺。
-        </p>
+        <div class="planTitleRow"><span class="pill"><span class="tag">PREMIUM</span><span class="sep"></span><span>高階款</span></span></div>
+        <p class="planDesc">重度合成、多素材整合、主題式視覺，處理更完整的光影、材質與視覺焦點；適合品牌主 KV、檔期主圖等。</p>
       </div>
       <div class="grid" id="grid-premium"></div>
     </section>
 
+    <section class="planFrame" id="multi">
+      <div class="planHeader">
+        <div class="planTitleRow"><span class="pill"><span class="tag">MULTI</span><span class="sep"></span><span>多商品 DM</span></span></div>
+        <p class="planDesc">同畫面多品項整合，重點是資訊分層與閱讀動線；適合組合促銷、規格比較、活動檔期等。</p>
+      </div>
+      <div class="grid" id="grid-multi"></div>
+    </section>
+
+    <section class="planFrame" id="handdrawn">
+      <div class="planHeader">
+        <div class="planTitleRow"><span class="pill"><span class="tag">HANDDRAWN</span><span class="sep"></span><span>手繪</span></span></div>
+        <p class="planDesc">手繪插圖向的視覺示例；若為商業用途或需風格指定，會於報價單中明確拆分項目與工時。</p>
+      </div>
+      <div class="grid" id="grid-hand"></div>
+    </section>
+
   </main>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightboxInner">
       <button class="closeBtn" id="closeBtn" aria-label="Close">✕</button>
@@ -653,54 +523,26 @@
   </div>
 
   <script>
-    /**
-     * ✅ 檔案路徑規則（你目前的結構）：
-     * - avatar: ./airlia-avatar.png（外層）
-     * - images: ./images/xxx.jpg / png
-     *
-     * 你說「後來改英文檔名」→ 如果檔名不同，改這裡就好。
-     */
     const ASSET = {
       avatar: "./airlia-avatar.png",
       banner: [
-        "./images/banner-01.jpg",
-        "./images/banner-02.png",
-        "./images/banner-03.png",
-        "./images/banner-04.jpg",
+        "./images/banner01.jpg",
+        "./images/banner02.png",
+        "./images/banner03.png",
+        "./images/banner04.jpg",
       ],
     };
 
-    // 作品清單（把檔名對上你現在的英文檔名即可）
-    // 下面先提供「三張一組」的預設
+    // ✅ 你已經改好英文檔名：把這裡換成你實際檔名即可
     const PORTFOLIO = {
-      basic: [
-        "./images/basic01.jpg",
-        "./images/basic02.jpg",
-        "./images/basic03.jpg",
-      ],
-      enhanced: [
-        "./images/enhanced-01.jpg",
-        "./images/enhanced-02.png",
-        "./images/enhanced-03.png",
-      ],
-      multi: [
-        "./images/dm-01.jpg",
-        "./images/dm-02.jpg",
-        "./images/dm-03.jpg",
-      ],
-      hand: [
-        "./images/sketch-01.png",
-        "./images/sketch-02.jpg",
-        "./images/sketch-03.png",
-      ],
-      premium: [
-        "./images/premium-01.jpg",
-        "./images/premium-02.jpg",
-        "./images/premium-03.jpg",
-      ],
+      basic: ["./images/basic01.jpg","./images/basic02.jpg","./images/basic03.jpg"],
+      enhanced: ["./images/enhanced01.jpg","./images/enhanced02.png","./images/enhanced03.png"],
+      premium: ["./images/premium01.jpg","./images/premium02.jpg","./images/premium03.jpg"],
+      multi: ["./images/multi01.jpg","./images/multi02.jpg","./images/multi03.jpg"],
+      hand: ["./images/hand01.png","./images/hand02.jpg","./images/hand03.png"],
     };
 
-    // ===== Banner rotation =====
+    // Banner
     const stage = document.getElementById("bannerStage");
     const dotsWrap = document.getElementById("bannerDots");
     let bannerIndex = 0;
@@ -749,14 +591,14 @@
       bannerTimer = setInterval(() => {
         const next = (bannerIndex + 1) % ASSET.banner.length;
         setBanner(next);
-      }, 6000); // 5~10 秒，你要更慢就改這裡
+      }, 6000);
     }
     function stopBanner(){
       if(bannerTimer) clearInterval(bannerTimer);
       bannerTimer = null;
     }
 
-    // ===== Works grid + lightbox =====
+    // Lightbox
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightboxImg");
     const closeBtn = document.getElementById("closeBtn");
@@ -772,18 +614,14 @@
       lightboxImg.src = "";
     }
     closeBtn.addEventListener("click", closeLightbox);
-    lightbox.addEventListener("click", (e) => {
-      if(e.target === lightbox) closeLightbox();
-    });
-    window.addEventListener("keydown", (e) => {
-      if(e.key === "Escape") closeLightbox();
-    });
+    lightbox.addEventListener("click", (e) => { if(e.target === lightbox) closeLightbox(); });
+    window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeLightbox(); });
 
     function mountGrid(targetId, items){
       const el = document.getElementById(targetId);
       if(!el) return;
-
       el.innerHTML = "";
+
       items.forEach((src) => {
         const card = document.createElement("div");
         card.className = "workCard";
@@ -795,22 +633,16 @@
         const img = document.createElement("img");
         img.src = src;
         img.alt = "work";
-
-        // 若檔名/路徑錯，至少不要整格黑掉：顯示破圖但維持框
-        img.addEventListener("error", () => {
-          img.style.opacity = "0.35";
-        });
+        img.addEventListener("error", () => { img.style.opacity = "0.35"; });
 
         thumb.appendChild(img);
         card.appendChild(thumb);
-
         card.addEventListener("click", () => openLightbox(src));
         el.appendChild(card);
       });
     }
 
-    // ===== Init =====
-    // Avatar
+    // init
     document.querySelector(".avatar img").src = ASSET.avatar;
 
     mountBanner();
@@ -818,9 +650,9 @@
 
     mountGrid("grid-basic", PORTFOLIO.basic);
     mountGrid("grid-enhanced", PORTFOLIO.enhanced);
+    mountGrid("grid-premium", PORTFOLIO.premium);
     mountGrid("grid-multi", PORTFOLIO.multi);
     mountGrid("grid-hand", PORTFOLIO.hand);
-    mountGrid("grid-premium", PORTFOLIO.premium);
   </script>
 </body>
 </html>
