@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Airlia / 放空｜視覺設計示範作品集</title>
+<title>Airlia / 放空｜視覺設計作品集</title>
 
 <style>
 :root{
@@ -11,7 +11,7 @@
   --panel:#0c1411;
   --green:#1c2f28;
   --gold:#c8b273;
-  --text:#eaeaea;
+  --text:#f0f0f0;
   --muted:#9aa3a0;
   --radius:20px;
 }
@@ -19,7 +19,8 @@
 *{box-sizing:border-box}
 body{
   margin:0;
-  background:radial-gradient(circle at top, #0b1411, #020403 70%);
+  background:
+    radial-gradient(circle at top, #0b1411, #020403 70%);
   color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC",sans-serif;
 }
@@ -27,48 +28,76 @@ body{
 .container{
   max-width:1200px;
   margin:auto;
-  padding:60px 20px 100px;
+  padding:60px 20px 120px;
 }
 
-/* ===== 個人識別區 ===== */
+/* ===== HERO ===== */
 .hero{
   text-align:center;
-  margin-bottom:50px;
 }
 .hero img{
-  width:110px;
-  height:110px;
+  width:120px;
+  height:120px;
   border-radius:50%;
   border:2px solid var(--gold);
   margin-bottom:20px;
 }
 .hero h1{
   margin:0;
-  font-size:28px;
+  font-size:30px;
+  letter-spacing:.5px;
 }
 .hero h2{
-  margin:12px 0 0;
+  margin:10px 0 0;
   font-weight:600;
   color:var(--gold);
 }
 .hero p{
   margin-top:14px;
   color:var(--muted);
+  max-width:520px;
+  margin-inline:auto;
+  line-height:1.6;
 }
 
-/* 分隔線 */
-.divider{
+/* ===== Divider with text ===== */
+.divider-with-text{
+  position:relative;
   margin:60px 0 40px;
+  text-align:center;
+}
+.divider-with-text::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:0;
+  right:0;
   height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+  opacity:.6;
+}
+.divider-with-text span{
+  position:relative;
+  padding:6px 18px;
+  background:var(--bg);
+  color:var(--gold);
+  font-size:14px;
+  letter-spacing:1px;
+  border-radius:999px;
+  border:1px solid rgba(200,178,115,.35);
 }
 
-/* ===== Banner 輪播 ===== */
+/* ===== Banner ===== */
 .banner{
   position:relative;
   background:linear-gradient(135deg,#0b1512,#020403);
   border-radius:var(--radius);
-  padding:20px;
+  padding:22px;
 }
 .banner img{
   width:100%;
@@ -76,8 +105,8 @@ body{
 }
 .banner-dots{
   position:absolute;
-  right:20px;
-  bottom:16px;
+  right:26px;
+  bottom:20px;
 }
 .banner-dots span{
   display:inline-block;
@@ -90,12 +119,12 @@ body{
 }
 .banner-dots span.active{opacity:1}
 
-/* ===== 折疊區 ===== */
+/* ===== Rules (3 columns) ===== */
 details{
-  margin-top:60px;
+  margin-top:70px;
   background:linear-gradient(180deg,#0c1512,#060a08);
   border-radius:var(--radius);
-  padding:24px 26px 30px;
+  padding:26px 28px 34px;
 }
 summary{
   cursor:pointer;
@@ -105,7 +134,6 @@ summary{
 }
 summary::-webkit-details-marker{display:none}
 
-/* 三欄 */
 .rules{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -118,21 +146,69 @@ summary::-webkit-details-marker{display:none}
   padding:22px;
 }
 .rule-box h3{
-  margin-top:0;
+  margin:0 0 12px;
   color:var(--gold);
   font-size:16px;
 }
 .rule-box ul{
   padding-left:18px;
+  margin:0;
 }
 .rule-box li{
   margin:8px 0;
-  line-height:1.5;
+  line-height:1.55;
+  color:#d8d8d8;
 }
 
-/* RWD */
 @media(max-width:900px){
   .rules{grid-template-columns:1fr}
+}
+
+/* ===== Sections ===== */
+.section{
+  margin-top:90px;
+}
+.section h2{
+  color:var(--gold);
+  font-size:22px;
+  margin-bottom:10px;
+}
+.section p{
+  color:var(--muted);
+  margin-bottom:26px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+}
+
+.card{
+  background:#000;
+  border-radius:18px;
+  padding:14px;
+  transition:.25s;
+}
+.card:hover{
+  transform:scale(1.02);
+}
+.card img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+/* Footer */
+footer{
+  margin-top:120px;
+  text-align:center;
+  color:#777;
+  font-size:13px;
 }
 </style>
 </head>
@@ -140,71 +216,128 @@ summary::-webkit-details-marker{display:none}
 <body>
 <div class="container">
 
-  <!-- 個人識別 -->
+  <!-- HERO -->
   <section class="hero">
-    <img src="images/first.png" alt="Airlia">
+    <img src="airlia-avatar.png" alt="Airlia">
     <h1>Airlia / 放空</h1>
     <h2>視覺設計 Visual Design</h2>
-    <p>以清楚層級與視覺整合，協助品牌快速對齊風格與製作範圍。</p>
+    <p>以清楚層級與視覺整合，協助品牌快速對齊製作範圍與視覺品質。</p>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider-with-text">
+    <span>Banner</span>
+  </div>
 
   <!-- Banner -->
   <section class="banner">
-    <img id="bannerImg" src="images/banner01.jpg" alt="Banner">
+    <img id="bannerImg" src="images/banner-01.jpg" alt="Banner">
     <div class="banner-dots">
       <span class="active"></span><span></span><span></span><span></span>
     </div>
   </section>
 
-  <!-- 規則 -->
+  <!-- Rules -->
   <details open>
     <summary>▾ 作圖與修改說明</summary>
 
     <div class="rules">
-
       <div class="rule-box">
-        <h3>作圖須知 Required Materials</h3>
+        <h3>作圖須知</h3>
         <ul>
           <li>圖片尺寸（例：1080×1080）</li>
-          <li>主視覺方向／品牌 Logo</li>
-          <li>商品素材（若需置入）</li>
-          <li>文案與參考圖（不確定可先提供）</li>
+          <li>主視覺方向／Logo</li>
+          <li>商品素材與文案</li>
+          <li>可附參考圖對齊風格</li>
         </ul>
       </div>
 
       <div class="rule-box">
-        <h3>修改須知 Revision Policy</h3>
+        <h3>修改須知</h3>
         <ul>
-          <li>每張作品含 2 次免費修改</li>
-          <li>修改不得超過完成度 50%</li>
-          <li>超過視為重新製作，另計費</li>
-          <li>成圖後改尺寸視為 Resize（加收 80%）</li>
+          <li>每張含 2 次免費修改</li>
+          <li>修改不得超過 50%</li>
+          <li>超過視為重新製作</li>
+          <li>成圖後改尺寸加收 80%</li>
         </ul>
       </div>
 
       <div class="rule-box">
-        <h3>文字設計 Title Design</h3>
+        <h3>文字設計</h3>
         <ul>
-          <li>基本包含排版、行距、可讀性優化</li>
-          <li>必要描邊／陰影避免閱讀不清</li>
-          <li>金屬字、水波字等特殊效果另報</li>
-          <li>不確定可附參考圖，報價單標示差異</li>
+          <li>基本排版與可讀性優化</li>
+          <li>必要描邊／陰影</li>
+          <li>特殊字效另行報價</li>
+          <li>報價單標示差異</li>
         </ul>
       </div>
-
     </div>
   </details>
+
+  <!-- BASIC -->
+  <section class="section">
+    <h2>基礎款 BASIC</h2>
+    <p>單一場景・版面編排為主</p>
+    <div class="grid">
+      <div class="card"><img src="images/basic-01.jpg"></div>
+      <div class="card"><img src="images/basic-02.jpg"></div>
+      <div class="card"><img src="images/basic-03.jpg"></div>
+    </div>
+  </section>
+
+  <!-- ENHANCED -->
+  <section class="section">
+    <h2>中階款 ENHANCED</h2>
+    <p>氛圍整合・素材融合</p>
+    <div class="grid">
+      <div class="card"><img src="images/enhanced-01.png"></div>
+      <div class="card"><img src="images/enhanced-02.png"></div>
+      <div class="card"><img src="images/enhanced-03.png"></div>
+    </div>
+  </section>
+
+  <!-- PREMIUM -->
+  <section class="section">
+    <h2>高階款 PREMIUM</h2>
+    <p>重度合成・主視覺設計</p>
+    <div class="grid">
+      <div class="card"><img src="images/premium-01.jpg"></div>
+      <div class="card"><img src="images/premium-02.jpg"></div>
+      <div class="card"><img src="images/premium-03.jpg"></div>
+    </div>
+  </section>
+
+  <!-- DM -->
+  <section class="section">
+    <h2>多商品 DM</h2>
+    <div class="grid">
+      <div class="card"><img src="images/dm-01.jpg"></div>
+      <div class="card"><img src="images/dm-02.jpg"></div>
+      <div class="card"><img src="images/dm-03.jpg"></div>
+    </div>
+  </section>
+
+  <!-- Sketch -->
+  <section class="section">
+    <h2>手繪</h2>
+    <div class="grid">
+      <div class="card"><img src="images/sketch-01.png"></div>
+      <div class="card"><img src="images/sketch-02.jpg"></div>
+      <div class="card"><img src="images/sketch-03.png"></div>
+    </div>
+  </section>
+
+  <footer>
+    © Airlia / 放空 · Visual Design Portfolio
+  </footer>
 
 </div>
 
 <script>
 const banners=[
-  "images/banner01.jpg",
-  "images/banner02.png",
-  "images/banner03.png",
-  "images/banner04.jpg"
+  "images/banner-01.jpg",
+  "images/banner-02.png",
+  "images/banner-03.png",
+  "images/banner-04.jpg"
 ];
 let i=0;
 const img=document.getElementById("bannerImg");
