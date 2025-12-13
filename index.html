@@ -1,209 +1,405 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Airlia / 放空｜視覺設計作品集</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Airlia / 放空｜視覺設計作品集</title>
 
-<style>
-:root{
-  --bg:#070a09;
-  --text:rgba(255,255,255,.92);
-  --muted:rgba(255,255,255,.65);
-  --gold:#c9a35a;
-  --shadow: 0 18px 60px rgba(0,0,0,.55);
-}
+  <style>
+    :root{
+      --bg:#070a09;
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --gold:#c9a35a;
+      --line:rgba(201,163,90,.35);
 
-*{ box-sizing:border-box; }
+      --card:#2f3526; /* 你示意圖那種軍綠卡色 */
+      --cardBorder:rgba(255,255,255,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
 
-body{
-  margin:0;
-  font-family: system-ui, -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(1200px 500px at 50% 0%, rgba(201,163,90,.12), transparent 60%),
-    linear-gradient(#040606, var(--bg));
-}
+      --radius:18px;
+      --wrap: 980px;
+    }
 
-.wrap{
-  width:min(1200px, calc(100% - 40px));
-  margin:48px auto 80px;
-}
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 520px at 50% 0%, rgba(201,163,90,.14), transparent 60%),
+        radial-gradient(900px 520px at 50% 18%, rgba(0,120,70,.12), transparent 60%),
+        linear-gradient(#040606, var(--bg));
+    }
 
-/* ===== Header ===== */
-.hero{
-  text-align:center;
-  margin-bottom:40px;
-}
-.hero h1{
-  margin:0;
-  font-size:28px;
-  letter-spacing:.5px;
-}
-.hero p{
-  margin-top:10px;
-  color:var(--muted);
-  line-height:1.7;
-}
+    .wrap{
+      width: min(var(--wrap), calc(100% - 40px));
+      margin: 36px auto 80px;
+    }
 
-/* ===== 外框 ===== */
-.bigFrame{
-  padding:28px;
-  border-radius:26px;
-  border:1px solid rgba(255,255,255,.10);
-  background:
-    radial-gradient(1200px 450px at 50% 0%, rgba(201,163,90,.10), transparent 65%),
-    linear-gradient(180deg, rgba(10,18,14,.95), rgba(7,10,9,.85));
-  box-shadow: var(--shadow);
-}
+    /* ===== Header ===== */
+    .hero{
+      text-align:center;
+      padding: 14px 10px 18px;
+    }
+    .avatar{
+      width: 100px; height: 100px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,.90);
+      background: #222;
+      box-shadow: 0 12px 40px rgba(0,0,0,.55);
+      display:block;
+      margin: 0 auto 12px;
+    }
+    .heroTitle{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-weight: 900;
+    }
+    .heroTitle b{
+      color: var(--gold);
+    }
+    .heroSub{
+      margin: 10px auto 0;
+      max-width: 760px;
+      color: rgba(255,255,255,.80);
+      line-height: 1.85;
+      font-size: 14px;
+    }
 
-/* ===== 三塊卡片 ===== */
-.infoSection{
-  display:flex;
-  flex-direction:column;
-  gap:28px;
-  margin-top:20px;
-}
+    /* ===== Divider: line - text - line ===== */
+    .divider{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      justify-content:center;
+      margin: 22px 0 12px;
+      letter-spacing: 2px;
+      font-weight: 900;
+      color: rgba(255,255,255,.88);
+    }
+    .divider::before,
+    .divider::after{
+      content:"";
+      flex:1;
+      height:1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      opacity: 1;
+    }
+    .divider span{
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,163,90,.25);
+      background: rgba(0,0,0,.10);
+      white-space: nowrap;
+    }
 
-.infoBlock{
-  position:relative;
-  padding:34px 24px 24px;
-  border-radius:22px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.22);
-  backdrop-filter: blur(6px);
-  box-shadow:
-    0 14px 46px rgba(0,0,0,.45),
-    inset 0 0 0 1px rgba(255,255,255,.04);
-}
+    /* ===== Card base ===== */
+    .card{
+      background: rgba(47,53,38,.92);
+      border: 1px solid var(--cardBorder);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+    }
 
-/* badge */
-.infoBadge{
-  position:absolute;
-  top:0;
-  left:50%;
-  transform:translate(-50%, -50%);
-  padding:8px 18px;
-  border-radius:999px;
-  border:1px solid rgba(201,163,90,.25);
-  background:rgba(8,14,11,.7);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
-  font-weight:900;
-  letter-spacing:2px;
-  white-space:nowrap;
-}
+    /* ===== Banner ===== */
+    .bannerCard{
+      border-radius: 18px;
+      overflow:hidden;
+      height: 220px;
+      position: relative;
+    }
+    .bannerStage{
+      position:absolute;
+      inset:0;
+      background: rgba(47,53,38,.92);
+    }
+    .bannerImg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      opacity:0;
+      transform: scale(1.02);
+      transition: opacity .55s ease, transform 1.8s ease;
+    }
+    .bannerImg.isActive{
+      opacity:1;
+      transform: scale(1);
+    }
+    /* banner placeholder text (你可刪) */
+    .bannerHint{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      color: rgba(0,0,0,.55);
+      font-weight: 900;
+      letter-spacing: 1px;
+      font-size: 18px;
+      pointer-events:none;
+      mix-blend-mode: multiply;
+    }
 
-/* ===== details / summary（不再是卡片） ===== */
-.infoBlock details{
-  background:transparent;
-  border:0;
-}
+    /* dots */
+    .dotsOuter{
+      display:flex;
+      justify-content:center;
+      margin-top: 10px;
+    }
+    .dots{
+      display:flex;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,163,90,.18);
+      background: rgba(0,0,0,.10);
+    }
+    .dot{
+      width:7px; height:7px;
+      border-radius: 99px;
+      border: 1px solid rgba(201,163,90,.55);
+      background: rgba(201,163,90,.18);
+      cursor:pointer;
+      padding:0;
+    }
+    .dot.isActive{
+      background: rgba(201,163,90,.95);
+    }
 
-.infoBlock summary{
-  cursor:pointer;
-  padding:10px 0 12px;
-  font-weight:900;
-  letter-spacing:1px;
-  list-style:none;
-}
-.infoBlock summary::-webkit-details-marker{ display:none; }
+    /* ===== Policy 3 cards ===== */
+    .policyGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .policyCard{
+      padding: 14px 14px 12px;
+      min-height: 150px;
+    }
+    .policyTitle{
+      margin: 0 0 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      font-size: 14px;
+      color: rgba(255,255,255,.92);
+      text-align:center;
+    }
+    .policyList{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,.85);
+      line-height: 1.8;
+      font-size: 13px;
+    }
 
-/* 內容區 */
-.detailsBody{
-  padding:14px 0 0;
-  line-height:1.75;
-  color:rgba(255,255,255,.82);
-  border-top:1px solid rgba(255,255,255,.08);
-}
+    /* ===== Plan sections ===== */
+    .planSection{ margin-top: 8px; }
 
-/* 純內容卡（不畫框） */
-.card{
-  margin-top:10px;
-  padding:0;
-}
+    .imgGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .imgCard{
+      border-radius: 18px;
+      overflow:hidden;
+      height: 170px;
+      display:grid;
+      place-items:center;
+      background: rgba(47,53,38,.92);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .imgCard img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .imgPlaceholder{
+      color: rgba(255,255,255,.75);
+      font-weight: 900;
+      letter-spacing: 2px;
+      font-size: 26px;
+    }
 
-.card h4{
-  margin:0 0 8px;
-  font-size:14px;
-}
-.card ul{
-  margin:0;
-  padding-left:18px;
-}
-.card li{
-  margin:6px 0;
-  color:rgba(255,255,255,.8);
-}
-</style>
+    /* ===== Responsive ===== */
+    @media (max-width: 860px){
+      .policyGrid{ grid-template-columns: 1fr; }
+      .imgGrid{ grid-template-columns: 1fr; }
+      .bannerCard{ height: 200px; }
+    }
+  </style>
 </head>
 
 <body>
-<main class="wrap">
+  <main class="wrap">
 
-  <section class="hero">
-    <h1>Airlia / 放空｜VISUAL DESIGN</h1>
-    <p>社群視覺 × 合成編排・資訊清楚、畫面穩定、降低溝通成本</p>
-  </section>
+    <!-- Header -->
+    <section class="hero">
+      <img class="avatar" src="airlia-avatar.png" alt="Airlia Avatar" />
+      <h1 class="heroTitle">Airlia / 放空｜<b>VISUAL DESIGN</b></h1>
+      <p class="heroSub">
+        我擅長把資訊與畫面重點整理成清楚、好讀、符合品牌氣質的視覺版面；<br>
+        從主視覺、產品合成到多素材編排，都以「快速對齊需求、降低溝通成本」為目標。
+      </p>
+    </section>
 
-  <section class="bigFrame">
+    <!-- Banner -->
+    <div class="divider"><span>Banner</span></div>
+    <section class="card bannerCard" aria-label="Banner">
+      <div class="bannerStage" id="bannerStage"></div>
+      <div class="bannerHint" id="bannerHint">放banner圖片/共四張，10秒換一次</div>
+    </section>
 
-    <section class="infoSection">
+    <div class="dotsOuter">
+      <div class="dots" id="bannerDots" aria-label="Banner dots"></div>
+    </div>
 
-      <!-- 做圖須知 -->
-      <div class="infoBlock">
-        <div class="infoBadge">做圖須知 Required Materials</div>
-        <details open>
-          <summary>〈 做圖須知 〉</summary>
-          <div class="detailsBody">
-            <div class="card">
-              <h4>請於製作前提供</h4>
-              <ul>
-                <li>圖片尺寸（1080×1080 / 1080×1350 / Banner）</li>
-                <li>主視覺方向／品牌 Logo</li>
-                <li>文案（標題／重點文字）</li>
-                <li>商品或情境素材</li>
-                <li>參考圖（如有）</li>
-              </ul>
-            </div>
-          </div>
-        </details>
+    <!-- Policy -->
+    <div class="divider"><span>作圖修改須知</span></div>
+    <section class="policyGrid" aria-label="Policies">
+      <div class="card policyCard">
+        <div class="policyTitle">〈 做圖須知 〉</div>
+        <ul class="policyList">
+          <li>請於製作前提供</li>
+          <li>圖片尺寸（例：1080×1080 / 1080×1350 / Banner）</li>
+          <li>主視覺方向 / 品牌 Logo</li>
+          <li>文案（標題 / 重點文字）</li>
+          <li>商品或情境素材</li>
+          <li>參考圖（如有）</li>
+        </ul>
       </div>
 
-      <!-- 修改須知 -->
-      <div class="infoBlock">
-        <div class="infoBadge">修改須知 Revision Policy</div>
-        <details>
-          <summary>〈 修改須知 〉</summary>
-          <div class="detailsBody">
-            <div class="card">
-              <ul>
-                <li>每張含 2 次免費修改</li>
-                <li>修改超過 50% 視為重製</li>
-              </ul>
-            </div>
-          </div>
-        </details>
+      <div class="card policyCard">
+        <div class="policyTitle">〈 修改須知 〉</div>
+        <ul class="policyList">
+          <li>每張作品含 2 次免費修改（建議集中提出修改點）</li>
+          <li>修改不得超過原圖完成度 50%</li>
+          <li>若超過 50% 視為重新製作，將再收一次該方案費用</li>
+        </ul>
       </div>
 
-      <!-- 加值方案 -->
-      <div class="infoBlock">
-        <div class="infoBadge">加值方案 Add-ons</div>
-        <details>
-          <summary>〈 加值方案 〉</summary>
-          <div class="detailsBody">
-            <div class="card">
-              <ul>
-                <li>特殊字效／主視覺級標題另報</li>
-                <li>進階合成與氛圍處理另評估</li>
-              </ul>
-            </div>
-          </div>
-        </details>
+      <div class="card policyCard">
+        <div class="policyTitle">〈 加值方案 〉</div>
+        <div style="color:rgba(255,255,255,.85); font-size:13px; line-height:1.85;">
+          可讀性基礎已包含：<br>
+          字級層級 / 行距調整 / 必要陰影 / 描邊 / 底色<br><br>
+          如需主視覺等級標題設計、特殊字效：依需求另報
+        </div>
+      </div>
+    </section>
+
+    <!-- Plans A~E -->
+    <section class="planSection" aria-label="Plans">
+
+      <div class="divider"><span>A 方案</span></div>
+      <div class="imgGrid">
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+      </div>
+
+      <div class="divider"><span>B 方案</span></div>
+      <div class="imgGrid">
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+      </div>
+
+      <div class="divider"><span>C 方案</span></div>
+      <div class="imgGrid">
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+      </div>
+
+      <div class="divider"><span>D 方案（DM）</span></div>
+      <div class="imgGrid">
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+      </div>
+
+      <div class="divider"><span>E 方案（手繪）</span></div>
+      <div class="imgGrid">
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
       </div>
 
     </section>
-  </section>
 
-</main>
+  </main>
+
+  <script>
+    // ✅ Banner 圖片：改成你 images/ 的實際檔名
+    const bannerImages = [
+      "images/banner01.jpg",
+      "images/banner02.jpg",
+      "images/banner03.jpg",
+      "images/banner04.jpg",
+    ];
+
+    const stage = document.getElementById("bannerStage");
+    const dotsWrap = document.getElementById("bannerDots");
+    const hint = document.getElementById("bannerHint");
+
+    let index = 0;
+    let timer = null;
+    const intervalMs = 10000; // 10 秒
+
+    function render(){
+      stage.innerHTML = "";
+      dotsWrap.innerHTML = "";
+
+      bannerImages.forEach((src, i) => {
+        const img = document.createElement("img");
+        img.className = "bannerImg" + (i === index ? " isActive" : "");
+        img.src = src;
+        img.alt = "banner-" + (i + 1);
+        stage.appendChild(img);
+
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "dot" + (i === index ? " isActive" : "");
+        dot.addEventListener("click", () => {
+          index = i;
+          update();
+          restart();
+        });
+        dotsWrap.appendChild(dot);
+      });
+
+      // 有圖就把提示字藏起來
+      hint.style.display = bannerImages.length ? "none" : "grid";
+    }
+
+    function update(){
+      const imgs = stage.querySelectorAll(".bannerImg");
+      const dots = dotsWrap.querySelectorAll(".dot");
+      imgs.forEach((el, i) => el.classList.toggle("isActive", i === index));
+      dots.forEach((el, i) => el.classList.toggle("isActive", i === index));
+    }
+
+    function next(){
+      index = (index + 1) % bannerImages.length;
+      update();
+    }
+
+    function restart(){
+      if(timer) clearInterval(timer);
+      timer = setInterval(next, intervalMs);
+    }
+
+    // init
+    render();
+    restart();
+  </script>
 </body>
 </html>
