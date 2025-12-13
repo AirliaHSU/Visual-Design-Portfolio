@@ -9,16 +9,22 @@
     :root{
       --bg:#070a09;
       --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.70);
+      --muted:rgba(255,255,255,.72);
       --gold:#c9a35a;
-      --line:rgba(201,163,90,.35);
 
-      --card:#2f3526; /* 你示意圖那種軍綠卡色 */
+      /* 你示意圖那種偏軍綠卡色 */
+      --card:#2f3526;
       --cardBorder:rgba(255,255,255,.10);
+
+      --line:rgba(201,163,90,.35);
       --shadow: 0 18px 60px rgba(0,0,0,.55);
 
-      --radius:18px;
       --wrap: 980px;
+      --r: 16px;
+
+      /* 節奏（更像你圖：緊、整齊） */
+      --gap: 16px;         /* 三欄卡之間距 */
+      --sectionGap: 22px;  /* 區塊間距 */
     }
 
     *{ box-sizing:border-box; }
@@ -34,21 +40,18 @@
 
     .wrap{
       width: min(var(--wrap), calc(100% - 40px));
-      margin: 36px auto 80px;
+      margin: 34px auto 80px;
     }
 
     /* ===== Header ===== */
-    .hero{
-      text-align:center;
-      padding: 14px 10px 18px;
-    }
+    .hero{ text-align:center; padding: 10px 10px 18px; }
     .avatar{
-      width: 100px; height: 100px;
+      width: 110px; height: 110px;
       border-radius: 999px;
       object-fit: cover;
-      border: 3px solid rgba(255,255,255,.90);
+      border: 3px solid rgba(255,255,255,.92);
       background: #222;
-      box-shadow: 0 12px 40px rgba(0,0,0,.55);
+      box-shadow: 0 14px 44px rgba(0,0,0,.55);
       display:block;
       margin: 0 auto 12px;
     }
@@ -58,27 +61,25 @@
       letter-spacing: 1px;
       font-weight: 900;
     }
-    .heroTitle b{
-      color: var(--gold);
-    }
+    .heroTitle b{ color: var(--gold); }
     .heroSub{
       margin: 10px auto 0;
-      max-width: 760px;
-      color: rgba(255,255,255,.80);
+      max-width: 780px;
+      color: rgba(255,255,255,.82);
       line-height: 1.85;
       font-size: 14px;
     }
 
-    /* ===== Divider: line - text - line ===== */
+    /* ===== Divider（線—字—線）：更像你圖的細線感 ===== */
     .divider{
       display:flex;
       align-items:center;
       gap: 14px;
       justify-content:center;
-      margin: 22px 0 12px;
-      letter-spacing: 2px;
+      margin: var(--sectionGap) 0 14px;
+      letter-spacing: 3px;
       font-weight: 900;
-      color: rgba(255,255,255,.88);
+      color: rgba(255,255,255,.90);
     }
     .divider::before,
     .divider::after{
@@ -89,32 +90,33 @@
       opacity: 1;
     }
     .divider span{
-      padding: 2px 10px;
+      padding: 2px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(201,163,90,.25);
+      border: 1px solid rgba(201,163,90,.18);
       background: rgba(0,0,0,.10);
       white-space: nowrap;
+      font-size: 14px;
     }
 
-    /* ===== Card base ===== */
+    /* ===== Card ===== */
     .card{
-      background: rgba(47,53,38,.92);
+      background: rgba(47,53,38,.95);
       border: 1px solid var(--cardBorder);
-      border-radius: var(--radius);
+      border-radius: var(--r);
       box-shadow: 0 10px 40px rgba(0,0,0,.35);
     }
 
     /* ===== Banner ===== */
     .bannerCard{
-      border-radius: 18px;
+      border-radius: var(--r);
       overflow:hidden;
-      height: 220px;
+      height: 240px;
       position: relative;
     }
     .bannerStage{
       position:absolute;
       inset:0;
-      background: rgba(47,53,38,.92);
+      background: rgba(47,53,38,.95);
     }
     .bannerImg{
       position:absolute;
@@ -126,11 +128,8 @@
       transform: scale(1.02);
       transition: opacity .55s ease, transform 1.8s ease;
     }
-    .bannerImg.isActive{
-      opacity:1;
-      transform: scale(1);
-    }
-    /* banner placeholder text (你可刪) */
+    .bannerImg.isActive{ opacity:1; transform: scale(1); }
+
     .bannerHint{
       position:absolute;
       inset:0;
@@ -138,18 +137,14 @@
       place-items:center;
       color: rgba(0,0,0,.55);
       font-weight: 900;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       font-size: 18px;
       pointer-events:none;
       mix-blend-mode: multiply;
     }
 
     /* dots */
-    .dotsOuter{
-      display:flex;
-      justify-content:center;
-      margin-top: 10px;
-    }
+    .dotsOuter{ display:flex; justify-content:center; margin-top: 10px; }
     .dots{
       display:flex;
       gap: 8px;
@@ -166,54 +161,56 @@
       cursor:pointer;
       padding:0;
     }
-    .dot.isActive{
-      background: rgba(201,163,90,.95);
-    }
+    .dot.isActive{ background: rgba(201,163,90,.95); }
 
-    /* ===== Policy 3 cards ===== */
+    /* ===== 作圖修改須知：三張卡（PC三欄 / 手機一欄） ===== */
     .policyGrid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 10px;
+      grid-template-columns: repeat(3, 1fr); /* PC 固定三欄 */
+      gap: var(--gap);
+      margin-top: 12px;
     }
     .policyCard{
-      padding: 14px 14px 12px;
-      min-height: 150px;
+      padding: 16px 16px 14px;
+      min-height: 170px;
     }
     .policyTitle{
-      margin: 0 0 10px;
+      margin: 0 0 12px;
       font-weight: 900;
       letter-spacing: 1px;
       font-size: 14px;
-      color: rgba(255,255,255,.92);
+      color: rgba(255,255,255,.95);
       text-align:center;
     }
     .policyList{
       margin: 0;
       padding-left: 18px;
-      color: rgba(255,255,255,.85);
-      line-height: 1.8;
+      color: rgba(255,255,255,.86);
+      line-height: 1.85;
       font-size: 13px;
     }
+    .policyText{
+      color: rgba(255,255,255,.86);
+      font-size: 13px;
+      line-height: 1.9;
+    }
 
-    /* ===== Plan sections ===== */
-    .planSection{ margin-top: 8px; }
-
+    /* ===== 方案：每段三圖卡（PC三欄 / 手機一欄） ===== */
     .imgGrid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 10px;
+      grid-template-columns: repeat(3, 1fr); /* PC 固定三欄 */
+      gap: var(--gap);
+      margin-top: 12px;
     }
     .imgCard{
-      border-radius: 18px;
+      border-radius: var(--r);
       overflow:hidden;
-      height: 170px;
+      height: 190px;
       display:grid;
       place-items:center;
-      background: rgba(47,53,38,.92);
+      background: rgba(47,53,38,.95);
       border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 40px rgba(0,0,0,.25);
     }
     .imgCard img{
       width:100%;
@@ -222,17 +219,18 @@
       display:block;
     }
     .imgPlaceholder{
-      color: rgba(255,255,255,.75);
+      color: rgba(255,255,255,.80);
       font-weight: 900;
-      letter-spacing: 2px;
-      font-size: 26px;
+      letter-spacing: 4px;
+      font-size: 28px;
     }
 
-    /* ===== Responsive ===== */
+    /* ===== 手機：一欄 ===== */
     @media (max-width: 860px){
       .policyGrid{ grid-template-columns: 1fr; }
       .imgGrid{ grid-template-columns: 1fr; }
-      .bannerCard{ height: 200px; }
+      .bannerCard{ height: 210px; }
+      .divider{ margin: 20px 0 12px; }
     }
   </style>
 </head>
@@ -267,7 +265,6 @@
       <div class="card policyCard">
         <div class="policyTitle">〈 做圖須知 〉</div>
         <ul class="policyList">
-          <li>請於製作前提供</li>
           <li>圖片尺寸（例：1080×1080 / 1080×1350 / Banner）</li>
           <li>主視覺方向 / 品牌 Logo</li>
           <li>文案（標題 / 重點文字）</li>
@@ -281,13 +278,13 @@
         <ul class="policyList">
           <li>每張作品含 2 次免費修改（建議集中提出修改點）</li>
           <li>修改不得超過原圖完成度 50%</li>
-          <li>若超過 50% 視為重新製作，將再收一次該方案費用</li>
+          <li>超過 50% 視為重新製作，將再收一次該方案費用</li>
         </ul>
       </div>
 
       <div class="card policyCard">
         <div class="policyTitle">〈 加值方案 〉</div>
-        <div style="color:rgba(255,255,255,.85); font-size:13px; line-height:1.85;">
+        <div class="policyText">
           可讀性基礎已包含：<br>
           字級層級 / 行距調整 / 必要陰影 / 描邊 / 底色<br><br>
           如需主視覺等級標題設計、特殊字效：依需求另報
@@ -296,7 +293,7 @@
     </section>
 
     <!-- Plans A~E -->
-    <section class="planSection" aria-label="Plans">
+    <section aria-label="Plans">
 
       <div class="divider"><span>A 方案</span></div>
       <div class="imgGrid">
@@ -376,7 +373,6 @@
         dotsWrap.appendChild(dot);
       });
 
-      // 有圖就把提示字藏起來
       hint.style.display = bannerImages.length ? "none" : "grid";
     }
 
@@ -397,7 +393,6 @@
       timer = setInterval(next, intervalMs);
     }
 
-    // init
     render();
     restart();
   </script>
