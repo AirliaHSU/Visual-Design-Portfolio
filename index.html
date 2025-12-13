@@ -64,7 +64,7 @@
       font-size: 15px;
     }
 
-    /* ===== LINE + TEXT + LINE (圖1那種) ===== */
+    /* ===== LINE + TEXT + LINE ===== */
     .sectionDivider{
       display:flex;
       align-items:center;
@@ -164,7 +164,23 @@
       transform: scale(1.05);
     }
 
-    /* ===== 三塊說明（分開，不用 triGrid 黏在一起） ===== */
+    /* ===== ✅ 讓三塊各自獨立一張大框（不會黏在一起） ===== */
+    .infoSection{
+      display:flex;
+      flex-direction:column;
+      gap: 20px; /* 三塊之間的距離 */
+      margin-top: 16px;
+    }
+    .infoFrame{
+      padding: 16px 16px 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: radial-gradient(900px 360px at 50% 0%, rgba(0,120,70,.10), transparent 62%),
+                  linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.10));
+    }
+    .infoFrame .sectionDivider{ margin: 8px 0 12px; } /* 每塊內的 divider 不要太大 */
+
+    /* ===== Accord ===== */
     details.accord{
       background: rgba(0,0,0,.22);
       border:1px solid rgba(255,255,255,.10);
@@ -237,11 +253,7 @@
       background: radial-gradient(1000px 400px at 50% 0%, rgba(0,120,70,.10), transparent 62%),
                   linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.10));
     }
-
-    /* 方案標題：線＋文字＋線（置中） */
-    .planTitle{
-      margin: 6px 0 10px;
-    }
+    .planTitle{ margin: 6px 0 10px; }
 
     .planTop{ text-align:center; padding: 6px 10px 10px; }
     .planDesc{
@@ -329,84 +341,98 @@
           <div class="dots" id="bannerDots" aria-label="Banner dots"></div>
         </div>
 
-        <!-- 說明區：分開呈現 -->
-        <div class="sectionDivider">
-          <span>做圖須知 Required Materials</span>
-        </div>
-        <details class="accord" open>
-          <summary class="accordSum">
-            <div class="sumLeft">《<span class="tag">做圖須知</span>》</div>
-            <div class="chev">˄</div>
-          </summary>
-          <div class="accordBody">
-            <div class="card">
-              <h4>請於製作前提供</h4>
-              <ul>
-                <li>圖片尺寸（例：1080×1080 / 1080×1350 / Banner 尺寸）</li>
-                <li>主視覺方向（如有）／品牌 Logo</li>
-                <li>文案（標題／副標／重點文字）</li>
-                <li>商品素材或情境照（如需置入）</li>
-                <li>參考圖示意（不確定可一併提供）</li>
-              </ul>
+        <!-- ✅ 說明區：三塊各自獨立一張框 -->
+        <section class="infoSection" aria-label="Policies">
+          <!-- 做圖須知 -->
+          <div class="infoFrame">
+            <div class="sectionDivider">
+              <span>做圖須知 Required Materials</span>
             </div>
-            <div class="card" style="margin-top:12px;">
-              <h4>補充</h4>
-              <ul>
-                <li>若需求尚未明確，可先提供參考圖，我會於報價時說明項目差異。</li>
-                <li>不接受完成後才改尺寸；將視為 Resize 另計（依調整幅度報價）。</li>
-              </ul>
-            </div>
-          </div>
-        </details>
 
-        <div class="sectionDivider">
-          <span>修改須知 Revision Policy</span>
-        </div>
-        <details class="accord">
-          <summary class="accordSum">
-            <div class="sumLeft">《<span class="tag">修改須知</span>》</div>
-            <div class="chev">˄</div>
-          </summary>
-          <div class="accordBody">
-            <div class="card">
-              <h4>免費修改</h4>
-              <ul>
-                <li>每張作品含 2 次免費修改（建議集中提出修改點）。</li>
-              </ul>
-            </div>
-            <div class="card" style="margin-top:12px;">
-              <h4>重做判定</h4>
-              <ul>
-                <li>修改不得超過原圖完成度 50%。</li>
-                <li>若超過 50% 視為重新製作，將再收一次該方案費用。</li>
-              </ul>
-            </div>
+            <details class="accord" open>
+              <summary class="accordSum">
+                <div class="sumLeft">《<span class="tag">做圖須知</span>》</div>
+                <div class="chev">˄</div>
+              </summary>
+              <div class="accordBody">
+                <div class="card">
+                  <h4>請於製作前提供</h4>
+                  <ul>
+                    <li>圖片尺寸（例：1080×1080 / 1080×1350 / Banner 尺寸）</li>
+                    <li>主視覺方向（如有）／品牌 Logo</li>
+                    <li>文案（標題／副標／重點文字）</li>
+                    <li>商品素材或情境照（如需置入）</li>
+                    <li>參考圖示意（不確定可一併提供）</li>
+                  </ul>
+                </div>
+                <div class="card" style="margin-top:12px;">
+                  <h4>補充</h4>
+                  <ul>
+                    <li>若需求尚未明確，可先提供參考圖，我會於報價時說明項目差異。</li>
+                    <li>不接受完成後才改尺寸；將視為 Resize 另計（依調整幅度報價）。</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
           </div>
-        </details>
 
-        <div class="sectionDivider">
-          <span>加值方案 Add-ons</span>
-        </div>
-        <details class="accord">
-          <summary class="accordSum">
-            <div class="sumLeft">《<span class="tag">加值方案</span>》</div>
-            <div class="chev">˄</div>
-          </summary>
-          <div class="accordBody">
-            <div class="card">
-              <h4>可讀性基礎已包含</h4>
-              <ul>
-                <li>字級層級／行距調整／必要陰影、描邊、底色（避免看不清）</li>
-              </ul>
+          <!-- 修改須知 -->
+          <div class="infoFrame">
+            <div class="sectionDivider">
+              <span>修改須知 Revision Policy</span>
             </div>
-            <div class="card" style="margin-top:12px;">
-              <h4>如需以下效果可另行評估</h4>
-              <ul>
-                <li>主視覺等級標題設計／特殊字效（依需求另報）</li>
-              </ul>
-            </div>
+
+            <details class="accord">
+              <summary class="accordSum">
+                <div class="sumLeft">《<span class="tag">修改須知</span>》</div>
+                <div class="chev">˄</div>
+              </summary>
+              <div class="accordBody">
+                <div class="card">
+                  <h4>免費修改</h4>
+                  <ul>
+                    <li>每張作品含 2 次免費修改（建議集中提出修改點）。</li>
+                  </ul>
+                </div>
+                <div class="card" style="margin-top:12px;">
+                  <h4>重做判定</h4>
+                  <ul>
+                    <li>修改不得超過原圖完成度 50%。</li>
+                    <li>若超過 50% 視為重新製作，將再收一次該方案費用。</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
           </div>
-        </details>
+
+          <!-- 加值方案 -->
+          <div class="infoFrame">
+            <div class="sectionDivider">
+              <span>加值方案 Add-ons</span>
+            </div>
+
+            <details class="accord">
+              <summary class="accordSum">
+                <div class="sumLeft">《<span class="tag">加值方案</span>》</div>
+                <div class="chev">˄</div>
+              </summary>
+              <div class="accordBody">
+                <div class="card">
+                  <h4>可讀性基礎已包含</h4>
+                  <ul>
+                    <li>字級層級／行距調整／必要陰影、描邊、底色（避免看不清）</li>
+                  </ul>
+                </div>
+                <div class="card" style="margin-top:12px;">
+                  <h4>如需以下效果可另行評估</h4>
+                  <ul>
+                    <li>主視覺等級標題設計／特殊字效（依需求另報）</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </div>
+        </section>
 
         <!-- Plans -->
         <div class="stack">
@@ -494,9 +520,6 @@
   </main>
 
   <script>
-    /**
-     * ✅ Banner：改成你 images/ 裡的實際檔名即可
-     */
     const bannerImages = [
       "images/banner01.jpg",
       "images/banner02.png",
@@ -504,10 +527,6 @@
       "images/banner04.jpg"
     ];
 
-    /**
-     * ✅ 方案圖片：請把下面檔名改成你 images/ 裡的英文檔名
-     * （我先放示範名，避免你網站直接 404）
-     */
     const planImages = {
       a: ["images/a01.jpg","images/a02.jpg","images/a03.jpg"],
       b: ["images/b01.jpg","images/b02.jpg","images/b03.jpg"],
@@ -516,12 +535,11 @@
       sketch: ["images/sketch01.png","images/sketch02.jpg","images/sketch03.png"]
     };
 
-    // ===== Banner render =====
     const stage = document.getElementById("bannerStage");
     const dotsWrap = document.getElementById("bannerDots");
     let bannerIndex = 0;
     let timer = null;
-    const intervalMs = 6500; // 5~10秒：先給 6.5 秒
+    const intervalMs = 6500;
 
     function renderBanner(){
       stage.innerHTML = "";
@@ -564,7 +582,6 @@
       timer = setInterval(nextBanner, intervalMs);
     }
 
-    // ===== Plans render =====
     function mountGrid(gridId, list){
       const grid = document.getElementById(gridId);
       if(!grid) return;
@@ -580,7 +597,6 @@
       });
     }
 
-    // init
     renderBanner();
     restartTimer();
 
