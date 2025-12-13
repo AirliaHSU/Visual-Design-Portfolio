@@ -46,7 +46,7 @@ body{
   line-height:1.7;
 }
 
-/* ===== 大外框 ===== */
+/* ===== 外框 ===== */
 .bigFrame{
   padding:28px;
   border-radius:26px;
@@ -57,34 +57,33 @@ body{
   box-shadow: var(--shadow);
 }
 
-/* ===== 三塊獨立卡片（重點） ===== */
+/* ===== 三塊卡片 ===== */
 .infoSection{
   display:flex;
   flex-direction:column;
-  gap:26px;
+  gap:28px;
   margin-top:20px;
 }
 
 .infoBlock{
   position:relative;
-  padding:30px 20px 20px;
+  padding:34px 24px 24px;
   border-radius:22px;
   border:1px solid rgba(255,255,255,.10);
-  background:
-    radial-gradient(900px 360px at 50% 0%, rgba(0,120,70,.10), transparent 62%),
-    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.10));
+  background: rgba(0,0,0,.22);
+  backdrop-filter: blur(6px);
   box-shadow:
-    0 12px 40px rgba(0,0,0,.35),
-    inset 0 0 0 1px rgba(0,0,0,.35);
+    0 14px 46px rgba(0,0,0,.45),
+    inset 0 0 0 1px rgba(255,255,255,.04);
 }
 
-/* 貼在框線上的標題 badge */
+/* badge */
 .infoBadge{
   position:absolute;
   top:0;
   left:50%;
   transform:translate(-50%, -50%);
-  padding:8px 16px;
+  padding:8px 18px;
   border-radius:999px;
   border:1px solid rgba(201,163,90,.25);
   background:rgba(8,14,11,.7);
@@ -94,36 +93,33 @@ body{
   white-space:nowrap;
 }
 
-/* ===== 內容卡 ===== */
-details{
-  background:rgba(0,0,0,.22);
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:18px;
-  overflow:hidden;
+/* ===== details / summary（不再是卡片） ===== */
+.infoBlock details{
+  background:transparent;
+  border:0;
 }
 
-summary{
+.infoBlock summary{
   cursor:pointer;
-  padding:16px;
+  padding:10px 0 12px;
   font-weight:900;
   letter-spacing:1px;
   list-style:none;
 }
-summary::-webkit-details-marker{ display:none; }
+.infoBlock summary::-webkit-details-marker{ display:none; }
 
+/* 內容區 */
 .detailsBody{
-  padding:0 16px 16px;
+  padding:14px 0 0;
   line-height:1.75;
   color:rgba(255,255,255,.82);
   border-top:1px solid rgba(255,255,255,.08);
 }
 
+/* 純內容卡（不畫框） */
 .card{
-  padding:14px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(0,0,0,.18);
-  margin-top:12px;
+  margin-top:10px;
+  padding:0;
 }
 
 .card h4{
@@ -138,47 +134,6 @@ summary::-webkit-details-marker{ display:none; }
   margin:6px 0;
   color:rgba(255,255,255,.8);
 }
-  /* ✅ 只留「每塊 infoFrame/infoBlock」一個主框：把裡面套娃框拆掉 */
-.infoSection{ gap: 26px; }   /* 三塊之間距離拉開一點 */
-
-.infoFrame, .infoBlock{
-  padding: 30px 20px 20px;
-}
-
-/* 內層 details 不要再畫一個框 */
-.infoFrame details.accord,
-.infoBlock details{
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  overflow: visible !important;
-  box-shadow: none !important;
-}
-
-/* summary 做成一行標題（不再像一個小卡片） */
-.infoFrame summary.accordSum,
-.infoBlock summary{
-  padding: 8px 0 12px !important;
-  border: none !important;
-  background: transparent !important;
-}
-
-/* 內容區也不要再畫上分隔線框 */
-.infoFrame .accordBody,
-.infoBlock .detailsBody{
-  border-top: 1px solid rgba(255,255,255,.07);
-  padding: 14px 0 0 !important;
-}
-
-/* card 也拿掉外框，變成純內容區 */
-.infoFrame .card,
-.infoBlock .card{
-  border: none !important;
-  background: transparent !important;
-  padding: 0 !important;
-  margin-top: 10px;
-}
-
 </style>
 </head>
 
