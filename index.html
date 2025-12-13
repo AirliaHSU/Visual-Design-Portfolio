@@ -388,35 +388,30 @@
     background: #000;
     color: #fff;
   }
+.planList {
+  margin-top: 10px;
+  padding-left: 0;
+  list-style: none;
 
-  /* 你原本的樣式 */
-  .planFrame { ... }
+  display: flex;          /* 同一排 */
+  gap: 32px;              /* 中間空格距離，可調 24～40 */
+  flex-wrap: wrap;        /* 螢幕小時自動換行，不會爆版 */
+}
 
-  /* === 新增：BASIC 勾勾那一段 === */
-  .planList {
-    margin-top: 10px;
-    padding-left: 0;
-    list-style: none;
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
+.planList li {
+  font-size: 14px;
+  color: rgba(255,255,255,0.85); /* 白字，但不是死白 */
+  position: relative;
+  padding-left: 18px;
+  white-space: nowrap;   /* 讓短句不要亂斷 */
+}
 
-  .planList li {
-    font-size: 14px;
-    color: rgba(255,255,255,0.85);
-    position: relative;
-    padding-left: 18px;
-    white-space: nowrap;
-  }
-
-  .planList li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: rgba(255,255,255,0.9);
-  }
-</style>
+.planList li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: rgba(255,255,255,0.9);  /* 勾勾也是白色 */
+}
 
   </style>
 </head>
