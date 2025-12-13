@@ -138,6 +138,47 @@ summary::-webkit-details-marker{ display:none; }
   margin:6px 0;
   color:rgba(255,255,255,.8);
 }
+  /* ✅ 只留「每塊 infoFrame/infoBlock」一個主框：把裡面套娃框拆掉 */
+.infoSection{ gap: 26px; }   /* 三塊之間距離拉開一點 */
+
+.infoFrame, .infoBlock{
+  padding: 30px 20px 20px;
+}
+
+/* 內層 details 不要再畫一個框 */
+.infoFrame details.accord,
+.infoBlock details{
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  box-shadow: none !important;
+}
+
+/* summary 做成一行標題（不再像一個小卡片） */
+.infoFrame summary.accordSum,
+.infoBlock summary{
+  padding: 8px 0 12px !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* 內容區也不要再畫上分隔線框 */
+.infoFrame .accordBody,
+.infoBlock .detailsBody{
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding: 14px 0 0 !important;
+}
+
+/* card 也拿掉外框，變成純內容區 */
+.infoFrame .card,
+.infoBlock .card{
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin-top: 10px;
+}
+
 </style>
 </head>
 
