@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Airlia / 放空｜視覺設計示範作品集</title>
+  <title>Airlia / 放空｜視覺設計作品集</title>
 
   <style>
     :root{
@@ -15,13 +15,8 @@
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.68);
       --gold:#c9a35a;
-      --gold2:#a98849;
-      --glow:rgba(201,163,90,.25);
       --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --radius:22px;
-      --radius2:18px;
     }
-
     *{ box-sizing:border-box; }
     body{
       margin:0;
@@ -32,17 +27,13 @@
         radial-gradient(900px 500px at 50% 18%, rgba(0,120,70,.14), transparent 60%),
         linear-gradient(#040606, var(--bg));
     }
-
     .wrap{
       width:min(1200px, calc(100% - 40px));
       margin: 48px auto 80px;
     }
 
-    /* ===== Header (圖2那種：頭像 + 名字 + 視覺設計) ===== */
-    .hero{
-      text-align:center;
-      padding: 26px 18px 8px;
-    }
+    /* ===== Header ===== */
+    .hero{ text-align:center; padding: 26px 18px 8px; }
     .avatar{
       width:96px; height:96px;
       border-radius:50%;
@@ -59,8 +50,8 @@
     }
     .role{
       margin:0;
-      font-size:22px;
-      font-weight:800;
+      font-size:20px;
+      font-weight:850;
       letter-spacing:2px;
       color: rgba(255,255,255,.92);
     }
@@ -73,33 +64,32 @@
       font-size: 15px;
     }
 
-    /* 分隔線（圖3那種） */
-    .dividerTitle{
-      margin: 26px auto 0;
+    /* ===== LINE + TEXT + LINE (圖1那種) ===== */
+    .sectionDivider{
       display:flex;
       align-items:center;
       gap:16px;
       justify-content:center;
-      color: rgba(255,255,255,.72);
-      letter-spacing: 10px;
-      font-weight: 700;
+      margin: 22px 0 14px;
+      color: rgba(255,255,255,.78);
+      font-weight: 900;
+      letter-spacing: 2px;
     }
-    .dividerTitle::before,
-    .dividerTitle::after{
+    .sectionDivider::before,
+    .sectionDivider::after{
       content:"";
       flex:1;
       height:1px;
       background: linear-gradient(90deg, transparent, rgba(201,163,90,.55), transparent);
-      opacity:.85;
+      opacity:.9;
     }
-    .dividerTitle span{
-      letter-spacing: 6px;
-      font-size: 13px;
-      padding: 6px 14px;
+    .sectionDivider span{
+      padding: 8px 16px;
       border-radius: 999px;
       border: 1px solid rgba(201,163,90,.25);
       background: rgba(8,14,11,.55);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+      white-space: nowrap;
     }
 
     /* ===== Big Frame ===== */
@@ -114,7 +104,7 @@
     }
     .bigPad{ padding: 22px; }
 
-    /* ===== Banner Carousel ===== */
+    /* ===== Banner ===== */
     .bannerCard{
       background: rgba(0,0,0,.24);
       border:1px solid rgba(255,255,255,.10);
@@ -141,16 +131,14 @@
       transition: opacity .55s ease, transform 1.8s ease;
       filter: contrast(1.02) saturate(1.02);
     }
-    .bannerImg.isActive{
-      opacity:1;
-      transform: scale(1);
-    }
+    .bannerImg.isActive{ opacity:1; transform: scale(1); }
 
-    /* 你的要求：小圓點要在 banner 下方、置中、在方塊外 */
+    /* dots 在外面，置中，不擋 Banner */
     .bannerDotsOuter{
       display:flex;
       justify-content:center;
       margin-top: 12px;
+      margin-bottom: 6px;
     }
     .dots{
       display:flex;
@@ -176,48 +164,7 @@
       transform: scale(1.05);
     }
 
-    /* ===== Section Title (線 + 置中文字，統一用於：製作與修改說明/各方案) ===== */
-    .lineTitle{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap: 16px;
-      margin: 28px 0 14px;
-    }
-    .lineTitle::before,
-    .lineTitle::after{
-      content:"";
-      flex:1;
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
-    }
-    .lineTitle .pill{
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(201,163,90,.22);
-      background: rgba(8,14,11,.55);
-      color: rgba(255,255,255,.88);
-      font-weight: 800;
-      letter-spacing: 4px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
-      white-space: nowrap;
-    }
-    .lineTitle .pill b{
-      color: var(--gold);
-      letter-spacing: 2px;
-    }
-
-    /* ===== 3 columns policy cards (做圖/修改/文字) ===== */
-    .triGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    @media (max-width: 980px){
-      .triGrid{ grid-template-columns: 1fr; }
-      .dividerTitle{ letter-spacing: 6px; }
-    }
-
+    /* ===== 三塊說明（分開，不用 triGrid 黏在一起） ===== */
     details.accord{
       background: rgba(0,0,0,.22);
       border:1px solid rgba(255,255,255,.10);
@@ -239,7 +186,6 @@
       user-select:none;
     }
     summary.accordSum::-webkit-details-marker{ display:none; }
-
     .sumLeft{
       display:flex;
       align-items:center;
@@ -247,9 +193,7 @@
       font-weight: 900;
       letter-spacing: 1px;
     }
-    .sumLeft .tag{
-      color: var(--gold);
-    }
+    .sumLeft .tag{ color: var(--gold); }
     .chev{
       width:34px; height:34px;
       border-radius: 12px;
@@ -262,7 +206,6 @@
       flex: 0 0 auto;
     }
     details[open] .chev{ transform: rotate(180deg); }
-
     .accordBody{
       padding: 0 16px 16px;
       color: rgba(255,255,255,.82);
@@ -281,18 +224,13 @@
       color: rgba(255,255,255,.92);
       letter-spacing: 1px;
     }
-    .card ul{
-      margin:0;
-      padding-left: 18px;
-    }
-    .card li{
-      margin: 6px 0;
-      color: rgba(255,255,255,.80);
-    }
+    .card ul{ margin:0; padding-left: 18px; }
+    .card li{ margin: 6px 0; color: rgba(255,255,255,.80); }
 
     /* ===== Plan Frames ===== */
+    .stack{ display:flex; flex-direction:column; gap: 18px; margin-top: 18px; }
+
     .planFrame{
-      margin-top: 22px;
       padding: 18px;
       border-radius: 22px;
       border:1px solid rgba(255,255,255,.10);
@@ -300,50 +238,38 @@
                   linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.10));
     }
 
-    .planTop{
-      text-align:center;
-      padding: 8px 10px 14px;
+    /* 方案標題：線＋文字＋線（置中） */
+    .planTitle{
+      margin: 6px 0 10px;
     }
-    .planTop .planName{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 10px 18px;
-      border-radius: 999px;
-      border:1px solid rgba(201,163,90,.22);
-      background: rgba(8,14,11,.55);
-      letter-spacing: 3px;
-      font-weight: 900;
-      color: rgba(255,255,255,.90);
-    }
-    .planTop .planName b{ color: var(--gold); letter-spacing: 1px; }
 
-    .planTicksTitle{
-      margin: 14px 0 10px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      color: rgba(255,255,255,.86);
+    .planTop{ text-align:center; padding: 6px 10px 10px; }
+    .planDesc{
+      margin: 0 auto;
+      max-width: 950px;
+      color: rgba(255,255,255,.72);
+      font-size: 14px;
+      line-height: 1.75;
     }
+
     .planTickGrid{
       display:flex;
       justify-content:center;
       gap: 34px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      margin-top: 12px;
     }
     .planTick{
       display:flex;
       align-items:center;
       gap: 10px;
-      color: rgba(255,255,255,.90);
-      font-weight: 800;
-      letter-spacing: .5px;
+      color: rgba(255,255,255,.95);
+      font-weight: 850;
+      letter-spacing: .2px;
       white-space: nowrap;
+      font-size: 14px;
     }
-    .planTick .check{
-      color: var(--gold);
-      filter: drop-shadow(0 0 10px rgba(201,163,90,.20));
-    }
+    .planTick .check{ color: var(--gold); }
 
     .grid{
       display:grid;
@@ -370,10 +296,6 @@
     }
     .shot:hover img{ transform: scale(1.02); }
 
-    /* 區塊排序間距 */
-    .stack{ display:flex; flex-direction:column; gap: 18px; }
-
-    /* 小工具：選取文字更舒服 */
     ::selection{ background: rgba(201,163,90,.28); }
   </style>
 </head>
@@ -386,181 +308,181 @@
       <img class="avatar" src="airlia-avatar.png" alt="Airlia Avatar" />
       <div class="name">Airlia / 放空</div>
       <p class="role"><b>VISUAL DESIGN</b>｜社群視覺 × 合成編排</p>
-
-      <!-- 你說要換成「關於你視覺設計解說」：我先給一個不囂張、但有專業的版本 -->
       <p class="subtitle">
         我擅長把資訊與畫面重點整理成清楚、好讀、符合品牌氣質的視覺版面；從主視覺、產品合成到多素材編排，都以「快速對齊需求、降低溝通成本」為目標。
       </p>
-
-      <div class="dividerTitle" style="margin-top:22px;">
-        <span>BANNER</span>
-      </div>
     </section>
 
-    <!-- Big Frame -->
     <section class="bigFrame">
       <div class="bigPad">
 
         <!-- Banner -->
-        <div class="bannerCard">
-          <div class="bannerStage" id="bannerStage">
-            <!-- JS會塞圖 -->
-          </div>
+        <div class="sectionDivider" style="margin-top:0;">
+          <span>Banner</span>
         </div>
 
-        <!-- dots: 外面 + 置中 + 不擋圖 -->
+        <div class="bannerCard">
+          <div class="bannerStage" id="bannerStage"></div>
+        </div>
+
         <div class="bannerDotsOuter">
           <div class="dots" id="bannerDots" aria-label="Banner dots"></div>
         </div>
 
-        <!-- 製作與修改說明：線+文字 -->
-        <div class="lineTitle" style="margin-top: 26px;">
-          <div class="pill"><b>製作與修改說明</b></div>
+        <!-- 說明區：分開呈現 -->
+        <div class="sectionDivider">
+          <span>做圖須知 Required Materials</span>
         </div>
-
-        <!-- 3欄式 -->
-        <div class="triGrid">
-          <!-- 作圖須知 -->
-          <details class="accord" open>
-            <summary class="accordSum">
-              <div class="sumLeft">《<span class="tag">做圖須知</span> Required Materials》</div>
-              <div class="chev">˄</div>
-            </summary>
-            <div class="accordBody">
-              <div class="card">
-                <h4>請於製作前提供</h4>
-                <ul>
-                  <li>圖片尺寸（例：1080×1080 / 1080×1350 / Banner 尺寸）</li>
-                  <li>主視覺方向（如有）／品牌 Logo</li>
-                  <li>商品素材（需置入時）</li>
-                  <li>文案（標題／副標／重點文字）</li>
-                  <li>參考圖示意（不確定可一併提供）</li>
-                </ul>
-              </div>
-              <div class="card" style="margin-top:12px;">
-                <h4>補充</h4>
-                <ul>
-                  <li>若需求尚不確定，可先給參考圖，我會附上報價單說明項目差異與是否需加價。</li>
-                  <li>不接受「完成後才改尺寸」；將視為 Resize 另計（依調整幅度報價）。</li>
-                </ul>
-              </div>
+        <details class="accord" open>
+          <summary class="accordSum">
+            <div class="sumLeft">《<span class="tag">做圖須知</span>》</div>
+            <div class="chev">˄</div>
+          </summary>
+          <div class="accordBody">
+            <div class="card">
+              <h4>請於製作前提供</h4>
+              <ul>
+                <li>圖片尺寸（例：1080×1080 / 1080×1350 / Banner 尺寸）</li>
+                <li>主視覺方向（如有）／品牌 Logo</li>
+                <li>文案（標題／副標／重點文字）</li>
+                <li>商品素材或情境照（如需置入）</li>
+                <li>參考圖示意（不確定可一併提供）</li>
+              </ul>
             </div>
-          </details>
-
-          <!-- 修改須知 -->
-          <details class="accord">
-            <summary class="accordSum">
-              <div class="sumLeft">《<span class="tag">修改須知</span> Revision Policy》</div>
-              <div class="chev">˄</div>
-            </summary>
-            <div class="accordBody">
-              <div class="card">
-                <h4>免費修改</h4>
-                <ul>
-                  <li>每張作品含 2 次免費修改。</li>
-                  <li>建議集中提出修改點，以縮短來回。</li>
-                </ul>
-              </div>
-              <div class="card" style="margin-top:12px;">
-                <h4>重做判定</h4>
-                <ul>
-                  <li>修改不得超過原圖完成度 50%。</li>
-                  <li>若超過 50% 視為重新製作，將再收一次該方案費用。</li>
-                </ul>
-              </div>
+            <div class="card" style="margin-top:12px;">
+              <h4>補充</h4>
+              <ul>
+                <li>若需求尚未明確，可先提供參考圖，我會於報價時說明項目差異。</li>
+                <li>不接受完成後才改尺寸；將視為 Resize 另計（依調整幅度報價）。</li>
+              </ul>
             </div>
-          </details>
+          </div>
+        </details>
 
-          <!-- 文字設計 -->
-          <details class="accord">
-            <summary class="accordSum">
-              <div class="sumLeft">《<span class="tag">文字設計</span> Title Design》</div>
-              <div class="chev">˄</div>
-            </summary>
-            <div class="accordBody">
-              <div class="card">
-                <h4>基礎文字包含</h4>
-                <ul>
-                  <li>字級層級／行距調整／可讀性優化</li>
-                  <li>必要陰影／描邊／底色（避免文字看不清）</li>
-                </ul>
-              </div>
-              <div class="card" style="margin-top:12px;">
-                <h4>加值項目（依需求另報）</h4>
-                <ul>
-                  <li>金屬字、火焰字、水波字等特殊字效</li>
-                  <li>更複雜的標題視覺設計／主題字體客製</li>
-                </ul>
-              </div>
-            </div>
-          </details>
+        <div class="sectionDivider">
+          <span>修改須知 Revision Policy</span>
         </div>
+        <details class="accord">
+          <summary class="accordSum">
+            <div class="sumLeft">《<span class="tag">修改須知</span>》</div>
+            <div class="chev">˄</div>
+          </summary>
+          <div class="accordBody">
+            <div class="card">
+              <h4>免費修改</h4>
+              <ul>
+                <li>每張作品含 2 次免費修改（建議集中提出修改點）。</li>
+              </ul>
+            </div>
+            <div class="card" style="margin-top:12px;">
+              <h4>重做判定</h4>
+              <ul>
+                <li>修改不得超過原圖完成度 50%。</li>
+                <li>若超過 50% 視為重新製作，將再收一次該方案費用。</li>
+              </ul>
+            </div>
+          </div>
+        </details>
 
-        <!-- 方案順序：基礎 > 中階 > 高階 > DM > 手繪 -->
-        <div class="stack" style="margin-top: 18px;">
+        <div class="sectionDivider">
+          <span>加值方案 Add-ons</span>
+        </div>
+        <details class="accord">
+          <summary class="accordSum">
+            <div class="sumLeft">《<span class="tag">加值方案</span>》</div>
+            <div class="chev">˄</div>
+          </summary>
+          <div class="accordBody">
+            <div class="card">
+              <h4>可讀性基礎已包含</h4>
+              <ul>
+                <li>字級層級／行距調整／必要陰影、描邊、底色（避免看不清）</li>
+              </ul>
+            </div>
+            <div class="card" style="margin-top:12px;">
+              <h4>如需以下效果可另行評估</h4>
+              <ul>
+                <li>主視覺等級標題設計／特殊字效（依需求另報）</li>
+              </ul>
+            </div>
+          </div>
+        </details>
 
-          <!-- BASIC -->
-          <section class="planFrame" id="basic">
+        <!-- Plans -->
+        <div class="stack">
+
+          <!-- Version A -->
+          <section class="planFrame" id="verA">
+            <div class="planTitle sectionDivider"><span>Version A</span></div>
+
             <div class="planTop">
-              <div class="planName"><b>BASIC</b>｜基礎款</div>
-              <div class="planTicksTitle">快速完成清楚、好讀的視覺呈現</div>
+              <p class="planDesc">快速完成清楚、好讀的視覺呈現</p>
               <div class="planTickGrid">
                 <div class="planTick"><span class="check">✓</span>圖片配置與版面編排</div>
                 <div class="planTick"><span class="check">✓</span>基礎文字排版（字級層級、行距、必要陰影／描邊／底色）</div>
               </div>
             </div>
-            <div class="grid" id="grid-basic"></div>
+
+            <div class="grid" id="grid-a"></div>
           </section>
 
-          <!-- ENHANCED -->
-          <section class="planFrame" id="enhanced">
+          <!-- Version B -->
+          <section class="planFrame" id="verB">
+            <div class="planTitle sectionDivider"><span>Version B</span></div>
+
             <div class="planTop">
-              <div class="planName"><b>ENHANCED</b>｜中階款</div>
-              <div class="planTicksTitle">加強氛圍與質感，讓畫面更「有主題」</div>
+              <p class="planDesc">在基礎編排之上，進一步整合畫面氛圍與視覺層級，讓整體呈現更一致</p>
               <div class="planTickGrid">
-                <div class="planTick"><span class="check">✓</span>光影／色調整合（氛圍更一致）</div>
-                <div class="planTick"><span class="check">✓</span>產品與背景融合（合成更自然）</div>
+                <div class="planTick"><span class="check">✓</span>色調與氛圍整合</div>
+                <div class="planTick"><span class="check">✓</span>素材融合與閱讀節奏調整</div>
               </div>
             </div>
-            <div class="grid" id="grid-enhanced"></div>
+
+            <div class="grid" id="grid-b"></div>
           </section>
 
-          <!-- PREMIUM -->
-          <section class="planFrame" id="premium">
+          <!-- Version C -->
+          <section class="planFrame" id="verC">
+            <div class="planTitle sectionDivider"><span>Version C</span></div>
+
             <div class="planTop">
-              <div class="planName"><b>PREMIUM</b>｜高階款</div>
-              <div class="planTicksTitle">多素材整合與視覺焦點處理，更接近 KV / 檔期主圖</div>
+              <p class="planDesc">著重整體視覺完成度與多素材整合，依主視覺需求調整畫面重點與資訊層級</p>
               <div class="planTickGrid">
-                <div class="planTick"><span class="check">✓</span>多素材合成與畫面節奏編排</div>
-                <div class="planTick"><span class="check">✓</span>主題式視覺與視覺焦點強化</div>
+                <div class="planTick"><span class="check">✓</span>多素材整合與焦點處理</div>
+                <div class="planTick"><span class="check">✓</span>完整畫面節奏與視覺層級</div>
               </div>
             </div>
-            <div class="grid" id="grid-premium"></div>
+
+            <div class="grid" id="grid-c"></div>
           </section>
 
-          <!-- MULTI DM -->
+          <!-- DM -->
           <section class="planFrame" id="dm">
+            <div class="planTitle sectionDivider"><span>DM</span></div>
+
             <div class="planTop">
-              <div class="planName"><b>DM</b>｜多商品 DM</div>
-              <div class="planTicksTitle">多品項資訊整理：對齊閱讀動線與比較資訊</div>
+              <p class="planDesc">多品項資訊整理：對齊閱讀動線與比較資訊</p>
               <div class="planTickGrid">
                 <div class="planTick"><span class="check">✓</span>多商品規格／價格／優惠資訊分層</div>
                 <div class="planTick"><span class="check">✓</span>表格與區塊編排（更好掃讀）</div>
               </div>
             </div>
+
             <div class="grid" id="grid-dm"></div>
           </section>
 
-          <!-- SKETCH -->
+          <!-- Sketch -->
           <section class="planFrame" id="sketch">
+            <div class="planTitle sectionDivider"><span>Illustration</span></div>
+
             <div class="planTop">
-              <div class="planName"><b>SKETCH</b>｜手繪</div>
-              <div class="planTicksTitle">以手繪風格呈現，適合品牌插圖或主題角色感</div>
+              <p class="planDesc">以手繪風格呈現，適合品牌插圖或主題視覺</p>
               <div class="planTickGrid">
                 <div class="planTick"><span class="check">✓</span>手繪圖像表現（風格導向）</div>
-                <div class="planTick"><span class="check">✓</span>搭配基礎版面與文字可讀性處理</div>
+                <div class="planTick"><span class="check">✓</span>搭配基本版面與可讀性處理</div>
               </div>
             </div>
+
             <div class="grid" id="grid-sketch"></div>
           </section>
 
@@ -573,9 +495,7 @@
 
   <script>
     /**
-     * ✅ 你要改檔名，就改這裡（路徑已固定：images/xxx）
-     * 你現在的 banner 檔名看起來是：
-     * images/banner01.jpg / images/banner02.png / images/banner03.png / images/banner04.jpg
+     * ✅ Banner：改成你 images/ 裡的實際檔名即可
      */
     const bannerImages = [
       "images/banner01.jpg",
@@ -585,35 +505,15 @@
     ];
 
     /**
-     * ✅ 方案圖片：把檔名換成你最新「英文檔名」即可
-     * （你原本中文檔名：基礎款01.jpg 之類，若你已改英文，請改下面）
+     * ✅ 方案圖片：請把下面檔名改成你 images/ 裡的英文檔名
+     * （我先放示範名，避免你網站直接 404）
      */
     const planImages = {
-      basic: [
-        "images/basic01.jpg",
-        "images/basic02.jpg",
-        "images/basic03.jpg"
-      ],
-      enhanced: [
-        "images/enhanced01.jpg",
-        "images/enhanced02.jpg",
-        "images/enhanced03.jpg"
-      ],
-      premium: [
-        "images/premium01.jpg",
-        "images/premium02.jpg",
-        "images/premium03.jpg"
-      ],
-      dm: [
-        "images/dm01.jpg",
-        "images/dm02.jpg",
-        "images/dm03.jpg"
-      ],
-      sketch: [
-        "images/sketch01.png",
-        "images/sketch02.jpg",
-        "images/sketch03.png"
-      ]
+      a: ["images/a01.jpg","images/a02.jpg","images/a03.jpg"],
+      b: ["images/b01.jpg","images/b02.jpg","images/b03.jpg"],
+      c: ["images/c01.jpg","images/c02.jpg","images/c03.jpg"],
+      dm: ["images/dm01.jpg","images/dm02.jpg","images/dm03.jpg"],
+      sketch: ["images/sketch01.png","images/sketch02.jpg","images/sketch03.png"]
     };
 
     // ===== Banner render =====
@@ -621,7 +521,7 @@
     const dotsWrap = document.getElementById("bannerDots");
     let bannerIndex = 0;
     let timer = null;
-    const intervalMs = 6500; // 5~10秒：我先給 6.5 秒
+    const intervalMs = 6500; // 5~10秒：先給 6.5 秒
 
     function renderBanner(){
       stage.innerHTML = "";
@@ -684,9 +584,9 @@
     renderBanner();
     restartTimer();
 
-    mountGrid("grid-basic", planImages.basic);
-    mountGrid("grid-enhanced", planImages.enhanced);
-    mountGrid("grid-premium", planImages.premium);
+    mountGrid("grid-a", planImages.a);
+    mountGrid("grid-b", planImages.b);
+    mountGrid("grid-c", planImages.c);
     mountGrid("grid-dm", planImages.dm);
     mountGrid("grid-sketch", planImages.sketch);
   </script>
