@@ -232,6 +232,47 @@
       .bannerCard{ height: 210px; }
       .divider{ margin: 20px 0 12px; }
     }
+    /* ===== 方案簡介文字 ===== */
+.planIntro{
+  text-align:center;
+  margin: -6px auto 10px;   /* 靠近 divider 一點 */
+  max-width: 760px;
+  color: rgba(255,255,255,.82);
+  line-height: 1.85;
+  font-size: 13px;
+}
+.planMeta{
+  display:flex;
+  justify-content:center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,163,90,.22);
+  background: rgba(0,0,0,.10);
+  color: rgba(255,255,255,.88);
+  font-weight: 800;
+  letter-spacing: .5px;
+  font-size: 12px;
+}
+.pill b{ color: var(--gold); }
+.pillWarn{
+  border-color: rgba(255,255,255,.18);
+  color: rgba(255,255,255,.78);
+  font-weight: 750;
+}
+
+/* 手機時：簡介留白舒服點 */
+@media (max-width: 860px){
+  .planIntro{ padding: 0 6px; margin-top: -4px; }
+}
+
   </style>
 </head>
 
@@ -292,45 +333,79 @@
       </div>
     </section>
 
-    <!-- Plans A~E -->
-    <section aria-label="Plans">
+  <!-- Plans A~E -->
+<section aria-label="Plans">
 
-      <div class="divider"><span>A 方案</span></div>
-      <div class="imgGrid">
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-      </div>
+  <div class="divider"><span>A 方案</span></div>
+  <div class="planIntro">
+    以清楚、好讀為主的快速完成版；適合既有素材齊全、資訊量不大的貼文／公告。
+    <div class="planMeta">
+      <span class="pill">文字處理：<b>基礎文字</b></span>
+      <span class="pill pillWarn">特殊字效／主標題設計：可另行評估</span>
+    </div>
+  </div>
+  <div class="imgGrid">
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+  </div>
 
-      <div class="divider"><span>B 方案</span></div>
-      <div class="imgGrid">
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-      </div>
+  <div class="divider"><span>B 方案</span></div>
+  <div class="planIntro">
+    在 A 的基礎上，增加整體氛圍與版面層級整理；讓畫面更一致、更順眼。
+    <div class="planMeta">
+      <span class="pill">文字處理：<b>基礎文字</b></span>
+      <span class="pill pillWarn">如需主視覺標題／特殊字效：依需求另報</span>
+    </div>
+  </div>
+  <div class="imgGrid">
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+  </div>
 
-      <div class="divider"><span>C 方案</span></div>
-      <div class="imgGrid">
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-      </div>
+  <div class="divider"><span>C 方案</span></div>
+  <div class="planIntro">
+    以完成度與多素材整合為主；會更重視資訊層級、視覺焦點與整體節奏。
+    <div class="planMeta">
+      <span class="pill">文字處理：<b>基礎文字</b></span>
+      <span class="pill pillWarn">主視覺標題設計／字效：若需要會先說明並另行評估</span>
+    </div>
+  </div>
+  <div class="imgGrid">
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+  </div>
 
-      <div class="divider"><span>D 方案（DM）</span></div>
-      <div class="imgGrid">
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-      </div>
+  <div class="divider"><span>D 方案（DM）</span></div>
+  <div class="planIntro">
+    多品項／多規格資訊整理：重點是閱讀動線清晰、比較資訊好掃讀（含表格或區塊整理）。
+    <div class="planMeta">
+      <span class="pill">文字處理：<b>基礎文字</b></span>
+      <span class="pill pillWarn">若需要「強主標」或特殊字效：可另行評估</span>
+    </div>
+  </div>
+  <div class="imgGrid">
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+  </div>
 
-      <div class="divider"><span>E 方案（手繪）</span></div>
-      <div class="imgGrid">
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-        <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-      </div>
-
-    </section>
+  <div class="divider"><span>E 方案（手繪）</span></div>
+  <div class="planIntro">
+    以插畫表現為主，適合品牌風格圖或主題視覺；版面仍會做基本可讀性處理。
+    <div class="planMeta">
+      <span class="pill">文字處理：<b>基礎文字</b></span>
+      <span class="pill pillWarn">如需特別字體設計：可另行評估</span>
+    </div>
+  </div>
+  <div class="imgGrid">
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
+  </div>
+   </section>
 
   </main>
 
