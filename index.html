@@ -272,6 +272,40 @@
 @media (max-width: 860px){
   .planIntro{ padding: 0 6px; margin-top: -4px; }
 }
+/* ===== Hover：微微亮起 + 放大（回來了） ===== */
+
+/* 需要會放大的卡片清單：你想加誰就把 class 加進來 */
+.bannerCard,
+.infoFrame,
+.imgCard,
+.planFrame,
+details.accord{
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+  transform: translateZ(0); /* 避免抖動 */
+}
+
+/* hover 效果 */
+.bannerCard:hover,
+.infoFrame:hover,
+.imgCard:hover,
+.planFrame:hover,
+details.accord:hover{
+  transform: scale(1.012);
+  border-color: rgba(201,163,90,.28);
+  box-shadow: 0 18px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(201,163,90,.14);
+}
+
+/* 手機/觸控：不要 hover 放大（避免怪跳） */
+@media (hover: none){
+  .bannerCard:hover,
+  .infoFrame:hover,
+  .imgCard:hover,
+  .planFrame:hover,
+  details.accord:hover{
+    transform: none;
+    box-shadow: none;
+  }
+}
 
   </style>
 </head>
