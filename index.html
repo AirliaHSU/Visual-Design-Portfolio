@@ -15,7 +15,7 @@
   --line:rgba(201,163,90,.35);
   --wrap:980px;
   --r:18px;
-  --gap:16px;
+  --gap:24px;
 }
 
 *{ box-sizing:border-box; }
@@ -31,8 +31,8 @@ body{
 }
 
 .wrap{
-  width:min(var(--wrap), calc(100% - 40px));
-  margin:34px auto 80px;
+  width:min(var(--wrap), calc(100% - 48px));
+  margin:34px auto 90px;
 }
 
 .hero{
@@ -54,7 +54,7 @@ body{
 
 .heroTitle{
   margin:0;
-  font-size:24px;
+  font-size:20px;
   letter-spacing:1px;
   font-weight:900;
 }
@@ -74,7 +74,7 @@ body{
   align-items:center;
   gap:14px;
   justify-content:center;
-  margin:34px 0 14px;
+  margin:40px 0 14px;
   letter-spacing:1px;
   font-weight:900;
 }
@@ -88,15 +88,16 @@ body{
 }
 
 .divider span{
- padding:5px 18px;
-    border-radius:999px;
-    border:1px solid rgba(201,163,90,.18);
-    background:rgba(0,0,0,.12);
-
-    color:var(--gold);
-
-    font-size:18px;
-    font-weight:800;
+  padding:8px 22px;
+  border-radius:999px;
+  border:1px solid rgba(201,163,90,.22);
+  background:rgba(10,10,10,.45);
+  color:var(--gold);
+  white-space:nowrap;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:1px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
 }
 
 .card{
@@ -108,7 +109,7 @@ body{
 
 .intro{
   text-align:center;
-  margin:-4px auto 14px;
+  margin:-2px auto 18px;
   max-width:760px;
   color:rgba(255,255,255,.82);
   line-height:1.85;
@@ -120,12 +121,13 @@ body{
   justify-content:center;
   gap:10px;
   flex-wrap:wrap;
-  margin-top:10px;
+  margin-top:12px;
+  margin-bottom:26px;
 }
 
 .pill{
   display:inline-flex;
-  padding:6px 10px;
+  padding:6px 12px;
   border-radius:999px;
   border:1px solid rgba(201,163,90,.22);
   background:rgba(0,0,0,.12);
@@ -179,13 +181,14 @@ body{
 .dotsOuter{
   display:flex;
   justify-content:center;
-  margin-top:10px;
+  margin-top:12px;
+  margin-bottom:26px;
 }
 
 .dots{
   display:flex;
   gap:8px;
-  padding:6px 10px;
+  padding:6px 12px;
   border-radius:999px;
   border:1px solid rgba(201,163,90,.18);
   background:rgba(0,0,0,.12);
@@ -207,39 +210,26 @@ body{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   gap:var(--gap);
-  margin-top:14px;
+  margin-top:18px;
 }
 
 .imgCard{
-    aspect-ratio:1 / 1;
-
-    display:grid;
-    place-items:center;
-
-    overflow:visible;   /* ← 原本 hidden 改成 visible */
-
-    position:relative;  /* ← 新增 */
-
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease;
+  aspect-ratio:1 / 1;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  transition:.22s ease;
 }
 
 .imgCard img{
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    display:block;
-
-    border-radius:16px;
-
-    transition:
-        transform .35s ease,
-        filter .35s ease;
-}
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:var(--r);
+  transition:
+    transform .35s ease,
+    filter .35s ease;
 }
 
 .imgPlaceholder{
@@ -250,7 +240,8 @@ body{
 }
 
 .projectNote{
-  margin-top:10px;
+  margin-top:12px;
+  margin-bottom:26px;
   text-align:center;
   color:rgba(255,255,255,.64);
   font-size:12px;
@@ -260,8 +251,8 @@ body{
 .aboutGrid{
   display:grid;
   grid-template-columns:1.2fr .8fr;
-  gap:16px;
-  margin-top:14px;
+  gap:24px;
+  margin-top:18px;
 }
 
 .aboutCard{
@@ -286,32 +277,25 @@ body{
 
 .bannerCard:hover,
 .aboutCard:hover{
-
-    transform:scale(1.01);
-
-    box-shadow:
-        0 18px 60px rgba(0,0,0,.55),
-        0 0 0 1px rgba(201,163,90,.14);
+  transform:translateY(-6px);
+  border-color:rgba(201,163,90,.28);
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.55),
+    0 0 0 1px rgba(201,163,90,.12);
 }
 
-/* ===== 圖片 Hover ===== */
-
 .imgCard:hover{
-
-    transform:translateY(-8px);
-
-    z-index:50;
-
-    box-shadow:
-        0 30px 70px rgba(0,0,0,.45);
+  transform:translateY(-12px) scale(1.03);
+  z-index:50;
+  border-color:rgba(201,163,90,.25);
+  box-shadow:
+    0 35px 75px rgba(0,0,0,.58),
+    0 0 0 1px rgba(255,255,255,.08);
 }
 
 .imgCard:hover img{
-
-    transform:scale(1.08);
-
-    filter:brightness(1.05);
-}
+  transform:scale(1.05);
+  filter:brightness(1.03);
 }
 
 @media (max-width:860px){
@@ -349,14 +333,14 @@ body{
 
   <section class="hero">
     <img class="avatar" src="airlia-avatar.png" alt="Airlia Avatar" />
-    <h1 class="heroTitle">Airlia｜<b>VISUAL DESIGN</b></h1>
+    <h1 class="heroTitle">Airlia / 放空｜<b>VISUAL DESIGN</b></h1>
     <p class="heroSub">
       視覺設計｜社群圖卡・Banner・商品合成・資訊型版面<br>
       擅長整理文字與素材，製作清楚好讀、符合商業需求的視覺內容。
     </p>
   </section>
 
-  <div class="divider"><span>BANNER</span></div>
+  <div class="divider"><span>FEATURED WORKS</span></div>
   <div class="intro">活動主視覺、品牌廣告 Banner 與網站橫幅設計。</div>
   <section class="card bannerCard" aria-label="Banner">
     <div class="bannerStage" id="bannerStage"></div>
@@ -368,7 +352,7 @@ body{
   </div>
 
   <section aria-label="Product Composite">
-    <div class="divider"><span>商品合成 PRODUCT COMPOSIT</span></div>
+    <div class="divider"><span>COMMERCIAL PHOTO COMPOSITE</span></div>
     <div class="intro">
       以 AI 生成情境背景，搭配商品去背、光影調整與 Photoshop 合成，完成可用於宣傳的商品視覺。
       <div class="meta">
@@ -379,22 +363,15 @@ body{
       </div>
     </div>
     <div class="imgGrid">
-     <div class="card imgCard">
-    <img src="images/premium-01.jpg" alt="">
-</div>
-
-<div class="card imgCard">
-    <img src="images/premium-02.jpg" alt="">
-</div>
-
-<div class="card imgCard">
-    <img src="images/premium-03.jpg" alt="">
-</div>
-
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+    </div>
+    <div class="projectNote">可放：AI 背景合成、商品主視覺、節慶商品宣傳圖。</div>
   </section>
 
   <section aria-label="Social Media">
-    <div class="divider"><span>社群圖卡 SOCIAL MEDIA DESIGN</span></div>
+    <div class="divider"><span>SOCIAL MEDIA DESIGN</span></div>
     <div class="intro">
       社群貼文、活動宣傳圖與品牌公告視覺。重點放在資訊層級、閱讀動線與品牌一致性。
       <div class="meta">
@@ -403,19 +380,13 @@ body{
         <span class="pill">版面編排</span>
         <span class="pill">資訊整理</span>
       </div>
-     </div>
+    </div>
     <div class="imgGrid">
-     <div class="card imgCard">
-    <img src="images/basic01.jpg" alt="">
-</div>
-
-<div class="card imgCard">
-    <img src="images/basic02.jpg" alt="">
-</div>
-
-<div class="card imgCard">
-    <img src="images/basic03.jpg" alt="">
-</div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+    </div>
+    <div class="projectNote">可放：活動貼文、品牌公告、社群宣傳視覺。</div>
   </section>
 
   <section aria-label="DM">
@@ -429,22 +400,16 @@ body{
         <span class="pill">閱讀動線</span>
       </div>
     </div>
-       <div class="imgGrid">
-     <div class="card imgCard">
-    <img src="images/dm-01.jpg" alt="">
-</div>
-
-<div class="card imgCard">
-    <img src="images/dm-02.jpg" alt="">
-</div>
-
-<div class="card imgCard">
-    <img src="images/dm-03.jpg" alt="">
+    <div class="imgGrid">
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
     </div>
+    <div class="projectNote">可放：菜單型圖卡、多品項比較、資訊懶人包。</div>
   </section>
 
   <section aria-label="Illustration">
-    <div class="divider"><span>插畫視覺 ILLUSTRATION</span></div>
+    <div class="divider"><span>ILLUSTRATION</span></div>
     <div class="intro">
       依照主題或品牌風格製作電繪插圖，並整合成社群貼文、活動視覺或主題宣傳素材。
       <div class="meta">
@@ -454,31 +419,25 @@ body{
         <span class="pill">主題設計</span>
       </div>
     </div>
-       <div class="imgGrid">
-     <div class="card imgCard">
-    <img src="images/sketch-01.png" alt="">
-</div>
-
-<div class="card imgCard">
-    <img src="images/sketch-02.jpg" alt="">
-</div>
-
-<div class="card imgCard">
-    <img src="images/sketch-03.png" alt="">
+    <div class="imgGrid">
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
     </div>
+    <div class="projectNote">可放：手繪主視覺、角色插圖、節慶插畫圖卡。</div>
   </section>
 
   <section aria-label="About">
     <div class="divider"><span>ABOUT</span></div>
     <div class="aboutGrid">
       <div class="card aboutCard">
-        <h3>About</h3>
+        <h3>PROFILE</h3>
         8 年以上視覺設計與動畫製作經驗，具備社群視覺、短影音、Motion Graphic 與商業素材製作經驗。<br>
         工作上重視資訊整理、畫面穩定性與溝通效率，能依照品牌需求調整視覺方向，完成社群圖卡、Banner、商品合成、活動視覺與插畫類素材。
       </div>
 
       <div class="card aboutCard">
-        <h3>Tools</h3>
+        <h3>TOOLS</h3>
         <div class="toolList">
           <span class="pill">Photoshop</span>
           <span class="pill">Illustrator</span>
