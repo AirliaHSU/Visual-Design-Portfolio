@@ -211,18 +211,35 @@ body{
 }
 
 .imgCard{
-  aspect-ratio:1 / 1;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  transition:.22s ease;
+    aspect-ratio:1 / 1;
+
+    display:grid;
+    place-items:center;
+
+    overflow:visible;   /* ← 原本 hidden 改成 visible */
+
+    position:relative;  /* ← 新增 */
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
 }
 
 .imgCard img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    border-radius:16px;
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
 }
 
 .imgPlaceholder{
@@ -268,11 +285,33 @@ body{
 }
 
 .bannerCard:hover,
-.imgCard:hover,
 .aboutCard:hover{
-  transform:scale(1.012);
-  border-color:rgba(201,163,90,.28);
-  box-shadow:0 18px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(201,163,90,.14);
+
+    transform:scale(1.01);
+
+    box-shadow:
+        0 18px 60px rgba(0,0,0,.55),
+        0 0 0 1px rgba(201,163,90,.14);
+}
+
+/* ===== 圖片 Hover ===== */
+
+.imgCard:hover{
+
+    transform:translateY(-8px);
+
+    z-index:50;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45);
+}
+
+.imgCard:hover img{
+
+    transform:scale(1.08);
+
+    filter:brightness(1.05);
+}
 }
 
 @media (max-width:860px){
