@@ -1,381 +1,15 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Airlia / 放空｜視覺設計作品集</title>
+<!-- 原本：作圖修改須知，建議整段刪掉 -->
+<!-- 原本：Plans A~E，改成 Portfolio Categories -->
+<section aria-label="Portfolio">
 
-  <style>
-    :root{
-      --bg:#070a09;
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.72);
-      --gold:#c9a35a;
-
-      /* 你示意圖那種偏軍綠卡色 */
-      --card:#2f3526;
-      --cardBorder:rgba(255,255,255,.10);
-
-      --line:rgba(201,163,90,.35);
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-
-      --wrap: 980px;
-      --r: 16px;
-
-      /* 節奏（更像你圖：緊、整齊） */
-      --gap: 16px;         /* 三欄卡之間距 */
-      --sectionGap: 22px;  /* 區塊間距 */
-    }
-
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 520px at 50% 0%, rgba(201,163,90,.14), transparent 60%),
-        radial-gradient(900px 520px at 50% 18%, rgba(0,120,70,.12), transparent 60%),
-        linear-gradient(#040606, var(--bg));
-    }
-
-    .wrap{
-      width: min(var(--wrap), calc(100% - 40px));
-      margin: 34px auto 80px;
-    }
-
-    /* ===== Header ===== */
-    .hero{ text-align:center; padding: 10px 10px 18px; }
-    .avatar{
-      width: 110px; height: 110px;
-      border-radius: 999px;
-      object-fit: cover;
-      border: 3px solid rgba(255,255,255,.92);
-      background: #222;
-      box-shadow: 0 14px 44px rgba(0,0,0,.55);
-      display:block;
-      margin: 0 auto 12px;
-    }
-    .heroTitle{
-      margin: 0;
-      font-size: 18px;
-      letter-spacing: 1px;
-      font-weight: 900;
-    }
-    .heroTitle b{ color: var(--gold); }
-    .heroSub{
-      margin: 10px auto 0;
-      max-width: 780px;
-      color: rgba(255,255,255,.82);
-      line-height: 1.85;
-      font-size: 14px;
-    }
-
-    /* ===== Divider（線—字—線）：更像你圖的細線感 ===== */
-    .divider{
-      display:flex;
-      align-items:center;
-      gap: 14px;
-      justify-content:center;
-      margin: var(--sectionGap) 0 14px;
-      letter-spacing: 3px;
-      font-weight: 900;
-      color: rgba(255,255,255,.90);
-    }
-    .divider::before,
-    .divider::after{
-      content:"";
-      flex:1;
-      height:1px;
-      background: linear-gradient(90deg, transparent, var(--line), transparent);
-      opacity: 1;
-    }
-    .divider span{
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(201,163,90,.18);
-      background: rgba(0,0,0,.10);
-      white-space: nowrap;
-      font-size: 14px;
-    }
-
-    /* ===== Card ===== */
-    .card{
-      background: rgba(47,53,38,.95);
-      border: 1px solid var(--cardBorder);
-      border-radius: var(--r);
-      box-shadow: 0 10px 40px rgba(0,0,0,.35);
-    }
-
-    /* ===== Banner ===== */
-    .bannerCard{
-      border-radius: var(--r);
-      overflow:hidden;
-      height: 240px;
-      position: relative;
-    }
-    .bannerStage{
-      position:absolute;
-      inset:0;
-      background: rgba(47,53,38,.95);
-    }
-    .bannerImg{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      opacity:0;
-      transform: scale(1.02);
-      transition: opacity .55s ease, transform 1.8s ease;
-    }
-    .bannerImg.isActive{ opacity:1; transform: scale(1); }
-
-    .bannerHint{
-      position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      color: rgba(0,0,0,.55);
-      font-weight: 900;
-      letter-spacing: 2px;
-      font-size: 18px;
-      pointer-events:none;
-      mix-blend-mode: multiply;
-    }
-
-    /* dots */
-    .dotsOuter{ display:flex; justify-content:center; margin-top: 10px; }
-    .dots{
-      display:flex;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(201,163,90,.18);
-      background: rgba(0,0,0,.10);
-    }
-    .dot{
-      width:7px; height:7px;
-      border-radius: 99px;
-      border: 1px solid rgba(201,163,90,.55);
-      background: rgba(201,163,90,.18);
-      cursor:pointer;
-      padding:0;
-    }
-    .dot.isActive{ background: rgba(201,163,90,.95); }
-
-    /* ===== 作圖修改須知：三張卡（PC三欄 / 手機一欄） ===== */
-    .policyGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr); /* PC 固定三欄 */
-      gap: var(--gap);
-      margin-top: 12px;
-    }
-    .policyCard{
-      padding: 16px 16px 14px;
-      min-height: 170px;
-    }
-    .policyTitle{
-      margin: 0 0 12px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      font-size: 14px;
-      color: rgba(255,255,255,.95);
-      text-align:center;
-    }
-    .policyList{
-      margin: 0;
-      padding-left: 18px;
-      color: rgba(255,255,255,.86);
-      line-height: 1.85;
-      font-size: 13px;
-    }
-    .policyText{
-      color: rgba(255,255,255,.86);
-      font-size: 13px;
-      line-height: 1.9;
-    }
-
-    /* ===== 方案：每段三圖卡（PC三欄 / 手機一欄） ===== */
-    .imgGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr); /* PC 固定三欄 */
-      gap: var(--gap);
-      margin-top: 12px;
-    }
-    .imgCard{
-      border-radius: var(--r);
-      overflow:hidden;
-      height: 190px;
-      display:grid;
-      place-items:center;
-      background: rgba(47,53,38,.95);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 40px rgba(0,0,0,.25);
-    }
-    .imgCard img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      display:block;
-    }
-    .imgPlaceholder{
-      color: rgba(255,255,255,.80);
-      font-weight: 900;
-      letter-spacing: 4px;
-      font-size: 28px;
-    }
-
-    /* ===== 手機：一欄 ===== */
-    @media (max-width: 860px){
-      .policyGrid{ grid-template-columns: 1fr; }
-      .imgGrid{ grid-template-columns: 1fr; }
-      .bannerCard{ height: 210px; }
-      .divider{ margin: 20px 0 12px; }
-    }
-    /* ===== 方案簡介文字 ===== */
-.planIntro{
-  text-align:center;
-  margin: -6px auto 10px;   /* 靠近 divider 一點 */
-  max-width: 760px;
-  color: rgba(255,255,255,.82);
-  line-height: 1.85;
-  font-size: 13px;
-}
-.planMeta{
-  display:flex;
-  justify-content:center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 8px;
-}
-.pill{
-  display:inline-flex;
-  align-items:center;
-  gap: 8px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(201,163,90,.22);
-  background: rgba(0,0,0,.10);
-  color: rgba(255,255,255,.88);
-  font-weight: 800;
-  letter-spacing: .5px;
-  font-size: 12px;
-}
-.pill b{ color: var(--gold); }
-.pillWarn{
-  border-color: rgba(255,255,255,.18);
-  color: rgba(255,255,255,.78);
-  font-weight: 750;
-}
-
-/* 手機時：簡介留白舒服點 */
-@media (max-width: 860px){
-  .planIntro{ padding: 0 6px; margin-top: -4px; }
-}
-/* ===== Hover：微微亮起 + 放大（回來了） ===== */
-
-/* 需要會放大的卡片清單：你想加誰就把 class 加進來 */
-.bannerCard,
-.infoFrame,
-.imgCard,
-.planFrame,
-details.accord{
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
-  transform: translateZ(0); /* 避免抖動 */
-}
-
-/* hover 效果 */
-.bannerCard:hover,
-.infoFrame:hover,
-.imgCard:hover,
-.planFrame:hover,
-details.accord:hover{
-  transform: scale(1.012);
-  border-color: rgba(201,163,90,.28);
-  box-shadow: 0 18px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(201,163,90,.14);
-}
-
-/* 手機/觸控：不要 hover 放大（避免怪跳） */
-@media (hover: none){
-  .bannerCard:hover,
-  .infoFrame:hover,
-  .imgCard:hover,
-  .planFrame:hover,
-  details.accord:hover{
-    transform: none;
-    box-shadow: none;
-  }
-}
-
-  </style>
-</head>
-
-<body>
-  <main class="wrap">
-
-    <!-- Header -->
-    <section class="hero">
-      <img class="avatar" src="airlia-avatar.png" alt="Airlia Avatar" />
-      <h1 class="heroTitle">Airlia / 放空｜<b>VISUAL DESIGN</b></h1>
-      <p class="heroSub">
-        我擅長把資訊與畫面重點整理成清楚、好讀、符合品牌氣質的視覺版面；<br>
-        從主視覺、產品合成到多素材編排，都以「快速對齊需求、降低溝通成本」為目標。
-      </p>
-    </section>
-
-    <!-- Banner -->
-    <div class="divider"><span>Banner</span></div>
-    <section class="card bannerCard" aria-label="Banner">
-      <div class="bannerStage" id="bannerStage"></div>
-      <div class="bannerHint" id="bannerHint">放banner圖片/共四張，10秒換一次</div>
-    </section>
-
-    <div class="dotsOuter">
-      <div class="dots" id="bannerDots" aria-label="Banner dots"></div>
-    </div>
-
-    <!-- Policy -->
-    <div class="divider"><span>作圖修改須知</span></div>
-    <section class="policyGrid" aria-label="Policies">
-      <div class="card policyCard">
-        <div class="policyTitle">〈 做圖須知 〉</div>
-        <ul class="policyList">
-          <li>圖片尺寸（例：1080×1080 / 1080×1350 / Banner）</li>
-          <li>主視覺方向 / 品牌 Logo</li>
-          <li>文案（標題 / 重點文字）</li>
-          <li>商品或情境素材</li>
-          <li>參考圖（如有）</li>
-        </ul>
-      </div>
-
-      <div class="card policyCard">
-        <div class="policyTitle">〈 修改須知 〉</div>
-        <ul class="policyList">
-          <li>每張作品含 2 次免費修改（建議集中提出修改點）</li>
-          <li>修改不得超過原圖完成度 50%</li>
-          <li>超過 50% 視為重新製作，將再收一次該方案費用</li>
-        </ul>
-      </div>
-
-      <div class="card policyCard">
-        <div class="policyTitle">〈 加值方案 〉</div>
-        <div class="policyText">
-          可讀性基礎已包含：<br>
-          字級層級 / 行距調整 / 必要陰影 / 描邊 / 底色<br><br>
-          如需主視覺等級標題設計、特殊字效：依需求另報
-        </div>
-      </div>
-    </section>
-
-  <!-- Plans A~E -->
-<section aria-label="Plans">
-
-  <div class="divider"><span>A 方案</span></div>
+  <div class="divider"><span>社群視覺 Social Media</span></div>
   <div class="planIntro">
-    以清楚、好讀為主的快速完成版；適合既有素材齊全、資訊量不大的貼文／公告。
+    社群貼文、活動宣傳圖與品牌公告視覺。重點放在資訊層級、閱讀動線與品牌一致性。
     <div class="planMeta">
-      <span class="pill">文字處理：<b>基礎文字</b></span>
-      <span class="pill pillWarn">特殊字效／主標題設計：可另行評估</span>
+      <span class="pill">Photoshop</span>
+      <span class="pill">Illustrator</span>
+      <span class="pill">版面編排</span>
+      <span class="pill">資訊整理</span>
     </div>
   </div>
   <div class="imgGrid">
@@ -384,12 +18,14 @@ details.accord:hover{
     <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
   </div>
 
-  <div class="divider"><span>B 方案</span></div>
+  <div class="divider"><span>商品合成 Product Composite</span></div>
   <div class="planIntro">
-    在 A 的基礎上，增加整體氛圍與版面層級整理；讓畫面更一致、更順眼。
+    以 AI 生成情境背景，搭配商品去背、光影調整與 Photoshop 合成，完成可用於宣傳的商品視覺。
     <div class="planMeta">
-      <span class="pill">文字處理：<b>基礎文字</b></span>
-      <span class="pill pillWarn">如需主視覺標題／特殊字效：依需求另報</span>
+      <span class="pill">AI 背景生成</span>
+      <span class="pill">Photoshop 合成</span>
+      <span class="pill">產品去背</span>
+      <span class="pill">光影修整</span>
     </div>
   </div>
   <div class="imgGrid">
@@ -398,12 +34,14 @@ details.accord:hover{
     <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
   </div>
 
-  <div class="divider"><span>C 方案</span></div>
+  <div class="divider"><span>DM / 資訊型版面</span></div>
   <div class="planIntro">
-    以完成度與多素材整合為主；會更重視資訊層級、視覺焦點與整體節奏。
+    多品項、多規格或活動資訊整理。重點是讓文字、表格與重點訊息更清楚、好掃讀。
     <div class="planMeta">
-      <span class="pill">文字處理：<b>基礎文字</b></span>
-      <span class="pill pillWarn">主視覺標題設計／字效：若需要會先說明並另行評估</span>
+      <span class="pill">DM 設計</span>
+      <span class="pill">資訊層級</span>
+      <span class="pill">表格整理</span>
+      <span class="pill">閱讀動線</span>
     </div>
   </div>
   <div class="imgGrid">
@@ -412,12 +50,14 @@ details.accord:hover{
     <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
   </div>
 
-  <div class="divider"><span>D 方案（DM）</span></div>
+  <div class="divider"><span>插畫視覺 Illustration</span></div>
   <div class="planIntro">
-    多品項／多規格資訊整理：重點是閱讀動線清晰、比較資訊好掃讀（含表格或區塊整理）。
+    依照主題或品牌風格製作電繪插圖，並整合成社群貼文、活動視覺或主題宣傳素材。
     <div class="planMeta">
-      <span class="pill">文字處理：<b>基礎文字</b></span>
-      <span class="pill pillWarn">若需要「強主標」或特殊字效：可另行評估</span>
+      <span class="pill">Clip Studio Paint</span>
+      <span class="pill">電繪插圖</span>
+      <span class="pill">角色視覺</span>
+      <span class="pill">主題設計</span>
     </div>
   </div>
   <div class="imgGrid">
@@ -426,84 +66,4 @@ details.accord:hover{
     <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
   </div>
 
-  <div class="divider"><span>E 方案（手繪）</span></div>
-  <div class="planIntro">
-    以插畫表現為主，適合品牌風格圖或主題視覺；版面仍會做基本可讀性處理。
-    <div class="planMeta">
-      <span class="pill">文字處理：<b>基礎文字</b></span>
-      <span class="pill pillWarn">如需特別字體設計：可另行評估</span>
-    </div>
-  </div>
-  <div class="imgGrid">
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-  </div>
-   </section>
-
-  </main>
-
-  <script>
-    // ✅ Banner 圖片：改成你 images/ 的實際檔名
-    const bannerImages = [
-      "images/banner-01.jpg",
-      "images/banner-02.png",
-      "images/banner-03.png",
-      "images/banner-04.jpg",
-    ];
-
-    const stage = document.getElementById("bannerStage");
-    const dotsWrap = document.getElementById("bannerDots");
-    const hint = document.getElementById("bannerHint");
-
-    let index = 0;
-    let timer = null;
-    const intervalMs = 10000; // 10 秒
-
-    function render(){
-      stage.innerHTML = "";
-      dotsWrap.innerHTML = "";
-
-      bannerImages.forEach((src, i) => {
-        const img = document.createElement("img");
-        img.className = "bannerImg" + (i === index ? " isActive" : "");
-        img.src = src;
-        img.alt = "banner-" + (i + 1);
-        stage.appendChild(img);
-
-        const dot = document.createElement("button");
-        dot.type = "button";
-        dot.className = "dot" + (i === index ? " isActive" : "");
-        dot.addEventListener("click", () => {
-          index = i;
-          update();
-          restart();
-        });
-        dotsWrap.appendChild(dot);
-      });
-
-      hint.style.display = bannerImages.length ? "none" : "grid";
-    }
-
-    function update(){
-      const imgs = stage.querySelectorAll(".bannerImg");
-      const dots = dotsWrap.querySelectorAll(".dot");
-      imgs.forEach((el, i) => el.classList.toggle("isActive", i === index));
-      dots.forEach((el, i) => el.classList.toggle("isActive", i === index));
-    }
-
-    function next(){
-      index = (index + 1) % bannerImages.length;
-      update();
-    }
-
-    function restart(){
-      if(timer) clearInterval(timer);
-      timer = setInterval(next, intervalMs);
-    }
-
-    render();
-    restart();
-  </script>
-</body>
-</html>
+</section>
