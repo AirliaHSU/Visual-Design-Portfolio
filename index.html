@@ -1,69 +1,460 @@
-<!-- 原本：作圖修改須知，建議整段刪掉 -->
-<!-- 原本：Plans A~E，改成 Portfolio Categories -->
-<section aria-label="Portfolio">
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Airlia / 放空｜Visual Design Portfolio</title>
 
-  <div class="divider"><span>社群視覺 Social Media</span></div>
-  <div class="planIntro">
-    社群貼文、活動宣傳圖與品牌公告視覺。重點放在資訊層級、閱讀動線與品牌一致性。
-    <div class="planMeta">
-      <span class="pill">Photoshop</span>
-      <span class="pill">Illustrator</span>
-      <span class="pill">版面編排</span>
-      <span class="pill">資訊整理</span>
+<style>
+:root{
+  --bg:#070a09;
+  --text:rgba(255,255,255,.92);
+  --muted:rgba(255,255,255,.72);
+  --gold:#c9a35a;
+  --card:#2f3526;
+  --line:rgba(201,163,90,.35);
+  --wrap:980px;
+  --r:18px;
+  --gap:16px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"PingFang TC","Microsoft JhengHei","Noto Sans TC",Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 520px at 50% 0%, rgba(201,163,90,.14), transparent 60%),
+    radial-gradient(900px 520px at 50% 18%, rgba(0,120,70,.12), transparent 60%),
+    linear-gradient(#040606, var(--bg));
+}
+
+.wrap{
+  width:min(var(--wrap), calc(100% - 40px));
+  margin:34px auto 80px;
+}
+
+/* Header */
+.hero{
+  text-align:center;
+  padding:10px 10px 22px;
+}
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:999px;
+  object-fit:cover;
+  border:3px solid rgba(255,255,255,.92);
+  background:#222;
+  box-shadow:0 14px 44px rgba(0,0,0,.55);
+  display:block;
+  margin:0 auto 12px;
+}
+.heroTitle{
+  margin:0;
+  font-size:20px;
+  letter-spacing:1px;
+  font-weight:900;
+}
+.heroTitle b{ color:var(--gold); }
+.heroSub{
+  margin:12px auto 0;
+  max-width:780px;
+  color:rgba(255,255,255,.82);
+  line-height:1.85;
+  font-size:14px;
+}
+
+/* Divider */
+.divider{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  justify-content:center;
+  margin:34px 0 14px;
+  letter-spacing:3px;
+  font-weight:900;
+}
+.divider::before,
+.divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--line), transparent);
+}
+.divider span{
+  padding:3px 12px;
+  border-radius:999px;
+  border:1px solid rgba(201,163,90,.18);
+  background:rgba(0,0,0,.12);
+  white-space:nowrap;
+  font-size:14px;
+}
+
+/* Shared */
+.card{
+  background:rgba(47,53,38,.95);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--r);
+  box-shadow:0 10px 40px rgba(0,0,0,.35);
+}
+
+.intro{
+  text-align:center;
+  margin:-4px auto 14px;
+  max-width:760px;
+  color:rgba(255,255,255,.82);
+  line-height:1.85;
+  font-size:13px;
+}
+
+.meta{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.pill{
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(201,163,90,.22);
+  background:rgba(0,0,0,.12);
+  color:rgba(255,255,255,.88);
+  font-weight:800;
+  font-size:12px;
+}
+
+/* Banner */
+.bannerCard{
+  border-radius:var(--r);
+  overflow:hidden;
+  height:240px;
+  position:relative;
+  transition:.22s ease;
+}
+.bannerStage{
+  position:absolute;
+  inset:0;
+  background:rgba(47,53,38,.95);
+}
+.bannerImg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transform:scale(1.02);
+  transition:opacity .55s ease, transform 1.8s ease;
+}
+.bannerImg.isActive{
+  opacity:1;
+  transform:scale(1);
+}
+.bannerHint{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  color:rgba(255,255,255,.55);
+  font-weight:900;
+  letter-spacing:2px;
+  font-size:18px;
+}
+.dotsOuter{
+  display:flex;
+  justify-content:center;
+  margin-top:10px;
+}
+.dots{
+  display:flex;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(201,163,90,.18);
+  background:rgba(0,0,0,.12);
+}
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:99px;
+  border:1px solid rgba(201,163,90,.55);
+  background:rgba(201,163,90,.18);
+  cursor:pointer;
+  padding:0;
+}
+.dot.isActive{ background:rgba(201,163,90,.95); }
+
+/* Portfolio */
+.imgGrid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:var(--gap);
+  margin-top:14px;
+}
+.imgCard{
+  height:190px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  transition:.22s ease;
+}
+.imgCard img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.imgPlaceholder{
+  color:rgba(255,255,255,.72);
+  font-weight:900;
+  letter-spacing:4px;
+  font-size:28px;
+}
+
+/* About */
+.aboutGrid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:16px;
+  margin-top:14px;
+}
+.aboutCard{
+  padding:22px;
+  line-height:1.9;
+  font-size:13px;
+  color:rgba(255,255,255,.84);
+}
+.aboutCard h3{
+  margin:0 0 10px;
+  font-size:15px;
+  color:rgba(255,255,255,.95);
+}
+.toolList{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* Hover */
+.bannerCard:hover,
+.imgCard:hover,
+.aboutCard:hover{
+  transform:scale(1.012);
+  border-color:rgba(201,163,90,.28);
+  box-shadow:0 18px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(201,163,90,.14);
+}
+
+/* Mobile */
+@media (max-width:860px){
+  .imgGrid,
+  .aboutGrid{
+    grid-template-columns:1fr;
+  }
+  .bannerCard{
+    height:210px;
+  }
+  .divider{
+    margin:28px 0 12px;
+  }
+  .heroSub br{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="wrap">
+
+  <!-- Header -->
+  <section class="hero">
+    <img class="avatar" src="airlia-avatar.png" alt="Airlia Avatar" />
+    <h1 class="heroTitle">Airlia / 放空｜<b>VISUAL DESIGN</b></h1>
+    <p class="heroSub">
+      8 年以上視覺設計與動畫製作經驗，熟悉社群圖卡、Banner、商品合成、資訊型版面與插畫視覺製作。<br>
+      擅長將文字、素材與品牌需求整理成清楚好讀的商業視覺，也能運用 AI 生成素材並進行後製合成。
+    </p>
+  </section>
+
+  <!-- Banner -->
+  <div class="divider"><span>Banner</span></div>
+  <section class="card bannerCard" aria-label="Banner">
+    <div class="bannerStage" id="bannerStage"></div>
+    <div class="bannerHint" id="bannerHint">放 Banner 圖片 / 共四張，10 秒換一次</div>
+  </section>
+
+  <div class="dotsOuter">
+    <div class="dots" id="bannerDots" aria-label="Banner dots"></div>
+  </div>
+
+  <!-- Social Media -->
+  <section aria-label="Social Media">
+    <div class="divider"><span>社群視覺 Social Media</span></div>
+    <div class="intro">
+      社群貼文、活動宣傳圖與品牌公告視覺。重點放在資訊層級、閱讀動線與品牌一致性。
+      <div class="meta">
+        <span class="pill">Photoshop</span>
+        <span class="pill">Illustrator</span>
+        <span class="pill">版面編排</span>
+        <span class="pill">資訊整理</span>
+      </div>
     </div>
-  </div>
-  <div class="imgGrid">
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-  </div>
-
-  <div class="divider"><span>商品合成 Product Composite</span></div>
-  <div class="planIntro">
-    以 AI 生成情境背景，搭配商品去背、光影調整與 Photoshop 合成，完成可用於宣傳的商品視覺。
-    <div class="planMeta">
-      <span class="pill">AI 背景生成</span>
-      <span class="pill">Photoshop 合成</span>
-      <span class="pill">產品去背</span>
-      <span class="pill">光影修整</span>
+    <div class="imgGrid">
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
     </div>
-  </div>
-  <div class="imgGrid">
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-  </div>
+  </section>
 
-  <div class="divider"><span>DM / 資訊型版面</span></div>
-  <div class="planIntro">
-    多品項、多規格或活動資訊整理。重點是讓文字、表格與重點訊息更清楚、好掃讀。
-    <div class="planMeta">
-      <span class="pill">DM 設計</span>
-      <span class="pill">資訊層級</span>
-      <span class="pill">表格整理</span>
-      <span class="pill">閱讀動線</span>
+  <!-- Product Composite -->
+  <section aria-label="Product Composite">
+    <div class="divider"><span>商品合成 Product Composite</span></div>
+    <div class="intro">
+      以 AI 生成情境背景，搭配商品去背、光影調整與 Photoshop 合成，完成可用於宣傳的商品視覺。
+      <div class="meta">
+        <span class="pill">AI 背景生成</span>
+        <span class="pill">Photoshop 合成</span>
+        <span class="pill">產品去背</span>
+        <span class="pill">光影修整</span>
+      </div>
     </div>
-  </div>
-  <div class="imgGrid">
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-  </div>
-
-  <div class="divider"><span>插畫視覺 Illustration</span></div>
-  <div class="planIntro">
-    依照主題或品牌風格製作電繪插圖，並整合成社群貼文、活動視覺或主題宣傳素材。
-    <div class="planMeta">
-      <span class="pill">Clip Studio Paint</span>
-      <span class="pill">電繪插圖</span>
-      <span class="pill">角色視覺</span>
-      <span class="pill">主題設計</span>
+    <div class="imgGrid">
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
     </div>
-  </div>
-  <div class="imgGrid">
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-    <div class="imgCard"><span class="imgPlaceholder">圖片</span></div>
-  </div>
+  </section>
 
-</section>
+  <!-- DM -->
+  <section aria-label="DM">
+    <div class="divider"><span>DM / 資訊型版面</span></div>
+    <div class="intro">
+      多品項、多規格或活動資訊整理。重點是讓文字、表格與重點訊息更清楚、好掃讀。
+      <div class="meta">
+        <span class="pill">DM 設計</span>
+        <span class="pill">資訊層級</span>
+        <span class="pill">表格整理</span>
+        <span class="pill">閱讀動線</span>
+      </div>
+    </div>
+    <div class="imgGrid">
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+    </div>
+  </section>
+
+  <!-- Illustration -->
+  <section aria-label="Illustration">
+    <div class="divider"><span>插畫視覺 Illustration</span></div>
+    <div class="intro">
+      依照主題或品牌風格製作電繪插圖，並整合成社群貼文、活動視覺或主題宣傳素材。
+      <div class="meta">
+        <span class="pill">Clip Studio Paint</span>
+        <span class="pill">電繪插圖</span>
+        <span class="pill">角色視覺</span>
+        <span class="pill">主題設計</span>
+      </div>
+    </div>
+    <div class="imgGrid">
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+      <div class="card imgCard"><span class="imgPlaceholder">圖片</span></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section aria-label="About">
+    <div class="divider"><span>About / Tools</span></div>
+    <div class="aboutGrid">
+      <div class="card aboutCard">
+        <h3>About</h3>
+        具備社群視覺、短影音、Motion Graphic 與商業素材製作經驗。<br>
+        工作上重視資訊整理、畫面穩定性與溝通效率，能依照品牌需求調整視覺方向，完成社群圖卡、Banner、商品合成、活動視覺與插畫類素材。
+      </div>
+
+      <div class="card aboutCard">
+        <h3>Tools</h3>
+        <div class="toolList">
+          <span class="pill">Photoshop</span>
+          <span class="pill">Illustrator</span>
+          <span class="pill">After Effects</span>
+          <span class="pill">Premiere</span>
+          <span class="pill">Clip Studio Paint</span>
+          <span class="pill">AI Tools</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const bannerImages = [
+  "images/banner-01.jpg",
+  "images/banner-02.png",
+  "images/banner-03.png",
+  "images/banner-04.jpg"
+];
+
+const stage = document.getElementById("bannerStage");
+const dotsWrap = document.getElementById("bannerDots");
+const hint = document.getElementById("bannerHint");
+
+let index = 0;
+let timer = null;
+const intervalMs = 10000;
+
+function render(){
+  stage.innerHTML = "";
+  dotsWrap.innerHTML = "";
+
+  bannerImages.forEach((src, i) => {
+    const img = document.createElement("img");
+    img.className = "bannerImg" + (i === index ? " isActive" : "");
+    img.src = src;
+    img.alt = "banner-" + (i + 1);
+    stage.appendChild(img);
+
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "dot" + (i === index ? " isActive" : "");
+    dot.addEventListener("click", () => {
+      index = i;
+      update();
+      restart();
+    });
+    dotsWrap.appendChild(dot);
+  });
+
+  hint.style.display = bannerImages.length ? "none" : "grid";
+}
+
+function update(){
+  const imgs = stage.querySelectorAll(".bannerImg");
+  const dots = dotsWrap.querySelectorAll(".dot");
+  imgs.forEach((el, i) => el.classList.toggle("isActive", i === index));
+  dots.forEach((el, i) => el.classList.toggle("isActive", i === index));
+}
+
+function next(){
+  if(!bannerImages.length) return;
+  index = (index + 1) % bannerImages.length;
+  update();
+}
+
+function restart(){
+  if(timer) clearInterval(timer);
+  timer = setInterval(next, intervalMs);
+}
+
+render();
+restart();
+</script>
+
+</body>
+</html>
